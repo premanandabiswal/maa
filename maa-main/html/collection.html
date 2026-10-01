@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Collection | Maa Durga Florals</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/src/output.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <style>
+      .scrollbar-hide::-webkit-scrollbar { display: none; }
+      .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+      /* Drag flower chip */
+      .flower-chip {
+        cursor: grab;
+        transition: transform .2s;
+        user-select: none;
+      }
+      .flower-chip:active { cursor: grabbing; transform: scale(1.1); }
+      .flower-chip.dragging { opacity: .5; }
+
+      /* Bouquet canvas drop zone */
+      #dropZone {
+        border: 2.5px dashed #90A285;
+        min-height: 320px;
+        transition: background .25s;
+        position: relative;
+        overflow: visible;
+        background: linear-gradient(160deg,#fdf6ee,#e8f0e5);
+        border-radius: 1rem;
+      }
+      #dropZone.drag-over { background: #dff0db; }
+
+      /* Stem */
+      #bouquetStem {
+        position: absolute;
+        bottom: 0; left: 50%;
+        transform: translateX(-50%);
+        width: 18px;
+        height: 110px;
+        background: linear-gradient(180deg,#5a8a4a,#3a6a30);
+        border-radius: 4px 4px 6px 6px;
+        z-index: 1;
+      }
+      #bouquetStem::before {
+        content:'';
+        position:absolute;
+        top: 30px; left: -14px;
+        width: 28px; height: 18px;
+        background: #5a8a4a;
+        border-radius: 50% 0 50% 0;
+        transform: rotate(-30deg);
+      }
+      #bouquetStem::after {
+        content:'';
+        position:absolute;
+        top: 55px; right: -14px;
+        width: 28px; height: 18px;
+        background: #4a7a3a;
+        border-radius: 0 50% 0 50%;
+        transform: rotate(30deg);
+      }
+
+      /* Ribbon */
+      #bouquetRibbon {
+        position:absolute;
+        bottom: 105px; left:50%;
+        transform: translateX(-50%);
+        width: 44px; height: 22px;
+        background: #c0392b;
+        border-radius: 2px;
+        z-index: 2;
+        display:none;
+      }
+      #bouquetRibbon::before,#bouquetRibbon::after {
+        content:'';
+        position:absolute;
+        top:2px;
+        width:0;height:0;
+      }
+      #bouquetRibbon::before{
+        left:-10px;
+        border-right:12px solid #c0392b;
+        border-top:9px solid transparent;
+        border-bottom:9px solid transparent;
+      }
+      #bouquetRibbon::after{
+        right:-10px;
+        border-left:12px solid #c0392b;
+        border-top:9px solid transparent;
+        border-bottom:9px solid transparent;
+      }
+
+      /* Flower in bouquet */
+      .bouquet-flower {
+        position: absolute;
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #fff;
+        box-shadow: 0 3px 12px rgba(0,0,0,.2);
+        z-index: 3;
+        cursor: pointer;
+        transition: transform .2s, box-shadow .2s;
+      }
+      .bouquet-flower:hover { transform: scale(1.12); box-shadow: 0 6px 18px rgba(0,0,0,.3); }
+
+      /* Section fade-in */
+      .fade-up { opacity:0; transform:translateY(30px); transition: opacity .6s, transform .6s; }
+      .fade-up.visible { opacity:1; transform:translateY(0); }
+
+      /* Bouquet cards */
+      .bouquet-card {
+        background: linear-gradient(135deg,#f9f6f0,#fff);
+        border: 1px solid #e0dbd2;
+        border-radius: 1rem;
+        box-shadow: 0 4px 18px rgba(0,0,0,.09);
+        transition: transform .3s, box-shadow .3s;
+      }
+      .bouquet-card:hover { transform: translateY(-6px); box-shadow: 0 10px 30px rgba(0,0,0,.14); }
+
+      /* Tab buttons */
+      .tab-btn { transition: background .25s, color .25s; }
+      .tab-btn.active { background:#90A285; color:#fff; }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+
+    <!-- ======= HEADER ======= -->
+    <header class="sticky top-0 z-50 w-full drop-shadow-md">
+
+      <!-- Desktop Navbar -->
+      <div class="hidden md:flex items-center justify-between bg-[#90A285] px-6 lg:px-12 py-3">
+        <div class="flex items-center gap-4 group cursor-pointer">
+          <img src="../assets/drg.png" class="h-12 lg:h-14 transition-all duration-500 group-hover:scale-110 group-hover:rotate-6" />
+          <h1 class="font-bold text-amber-50 font-serif text-[22px] lg:text-[30px] tracking-wide transition-all duration-500 group-hover:tracking-widest">MAA DURGA FLORALS</h1>
+        </div>
+        <nav class="flex items-center gap-5 lg:gap-8 font-semibold text-white text-sm lg:text-base">
+          <a href="../index.html" class="relative group">Home<span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span></a>
+          <a href="services.html" class="relative group">Services<span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span></a>
+          <a href="collection.html" class="relative group">Collection<span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span></a>
+          <a href="occasion.html" class="relative group">Occasion<span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span></a>
+          <a href="contact.html" class="relative group">Contact<span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span></a>
+          <a href="cart.html" class="bg-white text-[#90A285] px-4 py-2 rounded-full shadow-md hover:scale-105 hover:bg-[#D9D9D9] transition-all duration-300">
+            Cart&nbsp;<i class="fa-solid fa-cart-shopping text-[#444642] text-xl"></i>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Mobile Navbar -->
+      <div class="relative md:hidden bg-[#90A285] w-full flex items-center justify-center px-4 py-3">
+        <div class="relative z-10 flex items-center gap-2">
+          <img src="../assets/drg.png" class="h-10" />
+          <h1 class="font-bold text-amber-50 font-serif text-[18px]">MAA DURGA FLORALS</h1>
+        </div>
+      </div>
+
+      <!-- Mobile Bottom Menu -->
+      <div class="flex md:hidden bg-[#D9D9D9] w-full py-1.5">
+        <div class="flex items-center justify-between w-full px-2">
+          <a href="../index.html" class="flex flex-col items-center group">
+            <div class="h-12 w-12 rounded-full bg-[#818D7F] flex items-center justify-center transition-all duration-300 group-hover:scale-110"><i class="fa-solid fa-home text-white text-xl"></i></div>
+            <span class="text-xs mt-1">Home</span>
+          </a>
+          <a href="collection.html" class="flex flex-col items-center group">
+            <div class="h-12 w-12 rounded-full bg-[#818D7F] flex justify-center items-center transition-all duration-300 group-hover:scale-110"><i class="fa-solid fa-list text-white text-xl"></i></div>
+            <span class="text-xs mt-1">Collection</span>
+          </a>
+          <a href="service.html" class="flex flex-col items-center group">
+            <div class="h-12 w-12 rounded-full bg-[#818D7F] flex justify-center items-center transition-all duration-300 group-hover:scale-110"><i class="fa-solid fa-handshake text-white text-xl"></i></div>
+            <span class="text-xs mt-1">Services</span>
+          </a>
+          <a href="occasion.html" class="flex flex-col items-center group">
+            <div class="h-12 w-12 rounded-full bg-[#818D7F] flex justify-center items-center transition-all duration-300 group-hover:scale-110"><i class="fa-solid fa-spa text-white text-xl"></i></div>
+            <span class="text-xs mt-1">Occasion</span>
+          </a>
+          <a href="contact.html" class="flex flex-col items-center group">
+            <div class="h-12 w-12 rounded-full bg-[#818D7F] flex justify-center items-center transition-all duration-300 group-hover:scale-110"><i class="fa-solid fa-phone text-white text-xl"></i></div>
+            <span class="text-xs mt-1">Contact</span>
+          </a>
+          <a href="cart.html" class="flex flex-col items-center group">
+            <div class="h-12 w-12 rounded-full bg-[#818D7F] flex justify-center items-center transition-all duration-300 group-hover:scale-110"><i class="fa-solid fa-cart-shopping text-white text-xl"></i></div>
+            <span class="text-xs mt-1">Cart</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- ======= BACK BUTTON ======= -->
+    <div class="max-w-6xl mx-auto px-4 mt-6">
+      <a href="../index.html" class="inline-flex items-center text-sm text-gray-500 hover:text-[#90A285] transition-colors">
+        <i class="fa-solid fa-house mr-2"></i> Back to Home
+      </a>
+    </div>
+
+    <!-- ======= TABS ======= -->
+    <div class="flex justify-center gap-3 mt-6 px-4 flex-wrap">
+      <button id="tabFlowers" class="tab-btn active px-6 py-2 rounded-full border border-[#90A285] font-semibold text-sm" onclick="showTab('flowers')">
+        🌸 Festive Flowers
+      </button>
+      <button id="tabBouquets" class="tab-btn px-6 py-2 rounded-full border border-[#90A285] font-semibold text-sm text-[#90A285]" onclick="showTab('bouquets')">
+        <img src="../assets/b1.webp" alt="bouquet" class="inline-block w-5 h-5 rounded-full object-cover align-middle mr-1" style="vertical-align:middle"> Buy Bouquet
+      </button>
+      <button id="tabCustom" class="tab-btn px-6 py-2 rounded-full border border-[#90A285] font-semibold text-sm text-[#90A285]" onclick="showTab('custom')">
+        ✨ Customize Bouquet
+      </button>
+    </div>
+
+    <!-- ======= SECTION: FLOWERS ======= -->
+    <section id="sectionFlowers">
+      <div class="flex flex-col justify-center items-center font-semibold text-xl md:text-[30px] mt-4 text-center">
+        <h1>Festive Flower</h1>
+        <img src="asset/hortizont-arrow.png" alt="" class="w-[85%] md:w-auto h-auto mt-1 md:mt-2" />
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-6 p-4 max-w-4xl w-full mx-auto" id="cardContainer"></div>
+    </section>
+
+    <!-- ======= SECTION: BUY BOUQUET ======= -->
+    <section id="sectionBouquets" class="hidden max-w-5xl mx-auto px-4 py-6">
+      <div class="text-center mb-8 fade-up">
+        <h2 class="text-3xl font-bold text-gray-700 font-serif">Ready-Made Bouquets</h2>
+        <p class="text-gray-500 mt-2">Hand-crafted with love — pick your favourite!</p>
+        <img src="asset/hortizont-arrow.png" alt="" class="mx-auto mt-2 w-64" />
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="bouquetContainer"></div>
+    </section>
+
+    <!-- ======= SECTION: CUSTOMIZE ======= -->
+    <section id="sectionCustom" class="hidden max-w-5xl mx-auto px-4 py-6">
+      <div class="text-center mb-6 fade-up">
+        <h2 class="text-3xl font-bold text-gray-700 font-serif">✨ Build Your Bouquet</h2>
+        <p class="text-gray-500 mt-2">Drag flowers from the palette into your bouquet canvas!</p>
+        <img src="asset/hortizont-arrow.png" alt="" class="mx-auto mt-2 w-64" />
+      </div>
+
+      <div class="flex flex-col lg:flex-row gap-6">
+
+        <!-- Flower Palette -->
+        <div class="lg:w-1/3 bg-white rounded-2xl shadow-md p-4">
+          <h3 class="font-semibold text-gray-600 mb-3 text-center">🌺 Flower Palette</h3>
+          <p class="text-xs text-gray-400 text-center mb-3">Drag a flower to the canvas →</p>
+          <div class="grid grid-cols-3 gap-3" id="flowerPalette"></div>
+        </div>
+
+        <!-- Bouquet Canvas -->
+        <div class="lg:w-2/3 flex flex-col gap-4">
+          <div class="bg-white rounded-2xl shadow-md p-4 flex-1">
+            <h3 class="font-semibold text-gray-600 mb-1 text-center">💐 Your Bouquet</h3>
+            <p class="text-xs text-gray-400 text-center mb-3">Drop flowers · Click a flower to remove it</p>
+            <!-- Drop zone with bouquet anatomy -->
+            <div id="dropZone">
+              <!-- Stem & ribbon injected by JS -->
+              <div id="bouquetStem" style="display:none"></div>
+              <div id="bouquetRibbon"></div>
+              <p id="dropHint" class="absolute inset-0 flex flex-col items-center justify-center text-gray-300 text-sm pointer-events-none select-none gap-2">
+                <span class="text-5xl">💐</span>
+                Drop flowers here to build your bouquet
+              </p>
+            </div>
+          </div>
+
+          <!-- Summary + Actions -->
+          <div class="bg-white rounded-2xl shadow-md p-4">
+            <div class="flex justify-between items-center mb-3">
+              <h3 class="font-semibold text-gray-700">Bouquet Summary</h3>
+              <button onclick="clearBouquet()" class="text-xs text-red-400 hover:text-red-600 transition">🗑 Clear All</button>
+            </div>
+            <div id="bouquetSummary" class="text-sm text-gray-500 mb-3">No flowers added yet.</div>
+            <div class="flex justify-between items-center">
+              <span class="font-bold text-[#90A285] text-lg">Total: <span id="bouquetTotal">₹0</span></span>
+              <button onclick="addCustomToCart()" class="bg-[#90A285] hover:bg-[#7a8a71] text-white px-5 py-2 rounded-full text-sm font-semibold transition">
+                🛒 Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="footer"></div>
+
+    <script>
+       const footerHTML = `
+      <footer class="relative bg-[#818D7F] text-white mt-24 pt-24 pb-8 overflow-visible">
+        <div class="absolute -top-14 left-6 md:left-20">
+          <img src="../assets/Group 63.png" alt="Logo" class="h-20 md:h-28 w-auto drop-shadow-lg" onerror="this.style.display='none'" />
+        </div>
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+          <div>
+            <h2 class="text-xl md:text-2xl font-bold mb-5 underline decoration-yellow-200 underline-offset-8">Quick Links</h2>
+            <ul class="grid grid-cols-2 gap-y-3 text-sm md:text-base">
+              <li><a href="index.html" class="hover:text-yellow-200 transition">Home</a></li>
+              <li><a href="collection.html" class="hover:text-yellow-200 transition">Collection</a></li>
+              <li><a href="services.html" class="hover:text-yellow-200 transition">Services</a></li>
+              <li><a href="occasion.html" class="hover:text-yellow-200 transition">Occasion</a></li>
+              <li><a href="contact.html" class="hover:text-yellow-200 transition">Contact</a></li>
+              <li><a href="cart.html" class="hover:text-yellow-200 transition">Cart 🛒</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2 class="text-xl md:text-2xl font-bold mb-5 underline decoration-yellow-200 underline-offset-8">Contact Us</h2>
+            <ul class="space-y-4 text-sm md:text-base">
+              <li class="flex gap-3"><span>📍</span><span>Main Market, Bhiwadi<br />Rajasthan, 301019</span></li>
+              <li class="flex gap-3"><span>📞</span><span>+91 98765 43210</span></li>
+              <li class="flex gap-3"><span>✉️</span><span>info@maadurgaflorals.com</span></li>
+            </ul>
+          </div>
+          <div class="flex flex-col">
+            <h2 class="text-xl md:text-2xl font-bold mb-5 underline decoration-yellow-200 underline-offset-8">Our Location</h2>
+            <div class="w-full h-[200px] rounded-xl overflow-hidden shadow-lg border-2 border-white/20 relative group">
+              <div class="absolute inset-0 bg-transparent z-10 hidden md:block group-hover:hidden"></div>
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d112349.56637373357!2d76.76211110461877!3d28.204561845110998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d47b01b636035%3A0x6e902b48d88eab94!2sBhiwadi%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1707000000000!5m2!1sen!2sin" 
+                width="100%" 
+                height="100%" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"
+                class="grayscale-[30%] hover:grayscale-0 transition-all duration-500">
+              </iframe>
+            </div>
+          </div>
+        </div>
+        <div class="mt-12 pt-4 border-t border-white/20 text-center text-sm text-white/80">
+          © 2026 Maa Durga Florals. All rights reserved. | <span class="text-black font-semibold cursor-pointer hover:text-yellow-200 transition-colors duration-300">Nityasundaram Production</span>
+        </div>
+      </footer>
+      `;
+      const footerContainer = document.getElementById("footer");
+      if (footerContainer) footerContainer.innerHTML = footerHTML;
+      // ---- Footer ----
+
+      // ---- Products ----
+      const products = [
+        { name:"Marigold",         price:20, image:"../assetS/marigold.webp" },
+        { name:"Jasmin",           price:20, image:"../assetS/jasmin.jpg" },
+        { name:"Roses",            price:20, image:"../assetS/Rose.png" },
+        { name:"Blue Water Lily",  price:20, image:"../assetS/BlueWaterLily.webp" },
+        { name:"Butterfly Pea",    price:20, image:"../assetS/ButterflyPea.webp" },
+        { name:"Champak",          price:20, image:"../assetS/Champak.webp" },
+        { name:"Datura",           price:20, image:"../assetS/Datura.webp" },
+        { name:"Flame of Forest",  price:20, image:"../assetS/FlameofForest.webp" },
+        { name:"Hibiscus",         price:20, image:"../assetS/hibiscus.webp" },
+        { name:"Lavender",         price:20, image:"../assetS/lavender.webp" },
+        { name:"Lily",             price:20, image:"../assetS/lily.webp" },
+        { name:"Lotus",            price:20, image:"../assetS/lotus.webp" },
+        { name:"Mongolian",        price:20, image:"../assetS/mangolia.webp" },
+        { name:"Night Jasmin",     price:20, image:"../assetS/nightJasmin.webp" },
+        { name:"Pin Wheel",        price:20, image:"../assetS/Pinwheel.webp" },
+        { name:"Rangoon Creeper",  price:20, image:"../assetS/RangoonCreeper.webp" },
+        { name:"Tuberose",         price:20, image:"../assetS/tuberose.webp" },
+        { name:"Sunflower",        price:20, image:"../assetS/sunflower.webp" },
+        { name:"Tulip Bouquet",            price:20, image:"../assetS/tulip.webp" },
+        { name:"Rose Bouquet",           price:20, image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8s_RaIL0DslbeIsC39GEX15AOMK9Wiw_NPQ&s" },
+        { name:"Sunflower Bouquet",           price:299, image:"https://assets.winni.in/product/primary/2023/9/89612.jpeg?dpr=1&w=1000" },
+        { name:"Lily Bouquet",           price:299, image:"https://m.media-amazon.com/images/I/91yeb4Kpk7S._AC_UF350,350_QL80_.jpg" },
+        { name:"Yellow Rose Bouquet",           price:200, image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBlPPpYBqqM870UFVyBzg6Y2ke9s3GmksDeQ&s" },
+         { name:"Daisy Bouquet",           price:200, image:"https://www.funkrafts.in/cdn/shop/files/72_a915e3e5-5e80-4206-a83b-85c121798fa6.jpg?v=1768735333&width=1445" },
+         { name:"Hydrogenous Bouquet",           price:200, image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhvr6gr4P2dJH6iuDqB4yhDgxtWTADClbBRw&s" },
+         { name:"Orange Flower Bouquet",           price:200, image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkKqvqM8IwSSwL9STmPFdgMnk6nTxhPTjuxg&s" },
+      ];
+
+      // ---- Bouquets ----
+      const bouquets = [
+        { name:"Romantic Rose Bouquet",     price:299, flowers:["Roses","Lavender","Lily"],      image:"../assetS/rose boqet.jpg", desc:"A classic romantic mix of roses, lavender & lilies." },
+        { name:"Sunshine Bouquet",          price:249, flowers:["Sunflower","Marigold","Zinnia"],image:"../assetS/b5.webp",        desc:"Bright & cheerful — perfect for birthdays & celebrations." },
+        { name:"Royal White Bouquet",       price:349, flowers:["Lily","Tuberose","Champak"],    image:"../assetS/b7.jpeg",        desc:"Elegant whites for weddings & special occasions." },
+        { name:"Festival Special",          price:199, flowers:["Marigold","Jasmin","Hibiscus"], image:"../assetS/b1.webp",        desc:"Traditional festive flowers for pooja & celebrations." },
+        { name:"Tropical Splash",           price:279, flowers:["Hibiscus","Butterfly Pea","Rangoon Creeper"], image:"../assetS/b8.webp", desc:"A vibrant tropical mix bursting with colour." },
+        { name:"Mystic Garden",             price:319,  image:"../assetS/b6.webp", desc:"Dreamy & serene — a garden in your hands." }
+      ];
+
+      // ---- Render Flowers Tab ----
+      const container = document.getElementById("cardContainer");
+      products.forEach(item => {
+        const card = document.createElement("div");
+        card.innerHTML = `
+          <div class="bg-white rounded-xl shadow-md p-3 sm:p-4">
+            <img src="${item.image}" alt="${item.name}" class="rounded-lg w-full h-32 sm:h-40 object-cover">
+            <div class="flex justify-between items-center mt-2 sm:mt-3">
+              <h2 class="font-semibold text-gray-700 text-sm sm:text-base">${item.name}</h2>
+              <span class="font-semibold text-sm sm:text-base">₹${item.price}</span>
+            </div>
+            <button onclick="window.location.href='product.html?name='+encodeURIComponent('${item.name}')+'&price=${item.price}&image='+encodeURIComponent('${item.image}')"
+              class="mt-2 sm:mt-3 w-full bg-[#90A285] hover:bg-[#7a8a71] text-white py-1.5 sm:py-2 rounded-full text-sm sm:text-base transition">
+              Buy Now
+            </button>
+          </div>`;
+        container.appendChild(card);
+      });
+
+      // ---- Render Bouquets Tab ----
+      const bContainer = document.getElementById("bouquetContainer");
+      bouquets.forEach(b => {
+        const flowers = b.flowers.map(f => {
+          const p = products.find(x => x.name === f);
+          return p ? `<img src="${p.image}" title="${p.name}" class="w-8 h-8 rounded-full object-cover border-2 border-white -ml-2 first:ml-0" />` : '';
+        }).join('');
+        const card = document.createElement("div");
+        card.className = "bouquet-card overflow-hidden fade-up";
+        card.innerHTML = `
+          <img src="${b.image}" alt="${b.name}" class="w-full h-44 object-cover rounded-t-2xl" onerror="this.style.display='none'">
+          <div class="p-5">
+            <h3 class="font-bold text-gray-700 text-center text-lg mb-1">${b.name}</h3>
+            <p class="text-xs text-gray-400 text-center mb-3">${b.desc}</p>
+            <div class="flex justify-center mb-4">${flowers}</div>
+            <div class="flex justify-between items-center">
+              <span class="font-bold text-[#90A285] text-xl">₹${b.price}</span>
+              <button onclick="buyBouquet('${b.name}',${b.price})"
+                class="bg-[#90A285] hover:bg-[#7a8a71] text-white px-4 py-2 rounded-full text-sm font-semibold transition">
+                Buy Bouquet
+              </button>
+            </div>
+          </div>`;
+        bContainer.appendChild(card);
+      });
+
+      // ---- Render Flower Palette ----
+      const palette = document.getElementById("flowerPalette");
+      products.forEach(item => {
+        const chip = document.createElement("div");
+        chip.className = "flower-chip flex flex-col items-center gap-1 p-1 rounded-xl hover:bg-[#f0ebe3] transition";
+        chip.draggable = true;
+        chip.dataset.name  = item.name;
+        chip.dataset.price = item.price;
+        chip.dataset.image = item.image;
+        chip.innerHTML = `
+          <img src="${item.image}" alt="${item.name}" class="w-12 h-12 rounded-full object-cover border-2 border-[#90A285]">
+          <span class="text-[10px] text-gray-500 text-center leading-tight">${item.name}</span>`;
+        chip.addEventListener("dragstart", onDragStart);
+        palette.appendChild(chip);
+      });
+
+      // ---- Tabs ----
+      function showTab(tab) {
+        document.getElementById("sectionFlowers").classList.add("hidden");
+        document.getElementById("sectionBouquets").classList.add("hidden");
+        document.getElementById("sectionCustom").classList.add("hidden");
+        document.getElementById("tabFlowers").classList.remove("active");
+        document.getElementById("tabBouquets").classList.remove("active");
+        document.getElementById("tabCustom").classList.remove("active");
+        ["tabFlowers","tabBouquets","tabCustom"].forEach(id => {
+          document.getElementById(id).classList.add("text-[#90A285]");
+        });
+
+        if(tab==="flowers"){
+          document.getElementById("sectionFlowers").classList.remove("hidden");
+          document.getElementById("tabFlowers").classList.add("active");
+          document.getElementById("tabFlowers").classList.remove("text-[#90A285]");
+        } else if(tab==="bouquets"){
+          document.getElementById("sectionBouquets").classList.remove("hidden");
+          document.getElementById("tabBouquets").classList.add("active");
+          document.getElementById("tabBouquets").classList.remove("text-[#90A285]");
+          triggerFadeUps();
+        } else {
+          document.getElementById("sectionCustom").classList.remove("hidden");
+          document.getElementById("tabCustom").classList.add("active");
+          document.getElementById("tabCustom").classList.remove("text-[#90A285]");
+        }
+      }
+
+      function triggerFadeUps(){
+        setTimeout(()=>{
+          document.querySelectorAll(".fade-up").forEach(el=>el.classList.add("visible"));
+        },50);
+      }
+
+      // ---- Drag & Drop (Bouquet Layout) ----
+      let dragData = null;
+
+      // Bouquet fan positions: index → {angle from bottom-centre, radius}
+      // Flowers spread out in a semi-circle above the stem
+      function bouquetPositions(n){
+        const cx = 0.5;   // centre X (fraction of width)
+        const baseY = 0.72; // Y anchor (fraction of height)
+        const R = 0.30;   // radius fraction of height
+        const positions = [];
+        // spread angles from -70° to +70°, evenly
+        const startAngle = -70;
+        const endAngle   =  70;
+        for(let i=0;i<n;i++){
+          const angle = n===1 ? 0 : startAngle + (endAngle-startAngle)*(i/(n-1));
+          const rad = (angle - 90) * Math.PI / 180; // 0° points up
+          positions.push({ ax: cx + R*Math.cos(rad), ay: baseY + R*Math.sin(rad) });
+        }
+        return positions;
+      }
+
+      function relayoutBouquet(){
+        const dropZone = document.getElementById('dropZone');
+        const flowers  = [...dropZone.querySelectorAll('.bouquet-flower')];
+        const n = flowers.length;
+        if(!n) return;
+        const W = dropZone.offsetWidth  || 400;
+        const H = dropZone.offsetHeight || 320;
+        const fSize = 64;
+        const pos = bouquetPositions(n);
+        flowers.forEach((el,i)=>{
+          el.style.left = (pos[i].ax * W - fSize/2) + 'px';
+          el.style.top  = (pos[i].ay * H - fSize/2) + 'px';
+          // Slight rotation for realism
+          const startAngle = -70, endAngle = 70;
+          const angle = n===1 ? 0 : startAngle + (endAngle-startAngle)*(i/(n-1));
+          el.style.transform = `rotate(${angle*0.4}deg)`;
+        });
+      }
+
+      function onDragStart(e){
+        dragData = {
+          name:  e.currentTarget.dataset.name,
+          price: parseInt(e.currentTarget.dataset.price),
+          image: e.currentTarget.dataset.image,
+        };
+        e.currentTarget.classList.add('dragging');
+        setTimeout(()=>e.currentTarget.classList.remove('dragging'),200);
+      }
+
+      const dropZone = document.getElementById('dropZone');
+
+      dropZone.addEventListener('dragover', e=>{ e.preventDefault(); dropZone.classList.add('drag-over'); });
+      dropZone.addEventListener('dragleave', ()=>dropZone.classList.remove('drag-over'));
+      dropZone.addEventListener('drop', e=>{
+        e.preventDefault();
+        dropZone.classList.remove('drag-over');
+        if(!dragData) return;
+
+        const img = document.createElement('img');
+        img.src = dragData.image;
+        img.alt = dragData.name;
+        img.className = 'bouquet-flower';
+        img.title = dragData.name + ' (click to remove)';
+        img.dataset.name  = dragData.name;
+        img.dataset.price = dragData.price;
+        img.style.left = '0px'; img.style.top = '0px';
+
+        // Click to remove
+        img.addEventListener('click', ()=>{
+          img.remove();
+          relayoutBouquet();
+          showStemRibbon();
+          updateSummary();
+        });
+
+        dropZone.appendChild(img);
+        relayoutBouquet();
+        showStemRibbon();
+        document.getElementById('dropHint').style.display = 'none';
+        updateSummary();
+        dragData = null;
+      });
+
+      function showStemRibbon(){
+        const n = dropZone.querySelectorAll('.bouquet-flower').length;
+        const stem   = document.getElementById('bouquetStem');
+        const ribbon = document.getElementById('bouquetRibbon');
+        if(n > 0){
+          stem.style.display   = 'block';
+          ribbon.style.display = 'block';
+        } else {
+          stem.style.display   = 'none';
+          ribbon.style.display = 'none';
+          document.getElementById('dropHint').style.display = '';
+        }
+      }
+
+      function updateSummary(){
+        const placed = [...dropZone.querySelectorAll('.bouquet-flower')];
+        if(!placed.length){
+          document.getElementById('bouquetSummary').textContent = 'No flowers added yet.';
+          document.getElementById('bouquetTotal').textContent = '₹0';
+          return;
+        }
+        const counts = {};
+        let total = 0;
+        placed.forEach(el=>{
+          counts[el.dataset.name] = (counts[el.dataset.name]||0)+1;
+          total += parseInt(el.dataset.price);
+        });
+        const lines = Object.entries(counts).map(([n,c])=>
+          `<span class="inline-block bg-[#e9f0e7] text-[#5a7a55] rounded-full px-2 py-0.5 mr-1 mb-1 text-xs">${n} ×${c}</span>`
+        ).join('');
+        document.getElementById('bouquetSummary').innerHTML = lines;
+        document.getElementById('bouquetTotal').textContent = '₹'+total;
+      }
+
+      function clearBouquet(){
+        dropZone.querySelectorAll('.bouquet-flower').forEach(el=>el.remove());
+        showStemRibbon();
+        updateSummary();
+      }
+
+      // ---- Cart helpers ----
+      function getCart(){ return JSON.parse(localStorage.getItem('cart')) || []; }
+      function saveCart(cart){ localStorage.setItem('cart', JSON.stringify(cart)); }
+
+      function showToast(msg){
+        const t = document.createElement('div');
+        t.textContent = msg;
+        t.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#90A285;color:#fff;padding:12px 24px;border-radius:999px;font-weight:600;font-size:14px;box-shadow:0 6px 20px rgba(0,0,0,.18);z-index:9999;opacity:0;transition:opacity .3s';
+        document.body.appendChild(t);
+        requestAnimationFrame(()=>{ t.style.opacity='1'; });
+        setTimeout(()=>{ t.style.opacity='0'; setTimeout(()=>t.remove(),350); }, 2500);
+      }
+
+      function addToLocalCart(name, price, image, subtext){
+        const cart = getCart();
+        const idx = cart.findIndex(i => i.name === name);
+        if(idx > -1){ cart[idx].qty += 1; }
+        else { cart.push({ name, price, image, qty: 1, subtext }); }
+        saveCart(cart);
+      }
+
+      function addCustomToCart(){
+        const placed = [...dropZone.querySelectorAll('.bouquet-flower')];
+        if(!placed.length){ showToast('⚠️ Add at least one flower first!'); return; }
+
+        // Calculate total price
+        let total = 0;
+        placed.forEach(el => { total += parseInt(el.dataset.price); });
+
+        // Build flower list for subtext
+        const counts = {};
+        placed.forEach(el => { counts[el.dataset.name] = (counts[el.dataset.name]||0)+1; });
+        const subtext = Object.entries(counts).map(([n,c])=> c>1 ? `${n}×${c}` : n).join(', ');
+
+        // Use first flower's image as cart thumbnail
+        const firstImg = placed[0].src;
+
+        // Save as ONE single 'My Custom Bouquet' item
+        const cart = getCart();
+        const existingIdx = cart.findIndex(i => i.name === 'My Custom Bouquet');
+        if(existingIdx > -1){
+          // Accumulate: increase qty and add to price
+          cart[existingIdx].qty += 1;
+          cart[existingIdx].price += total; // update to new total per unit
+        } else {
+          cart.push({ name: 'My Custom Bouquet', price: total, image: firstImg, qty: 1, subtext });
+        }
+        saveCart(cart);
+        showToast('💐 Custom Bouquet added to cart!');
+      }
+
+      function buyBouquet(name, price, image){
+        // Use the bouquet's own image for the cart thumbnail
+        addToLocalCart(name, price, image, 'Ready-made bouquet');
+        showToast(`💐 "${name}" added to cart!`);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wedding Collection | Maa Durga Florals</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/src/output.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <style>
+      .scrollbar-hide::-webkit-scrollbar { display: none; }
+      .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+      <header class="sticky top-0 z-50 w-full drop-shadow-md">
+
+  <!-- Desktop Navbar -->
+  <div
+    class="hidden md:flex items-center justify-between bg-[#90A285] px-6 lg:px-12 py-3"
+  >
+
+    <!-- Left : Logo + Title -->
+    <a href="../index.html" class="flex items-center gap-4 group cursor-pointer">
+
+      <img
+        src="../assets/drg.png"
+        class="h-12 lg:h-14 transition-all duration-500 group-hover:scale-110 group-hover:rotate-6"
+      />
+
+      <h1
+        class="font-bold text-amber-50 font-serif text-[22px] lg:text-[30px] tracking-wide transition-all duration-500 group-hover:tracking-widest"
+      >
+        MAA DURGA FLORALS
+      </h1>
+    </a>
+
+    <!-- Right : Menu -->
+    <nav
+      class="flex items-center gap-5 lg:gap-8 font-semibold text-white text-sm lg:text-base"
+    >
+
+      <a href="../index.html" class="relative group">
+        Home
+        <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+      </a>
+
+      <a href="services.html" class="relative group">
+        Services
+        <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+      </a>
+
+      <a href="collection.html" class="relative group">
+        Collection
+        <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+      </a>
+
+      <a href="occasion.html" class="relative group">
+        Occasion
+        <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+      </a>
+
+      <a href="contact.html" class="relative group">
+        Contact
+        <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+      </a>
+
+      <a
+        href="cart.html"
+        class="bg-white text-[#90A285] px-4 py-2 rounded-full shadow-md hover:scale-105 hover:bg-[#D9D9D9] transition-all duration-300"
+      >
+        Cart  <i class="fa-solid fa-cart-shopping text-[#444642] text-xl"></i>
+      </a>
+
+    </nav>
+  </div>
+
+
+  <!-- Mobile Navbar -->
+  <div
+    class="relative md:hidden bg-[#90A285] w-full flex items-center justify-center px-4 py-3 overflow-hidden"
+  >
+
+    <div class="relative z-10 flex items-center gap-2">
+      <img src="../assets/drg.png" class="h-10" />
+
+      <h1
+        class="font-bold text-amber-50 font-serif text-[18px]"
+      >
+        MAA DURGA FLORALS
+      </h1>
+    </div>
+  </div>
+
+
+  <!-- Mobile Bottom Menu -->
+  <div class="flex md:hidden bg-[#D9D9D9] w-full py-1.5">
+
+    <div class="flex items-center justify-between w-full px-2">
+
+      <a href="../index.html" class="flex flex-col items-center group">
+        <div class="h-12 w-12 rounded-full bg-[#818D7F] flex items-center justify-center transition-all duration-300 group-hover:scale-110">
+          <i class="fa-solid fa-home text-white text-xl"></i>
+        </div>
+        <span class="text-xs mt-1">Home</span>
+      </a>
+
+      <a href="./collection.html" class="flex flex-col items-center group">
+        <div class="h-12 w-12 rounded-full bg-[#818D7F] flex justify-center items-center transition-all duration-300 group-hover:scale-110">
+          <i class="fa-solid fa-list text-white text-xl"></i>
+        </div>
+        <span class="text-xs mt-1">Collection</span>
+      </a>
+
+      <a href="./services.html" class="flex flex-col items-center group">
+        <div class="h-12 w-12 rounded-full bg-[#818D7F] flex justify-center items-center transition-all duration-300 group-hover:scale-110">
+          <i class="fa-solid fa-handshake text-white text-xl"></i>
+        </div>
+        <span class="text-xs mt-1">Services</span>
+      </a>
+
+      <a href="./occasion.html" class="flex flex-col items-center group">
+        <div class="h-12 w-12 rounded-full bg-[#818D7F] flex justify-center items-center transition-all duration-300 group-hover:scale-110">
+          <i class="fa-solid fa-spa text-white text-xl"></i>
+        </div>
+        <span class="text-xs mt-1">Occasion</span>
+      </a>
+
+      <a href="./contact.html" class="flex flex-col items-center group">
+        <div class="h-12 w-12 rounded-full bg-[#818D7F] flex justify-center items-center transition-all duration-300 group-hover:scale-110">
+          <i class="fa-solid fa-phone text-white text-xl"></i>
+        </div>
+        <span class="text-xs mt-1">Contact</span>
+      </a>
+
+      <a href="./cart.html" class="flex flex-col items-center group">
+        <div class="h-12 w-12 rounded-full bg-[#818D7F] flex justify-center items-center transition-all duration-300 group-hover:scale-110">
+          <i class="fa-solid fa-cart-shopping text-white text-xl"></i>
+        </div>
+        <span class="text-xs mt-1">Cart</span>
+      </a>
+
+    </div>
+  </div>
+
+</header>
+
+    <!-- ======= BACK BUTTON ======= -->
+    <div class="max-w-5xl mx-auto px-4 mt-6">
+      <a href="../index.html" class="inline-flex items-center text-sm text-gray-500 hover:text-[#90A285] transition-colors">
+        <i class="fa-solid fa-house mr-2"></i> Back to Home
+      </a>
+    </div>
+
+    <div class="flex flex-col justify-center items-center font-semibold text-xl md:text-[30px] mt-8 text-center">
+      <h1>Wedding Options</h1>
+      <img src="../assets/hortizont-arrow.png" alt="" class="w-[85%] md:w-auto h-auto mt-1 md:mt-2" />
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-6 p-4 max-w-5xl w-full mx-auto mt-6" id="cardContainer">
+      <!-- Options will be loaded via JS -->
+    </div>
+
+  <div id="footer"></div>
+
+    <script>
+      fetch("../footer.html")
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById("footer").innerHTML = data;
+    });
+      const weddingProducts = [
+        {
+          id: 1,
+          name: "Premium Wedding Stage & Floral Setup",
+          price: "25,000",
+          image: "https://png.pngtree.com/thumb_back/fh260/background/20250928/pngtree-indian-wedding-mandap-decorated-with-marigolds-at-sunset-image_19709260.webp",
+          link: "wed.html?id=1"
+        },
+        {
+          id: 2,
+          name: "Haldi/Mehendi Floral Decor Setup",
+          price: "8,500",
+          image: "../assets/marigold.webp",
+          link: "wed.html?id=2"
+        },
+        {
+          id: 3,
+          name: "Premium Varmala (Pair)",
+          price: "1,499",
+          image: "https://chaarmology.com/wp-content/uploads/2025/03/FVC001.jpg",
+          link: "wed.html?id=3"
+        },
+        {
+          id: 4,
+          name: "Wedding Car Floral Decoration",
+          price: "3,500",
+          image: "https://th.bing.com/th/id/OIP.ma4SE86LH295YNn8NOc85QHaHa?w=192&h=193&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3",
+          link: "wed.html?id=4"
+        },
+        {
+          id: 5,
+          name: "Jasmine & Tube Rose Mandap Canopy",
+          price: "15,000",
+          image: "../assets/jasmin.jpg",
+          link: "wed.html?id=5"
+        }
+      ];
+
+      const container = document.getElementById("cardContainer");
+
+      weddingProducts.forEach(item => {
+        const card = document.createElement("div");
+        card.className = "bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-3 sm:p-4 flex flex-col group cursor-pointer";
+        card.onclick = () => window.location.href = item.link;
+
+        card.innerHTML = `
+          <div class="overflow-hidden rounded-lg mb-3">
+            <img src="${item.image}" alt="${item.name}" 
+              class="w-full h-40 sm:h-48 object-cover group-hover:scale-105 transition duration-300">
+          </div>
+          <div class="flex flex-col flex-1">
+            <h2 class="font-semibold text-gray-800 text-sm sm:text-base line-clamp-2 hover:text-[#90A285]">${item.name}</h2>
+            <div class="flex justify-between items-end mt-auto pt-3">
+              <span class="font-bold text-gray-900 text-sm sm:text-lg">₹${item.price}</span>
+              <button class="bg-[#90A285] hover:bg-[#7a8a71] text-white px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold transition">
+                View
+              </button>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    </script>
+    <script src="cartCount.js"></script>
+  </body>
+</html>

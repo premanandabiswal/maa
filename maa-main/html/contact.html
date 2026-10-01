@@ -1,0 +1,911 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maa Durga Florals | Premium Style</title>
+  <!doctype html>
+  <html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maa Durga Florals | Premium Style</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="../src/css/contact.css" />
+
+  </head>
+
+  <body
+    class="text-textMain font-sans selection:bg-gold/40 selection:text-white overflow-x-hidden min-h-screen flex flex-col relative app-container">
+
+    <!-- 1. Header Area (Edge to edge) -->
+    <header class="sticky top-0 z-50 w-full drop-shadow-md">
+      <!-- Desktop Navbar -->
+      <div class="hidden md:flex items-center justify-between bg-[#90A285] px-6 lg:px-12 py-3">
+        <!-- Left : Logo + Title -->
+        <div class="flex items-center gap-4 group cursor-pointer">
+          <img src="../assets/drg.png" class="h-12 lg:h-14 transition-all duration-500 group-hover:scale-110 group-hover:rotate-6" alt="Logo" onerror="this.src='https://placehold.co/100x100?text=Logo'"/>
+          <h1 class="font-bold text-amber-50 font-serif text-[22px] lg:text-[30px] tracking-wide transition-all duration-500 group-hover:tracking-widest">
+            MAA DURGA FLORALS
+          </h1>
+        </div>
+
+        <!-- Right : Menu -->
+        <nav class="flex items-center gap-5 lg:gap-8 font-semibold text-white text-sm lg:text-base">
+          <a href="../index.html" class="relative group">
+            Home
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="./services.html" class="relative group">
+            Services
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="./collection.html" class="relative group">
+            Collection
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="./occasion.html" class="relative group">
+            Occasion
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="./contact.html" class="relative group">
+            Contact
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="./cart.html" class="bg-white text-[#90A285] px-4 py-2 rounded-full shadow-md hover:scale-105 hover:bg-[#D9D9D9] transition-all duration-300 relative">
+            Cart  <i class="fa-solid fa-cart-shopping text-[#444642] text-xl"></i>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Mobile Navbar Top -->
+      <div class="relative md:hidden bg-[#90A285] w-full flex items-center justify-center px-4 py-3 overflow-hidden">
+        <div class="relative z-10 flex items-center gap-2">
+          <img src="../assets/drg.png" class="h-10" alt="Logo" onerror="this.src='https://placehold.co/100x100?text=Logo'"/>
+          <h1 class="font-bold text-amber-50 font-serif text-[18px]">
+            MAA DURGA FLORALS
+          </h1>
+        </div>
+      </div>
+
+      <!-- Mobile Bottom Menu Strip -->
+      <div class="flex md:hidden bg-[#D9D9D9] w-full py-1.5">
+        <div class="flex items-center justify-between w-full px-2">
+          <a href="../index.html" class="flex flex-col items-center group">
+            <div class="h-12 w-12 rounded-full bg-[#818D7F] flex items-center justify-center transition-all duration-300 group-hover:scale-110">
+              <i class="fa-solid fa-home text-white text-xl"></i>
+            </div>
+            <span class="text-xs mt-1">Home</span>
+          </a>
+          <a href="./collection.html" class="flex flex-col items-center group">
+            <div class="h-12 w-12 rounded-full bg-[#818D7F] flex justify-center items-center transition-all duration-300 group-hover:scale-110">
+              <i class="fa-solid fa-list text-white text-xl"></i>
+            </div>
+            <span class="text-xs mt-1">Collection</span>
+          </a>
+          <a href="./services.html" class="flex flex-col items-center group">
+            <div class="h-12 w-12 rounded-full bg-[#818D7F] flex justify-center items-center transition-all duration-300 group-hover:scale-110">
+              <i class="fa-solid fa-handshake text-white text-xl"></i>
+            </div>
+            <span class="text-xs mt-1">Services</span>
+          </a>
+          <a href="./occasion.html" class="flex flex-col items-center group">
+            <div class="h-12 w-12 rounded-full bg-[#818D7F] flex justify-center items-center transition-all duration-300 group-hover:scale-110">
+              <i class="fa-solid fa-spa text-white text-xl"></i>
+            </div>
+            <span class="text-xs mt-1">Occasion</span>
+          </a>
+          <a href="./contact.html" class="flex flex-col items-center group">
+            <div class="h-12 w-12 rounded-full bg-[#818D7F] flex justify-center items-center transition-all duration-300 group-hover:scale-110">
+              <i class="fa-solid fa-phone text-white text-xl"></i>
+            </div>
+            <span class="text-xs mt-1">Contact</span>
+          </a>
+          <a href="./cart.html" class="flex flex-col items-center group relative">
+            <div class="h-12 w-12 rounded-full bg-[#818D7F] flex justify-center items-center transition-all duration-300 group-hover:scale-110 relative">
+              <i class="fa-solid fa-cart-shopping text-white text-xl"></i>
+            </div>
+            <span class="text-xs mt-1">Cart</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <div class="w-full max-w-md mx-auto mt-4 px-4">
+      <div class="relative group">
+        <input type="text" id="siteSearch" placeholder="Search for florals..."
+          class="w-full bg-cardBg/80 backdrop-blur-md border border-white/10 focus:border-gold/50 rounded-full py-3.5 md:py-4 lg:py-4.5 px-6 md:px-8 pr-[60px] md:pr-[70px] text-[15px] lg:text-base font-medium focus:outline-none placeholder-textSub/50 text-textMain transition-all duration-300 shadow-sm focus:shadow-[0_10px_35px_rgba(255,137,6,0.12)] focus:bg-cardBg">
+
+        <button type="button" aria-label="Search for florals"
+          class="absolute right-1.5 md:right-2 top-1/2 -translate-y-1/2 w-[42px] h-[42px] md:w-12 md:h-12 bg-topbar group-focus-within:bg-gold hover:bg-gold hover:shadow-[0_4px_15px_rgba(255,137,6,0.3)] transition-all duration-300 rounded-full flex items-center justify-center text-white group-focus-within:text-white group-focus-within:scale-[1.03] active:scale-95 shadow-md border border-transparent group-focus-within:border-white/30">
+          <i class="fa-solid fa-magnifying-glass text-sm md:text-base"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Layout Toggle Button & GSAP Flip Demo -->
+    <div class="w-full flex justify-end mb-4 animate__animated animate__fadeInUp animate__delay-1s pr-2">
+      <button id="layoutToggleBtn"
+        class="flex items-center gap-2 text-textSub hover:text-gold transition-colors font-medium text-sm border border-textSub/20 rounded-full px-4 py-2 hover:border-gold/50 shadow-sm">
+        <i class="fa-solid fa-table-cells-large transition-all" id="layoutIcon"></i> Toggle Layout
+      </button>
+    </div>
+
+    <!-- Dashboard Grid Layout (Fully fluid: Phone -> Tab -> Laptop) -->
+    <div id="dashboard-grid"
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 xl:gap-12 w-full lg:mb-10">
+      <!-- Column 1: Shop Photo Gallery -->
+      <div class="w-full h-full animate__animated animate__fadeInLeft animate__delay-1s">
+        <div
+          class="overflow-hidden rounded-[2rem] border-[1.5px] border-white/50 shadow-precious transform hover:scale-[1.02] transition-all duration-500 cursor-pointer relative group h-full min-h-[220px] md:min-h-[300px]">
+          <div
+            class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors z-10 duration-500 pointer-events-none">
+          </div>
+          <img src="../assets/images/shop-interior.png" alt="Shop Interior"
+            class="w-full h-full object-cover absolute inset-0 opacity-[0.97] animate-slow-zoom" />
+        </div>
+      </div>
+
+      <!-- Column 2: Shop Details Card -->
+      <div class="w-full h-full animate__animated animate__zoomIn animate__delay-1s flex">
+        <div
+          class="bg-cardBg/80 w-full flex flex-col justify-center backdrop-blur-lg rounded-[2rem] p-8 lg:p-10 shadow-precious border-precious transform transition-all duration-500 hover:shadow-[0_20px_50px_-10px_rgba(71,83,69,0.25)] hover:-translate-y-1 relative overflow-hidden group">
+          <div
+            class="absolute -top-16 -right-16 w-40 h-40 bg-[#e6eccf] rounded-full blur-3xl opacity-20 pointer-events-none group-hover:opacity-40 transition-opacity duration-700">
+          </div>
+
+          <h2 class="font-serif text-3xl lg:text-[2.2rem] leading-tight tracking-tight font-bold text-textMain mb-2">
+            Maa Durga Flower Shop
+          </h2>
+          <p class="text-[0.95rem] lg:text-base font-light text-textSub opacity-80 mb-8 tracking-wide">
+            Bhiwadi, Rajasthan, India 301019
+          </p>
+
+          <h3
+            class="font-semibold text-[0.95rem] lg:text-base text-textMain tracking-widest uppercase mb-2 flex items-center gap-2">
+            <i class="fa-solid fa-phone text-[11px] text-gold"></i> Contact
+            Info
+          </h3>
+          <div class="w-14 h-px bg-gold/40 mb-3.5"></div>
+          <p class="text-[0.95rem] lg:text-base text-textSub mb-8 font-light">
+            Phone no. -
+            <span class="font-medium text-textMain">+91 9124058142</span>
+          </p>
+
+          <h3
+            class="font-semibold text-[0.95rem] lg:text-base text-textMain tracking-widest uppercase mb-2 flex items-center gap-2">
+            <i class="fa-regular fa-clock text-[11px] text-gold"></i> Calling
+            Time
+          </h3>
+          <div class="w-14 h-px bg-gold/40 mb-3.5"></div>
+          <div class="space-y-3 text-[0.95rem] lg:text-base font-light text-textSub">
+            <p class="flex items-center flex-wrap gap-2">
+              <span class="w-[85px] inline-block opacity-80">Mon-Fri:</span>
+              <strong class="font-medium text-textMain">9:30 AM - 7 PM</strong>
+            </p>
+            <p class="flex items-start gap-2 leading-relaxed">
+              <span class="w-[85px] inline-block mt-0.5 opacity-80">Weekends<br /></span>
+              <strong class="font-medium text-textMain mt-0.5">9:30 AM - 5:30 PM</strong>
+            </p>
+          </div>
+
+          <!-- Order Tracking Quick Link -->
+          <div class="mt-8 pt-6 border-t border-gold/20 w-full">
+            <button type="button"
+              class="w-full bg-gold hover:opacity-90 text-white font-medium tracking-wide py-3.5 rounded-xl transition-all duration-300 shadow-[0_4px_15px_rgba(255,137,6,0.2)] hover:shadow-[0_8px_25px_rgba(255,137,6,0.3)] hover:-translate-y-1 flex items-center justify-center gap-3 relative overflow-hidden group">
+              <div
+                class="absolute inset-0 bg-white/10 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-in-out">
+              </div>
+              <i class="fa-solid fa-map-location-dot text-lg group-hover:animate-bounce"></i>
+              Track Your Order
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Column 3: Live Interactive Map Embed (Responsive) -->
+      <div
+        class="w-full h-full md:col-span-2 lg:col-span-1 animate__animated animate__fadeInRight animate__delay-1s mt-4 md:mt-6 lg:mt-0 flex">
+        <div
+          class="relative w-full h-full overflow-hidden rounded-[2rem] border-[1.5px] border-white/50 shadow-precious transform transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_50px_-10px_rgba(71,83,69,0.25)] min-h-[300px] md:min-h-[400px] lg:min-h-[300px]">
+          <!-- Floating Search Bar -->
+          <div class="absolute top-4 left-1/2 -translate-x-1/2 z-[1000] w-11/12 max-w-sm">
+            <div class="relative group">
+              <input type="text" id="locationSearch" placeholder="Search delivery areas..."
+                class="w-full pl-10 pr-3 py-2 rounded-xl bg-white/95 backdrop-blur shadow-md border border-amber-50 focus:ring-2 focus:ring-amber-500/20 focus:outline-none transition-all text-[13px] font-medium text-slate-800">
+              <i
+                class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-[13px] text-amber-700"></i>
+
+              <div id="searchResults"
+                class="hidden absolute top-full mt-1.5 w-full bg-white rounded-xl shadow-lg border border-amber-50 max-h-48 overflow-y-auto z-[1001] scrollbar-thin scrollbar-thumb-amber-200">
+              </div>
+            </div>
+          </div>
+
+          <!-- Map Container -->
+          <div id="map" class="w-full h-full absolute inset-0 z-10 filter brightness-105 contrast-100"></div>
+
+          <!-- Legend with Brown & Red Pointers -->
+          <div class="absolute bottom-4 left-4 z-[1000] space-y-2 hidden md:block">
+            <div
+              class="bg-white/95 backdrop-blur p-3 rounded-xl shadow-md border border-amber-100 text-[10px] xl:text-[11px] font-semibold space-y-3">
+              <div class="flex items-center gap-2">
+                <div class="w-5 h-5 flex items-center justify-center rounded-full bg-red-50 border border-marker-red">
+                  <svg viewBox="0 0 24 24" width="10" height="10" class="fill-marker-red">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4H6z" />
+                    <path d="M3 6h18" />
+                    <path d="M16 10a4 4 0 0 1-8 0" />
+                  </svg>
+                </div>
+                <span class="text-slate-800">Main Floral Boutique</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <div class="w-5 h-5 flex items-center justify-center rounded-full bg-amber-50 border border-amber-600">
+                  <svg viewBox="0 0 24 24" width="10" height="10" class="fill-[#b45309]">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  </svg>
+                </div>
+                <span class="text-slate-800">Distribution Hub</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <div class="w-4 h-4 rounded-full border border-amber-200 bg-white"></div>
+                <span class="text-slate-500">Delivery Zone</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- 6. Testimonials Section -->
+    <div class="w-full max-w-[1300px] mx-auto mt-20 lg:mt-24 mb-10 px-4 md:px-8">
+      <div class="text-center lg:text-center mb-8 lg:mb-12 opacity-0"
+        data-animate="animate__animated animate__fadeInDown">
+        <h2 class="font-serif text-[28px] md:text-4xl font-bold text-textMain tracking-tight">Testimonials</h2>
+        <p
+          class="text-[12px] md:text-[14px] font-semibold text-gold opacity-80 mt-1.5 lg:mt-2 tracking-[0.2em] uppercase">
+          # Clients' Feedback</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+
+        <!-- Left Side: Interactive Slider -->
+        <div class="lg:col-span-7 relative w-full lg:px-6 opacity-0"
+          data-animate="animate__animated animate__fadeInLeft">
+          <!-- Navigation Arrows -->
+          <button id="prevTestimonial" type="button" aria-label="Previous testimonial"
+            class="absolute -left-2 md:-left-4 lg:-left-6 top-1/2 -translate-y-1/2 z-20 w-[38px] h-[38px] md:w-[46px] md:h-[46px] rounded-full bg-white border border-[#bcc6b5]/50 shadow-[0_4px_15px_rgba(71,83,69,0.15)] flex items-center justify-center text-[#475345] hover:text-white hover:bg-gold hover:border-gold transition-all duration-300 focus:outline-none hover:scale-105 active:scale-95">
+            <i class="fa-solid fa-chevron-left text-sm md:text-base pr-0.5"></i>
+          </button>
+
+          <button id="nextTestimonial" type="button" aria-label="Next testimonial"
+            class="absolute -right-2 md:-right-4 lg:-right-6 top-1/2 -translate-y-1/2 z-20 w-[38px] h-[38px] md:w-[46px] md:h-[46px] rounded-full bg-white border border-[#bcc6b5]/50 shadow-[0_4px_15px_rgba(71,83,69,0.15)] flex items-center justify-center text-[#475345] hover:text-white hover:bg-gold hover:border-gold transition-all duration-300 focus:outline-none hover:scale-105 active:scale-95">
+            <i class="fa-solid fa-chevron-right text-sm md:text-base pl-0.5"></i>
+          </button>
+
+          <!-- Track Wrapper -->
+          <div class="overflow-hidden w-full px-1 py-1" id="testimonialWrapper">
+            <div id="testimonialTrack"
+              class="flex transition-transform duration-700 ease-[cubic-bezier(0.87,0,0.13,1)] w-full w-full"
+              style="transform: translateX(0%);">
+
+              <!-- Slide 1 -->
+              <div class="w-full flex-shrink-0 px-3 md:px-6 test-slide">
+                <div
+                  class="bg-cardBg/30 backdrop-blur-md rounded-[2.5rem] border border-white/60 shadow-precious p-8 md:p-10 relative mt-8 md:mt-10">
+                  <!-- Circular User Avatar -->
+                  <div
+                    class="absolute -top-[35px] md:-top-[45px] left-6 md:left-10 w-[70px] h-[70px] md:w-[90px] md:h-[90px] rounded-full border-4 border-[#f6f4f0] shadow-md overflow-hidden bg-white">
+                    <img src="https://ui-avatars.com/api/?name=Adam+A&background=e2e4e1&color=2a3028&size=150"
+                      alt="Adam" class="w-full h-full object-cover">
+                  </div>
+
+                  <p
+                    class="text-[13px] md:text-[15px] xl:text-[16px] text-textMain leading-relaxed text-center font-medium italic mb-6 mt-5 md:mt-3 px-2 md:px-4">
+                    "I am very much happy with the combo gift that you have sent to India at the correct location in
+                    Bhubaneswar. It was attractive."
+                  </p>
+
+                  <div class="flex justify-center gap-1.5 mb-5 text-[14px] md:text-[15px]">
+                    <i class="fa-solid fa-star text-gold"></i>
+                    <i class="fa-solid fa-star text-gold"></i>
+                    <i class="fa-solid fa-star text-gold"></i>
+                    <i class="fa-solid fa-star text-gold"></i>
+                    <i class="fa-solid fa-star text-[#d1d5db]"></i>
+                  </div>
+                  <p class="text-center text-[14px] md:text-[16px] font-bold text-gold tracking-wide">- Adam, Australia
+                  </p>
+                </div>
+              </div>
+
+              <!-- Slide 2 -->
+              <div class="w-full flex-shrink-0 px-3 md:px-6 test-slide">
+                <div
+                  class="bg-cardBg/30 backdrop-blur-md rounded-[2.5rem] border border-white/60 shadow-precious p-8 md:p-10 relative mt-8 md:mt-10">
+                  <div
+                    class="absolute -top-[35px] md:-top-[45px] left-6 md:left-10 w-[70px] h-[70px] md:w-[90px] md:h-[90px] rounded-full border-4 border-[#f6f4f0] shadow-md overflow-hidden bg-white">
+                    <img src="https://ui-avatars.com/api/?name=Priya+S&background=bf953f&color=fff&size=150" alt="Priya"
+                      class="w-full h-full object-cover">
+                  </div>
+                  <p
+                    class="text-[13px] md:text-[15px] xl:text-[16px] text-textMain leading-relaxed text-center font-medium italic mb-6 mt-5 md:mt-3 px-2 md:px-4">
+                    "The floral arrangement was absolutely breathtaking and smelled heavenly. Recommending Maa Durga
+                    Florals to everyone I know for premium events!"
+                  </p>
+                  <div class="flex justify-center gap-1.5 mb-5 text-[14px] md:text-[15px]">
+                    <i class="fa-solid fa-star text-gold"></i>
+                    <i class="fa-solid fa-star text-gold"></i>
+                    <i class="fa-solid fa-star text-gold"></i>
+                    <i class="fa-solid fa-star text-gold"></i>
+                    <i class="fa-solid fa-star text-gold"></i>
+                  </div>
+                  <p class="text-center text-[14px] md:text-[16px] font-bold text-gold tracking-wide">- Priya, Mumbai
+                  </p>
+                </div>
+              </div>
+
+              <!-- Slide 3 -->
+              <div class="w-full flex-shrink-0 px-3 md:px-6 test-slide">
+                <div
+                  class="bg-cardBg/30 backdrop-blur-md rounded-[2.5rem] border border-white/60 shadow-precious p-8 md:p-10 relative mt-8 md:mt-10">
+                  <div
+                    class="absolute -top-[35px] md:-top-[45px] left-6 md:left-10 w-[70px] h-[70px] md:w-[90px] md:h-[90px] rounded-full border-4 border-[#f6f4f0] shadow-md overflow-hidden bg-white">
+                    <img src="https://ui-avatars.com/api/?name=Rahul+K&background=bcc6b5&color=2a3028&size=150"
+                      alt="Rahul" class="w-full h-full object-cover">
+                  </div>
+                  <p
+                    class="text-[13px] md:text-[15px] xl:text-[16px] text-textMain leading-relaxed text-center font-medium italic mb-6 mt-5 md:mt-3 px-2 md:px-4">
+                    "Ordered fresh flowers with Chocolates for my wife on women's day. It was lovely. She totally loved
+                    it. Very precise delivery!"
+                  </p>
+                  <div class="flex justify-center gap-1.5 mb-5 text-[14px] md:text-[15px]">
+                    <i class="fa-solid fa-star text-gold"></i>
+                    <i class="fa-solid fa-star text-gold"></i>
+                    <i class="fa-solid fa-star text-gold"></i>
+                    <i class="fa-solid fa-star text-gold"></i>
+                    <i class="fa-solid fa-star-half-stroke text-gold"></i>
+                  </div>
+                  <p class="text-center text-[14px] md:text-[16px] font-bold text-gold tracking-wide">- Rahul, Jaipur
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Interactive Dots Pagination -->
+          <div class="flex justify-center gap-3 mt-8" id="testimonialDots">
+            <div
+              class="testimo-dot w-2.5 h-2.5 rounded-full bg-gold shadow-sm cursor-pointer transition-all duration-300 scale-125"
+              data-index="0"></div>
+            <div
+              class="testimo-dot w-2.5 h-2.5 rounded-full bg-[#bcc6b5] shadow-sm cursor-pointer hover:bg-[#839474] transition-all duration-300"
+              data-index="1"></div>
+            <div
+              class="testimo-dot w-2.5 h-2.5 rounded-full bg-[#bcc6b5] shadow-sm cursor-pointer hover:bg-[#839474] transition-all duration-300"
+              data-index="2"></div>
+          </div>
+
+        </div>
+
+        <!-- Right Side: Assistance Illustration -->
+        <div class="hidden lg:flex lg:col-span-5 justify-center items-center w-full opacity-0"
+          data-animate="animate__animated animate__zoomIn">
+          <img src="../assets/images/need-assistance.webp" alt="Client Feedback Illustration"
+            class="w-full max-w-[420px] xl:max-w-[480px] object-contain drop-shadow-2xl mix-blend-multiply hover:scale-[1.03] transition-transform duration-700">
+        </div>
+
+      </div>
+    </div>
+    <!-- 6.5. FAQ Animated Section -->
+    <div class="w-full mt-16 mb-8 px-2 lg:px-0 opacity-0" data-animate="animate__animated animate__fadeInUp">
+      <div
+        class="bg-cardBg/30 backdrop-blur-sm rounded-[2.5rem] border border-white/40 shadow-sm p-6 md:p-8 lg:p-12 w-full transition-transform">
+
+        <div class="grid grid-cols-1 xl:grid-cols-12 gap-10 lg:gap-14 w-full">
+
+          <!-- Left Column: Categories -->
+          <div class="xl:col-span-4 w-full relative h-full opacity-0" data-animate="animate__animated animate__fadeInLeft animate__delay-1s">
+
+            <!-- Floating '???' Badge -->
+            <div
+              class="absolute -left-2 md:-left-6 lg:-left-8 -top-6 w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#839474] flex items-center justify-center text-white text-[22px] md:text-3xl font-bold font-serif shadow-precious rotate-[-12deg] border-[3px] border-[#f6f4f0] z-10 transition-transform hover:rotate-0 duration-500 cursor-pointer">
+              ???
+            </div>
+
+            <div
+              class="bg-cardBg/70 backdrop-blur-md rounded-[2rem] p-6 lg:p-8 shadow-precious border border-white/10 relative overflow-hidden h-full flex flex-col">
+              <!-- Decorative glow -->
+              <div class="absolute -top-10 -right-10 w-32 h-32 bg-gold/10 rounded-full blur-3xl pointer-events-none">
+              </div>
+
+              <h2
+                class="font-serif text-[1.6rem] md:text-3xl font-bold text-textMain mb-6 pl-12 lg:pl-10 border-b border-textMain/10 pb-4 tracking-tight">
+                FAQs Category</h2>
+
+              <ul class="space-y-3 lg:space-y-4 flex-grow faq-nav">
+                <li data-category="ordering"
+                  class="faq-nav-item bg-gold text-white rounded-2xl px-5 py-4 flex justify-between items-center cursor-pointer shadow-[0_8px_20px_rgba(255,137,6,0.3)] transform transition-all duration-300 hover:-translate-y-1 group active-tab">
+                  <span class="flex items-center gap-3.5 text-sm lg:text-[15px] font-medium"><i
+                      class="fa-solid fa-credit-card text-white opacity-90"></i> Ordering & Payment</span>
+                  <i
+                    class="fa-solid fa-chevron-right text-xs text-white opacity-80 group-hover:translate-x-1 transition-transform"></i>
+                </li>
+                <li data-category="shipping"
+                  class="faq-nav-item bg-cardBg text-textSub rounded-2xl px-5 py-4 flex justify-between items-center cursor-pointer shadow-sm border border-white/5 transition-all duration-300 hover:bg-cardBg/90 hover:text-textMain hover:-translate-y-1 hover:shadow-md group">
+                  <span class="flex items-center gap-3.5 text-sm lg:text-[15px] font-medium"><i
+                      class="fa-solid fa-truck text-gray-400 group-hover:text-gold transition-colors"></i> Shipping &
+                    Delivery</span>
+                  <i class="fa-solid fa-chevron-right text-xs opacity-40 group-hover:opacity-80 transition-opacity"></i>
+                </li>
+                <li data-category="products"
+                  class="faq-nav-item bg-cardBg text-textSub rounded-2xl px-5 py-4 flex justify-between items-center cursor-pointer shadow-sm border border-white/5 transition-all duration-300 hover:bg-cardBg/90 hover:text-textMain hover:-translate-y-1 hover:shadow-md group">
+                  <span class="flex items-center gap-3.5 text-sm lg:text-[15px] font-medium"><i
+                      class="fa-solid fa-box-open text-gray-400 group-hover:text-gold transition-colors"></i> Product
+                    Information</span>
+                  <i class="fa-solid fa-chevron-right text-xs opacity-40 group-hover:opacity-80 transition-opacity"></i>
+                </li>
+                <li data-category="returns"
+                  class="faq-nav-item bg-cardBg text-textSub rounded-2xl px-5 py-4 flex justify-between items-center cursor-pointer shadow-sm border border-white/5 transition-all duration-300 hover:bg-cardBg/90 hover:text-textMain hover:-translate-y-1 hover:shadow-md group">
+                  <span class="flex items-center gap-3.5 text-sm lg:text-[15px] font-medium"><i
+                      class="fa-solid fa-rotate-left text-gray-400 group-hover:text-gold transition-colors"></i> Returns
+                    & Exchanges</span>
+                  <i class="fa-solid fa-chevron-right text-xs opacity-40 group-hover:opacity-80 transition-opacity"></i>
+                </li>
+                <li data-category="support"
+                  class="faq-nav-item bg-cardBg text-textSub rounded-2xl px-5 py-4 flex justify-between items-center cursor-pointer shadow-sm border border-white/5 transition-all duration-300 hover:bg-cardBg/90 hover:text-textMain hover:-translate-y-1 hover:shadow-md group">
+                  <span class="flex items-center gap-3.5 text-sm lg:text-[15px] font-medium"><i
+                      class="fa-solid fa-headset text-gray-400 group-hover:text-gold transition-colors"></i> Customer
+                    Support</span>
+                  <i class="fa-solid fa-chevron-right text-xs opacity-40 group-hover:opacity-80 transition-opacity"></i>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Right Column: Accordion Q&A -->
+          <div class="xl:col-span-8 w-full flex flex-col justify-center gap-3.5 lg:gap-4 xl:pl-4 faq-container opacity-0" data-animate="animate__animated animate__fadeInRight animate__delay-1s">
+
+            <!-- CATEGORY: ORDERING & PAYMENT -->
+            <div id="ordering" class="faq-section space-y-4">
+              <div
+                class="faq-item bg-cardBg/70 backdrop-blur-md rounded-2xl border border-white/10 shadow-sm overflow-hidden transition-all duration-300 hover:shadow-precious">
+                <button
+                  class="faq-toggle w-full px-5 py-4 md:px-6 md:py-5 flex justify-between items-center text-left focus:outline-none group">
+                  <span
+                    class="text-[14px] md:text-[15px] font-medium text-textMain pr-4 group-hover:text-gold transition-colors">How
+                    do I place an online flower order?</span>
+                  <i class="faq-icon fa-solid fa-chevron-down text-gold transition-transform duration-500"></i>
+                </button>
+                <div class="faq-content overflow-hidden transition-all duration-500 opacity-0 max-h-0">
+                  <div
+                    class="px-5 md:px-6 pb-5 pt-3 text-sm text-textSub font-light border-t border-white/5 leading-relaxed">
+                    Simply browse our collection, select your favorite arrangement, add to cart, and follow the secure
+                    checkout steps.</div>
+                </div>
+              </div>
+              <div
+                class="faq-item bg-cardBg/70 backdrop-blur-md rounded-2xl border border-white/10 shadow-sm overflow-hidden transition-all duration-300 hover:shadow-precious">
+                <button
+                  class="faq-toggle w-full px-5 py-4 md:px-6 md:py-5 flex justify-between items-center text-left focus:outline-none group">
+                  <span
+                    class="text-[14px] md:text-[15px] font-medium text-textMain pr-4 group-hover:text-gold transition-colors">What
+                    payment methods do you accept?</span>
+                  <i class="faq-icon fa-solid fa-chevron-down text-gold transition-transform duration-500"></i>
+                </button>
+                <div class="faq-content overflow-hidden transition-all duration-500 opacity-0 max-h-0">
+                  <div
+                    class="px-5 md:px-6 pb-5 pt-3 text-sm text-textSub font-light border-t border-white/5 leading-relaxed">
+                    We accept all major Credit/Debit cards, UPI, Net Banking, and digital wallets like Google Pay and
+                    PhonePe.</div>
+                </div>
+              </div>
+              <div
+                class="faq-item bg-cardBg/70 backdrop-blur-md rounded-2xl border border-white/10 shadow-sm overflow-hidden transition-all duration-300 hover:shadow-precious">
+                <button
+                  class="faq-toggle w-full px-5 py-4 md:px-6 md:py-5 flex justify-between items-center text-left focus:outline-none group">
+                  <span
+                    class="text-[14px] md:text-[15px] font-medium text-textMain pr-4 group-hover:text-gold transition-colors">Can
+                    I order flowers without creating an account?</span>
+                  <i class="faq-icon fa-solid fa-chevron-down text-gold transition-transform duration-500"></i>
+                </button>
+                <div class="faq-content overflow-hidden transition-all duration-500 opacity-0 max-h-0">
+                  <div
+                    class="px-5 md:px-6 pb-5 pt-3 text-sm text-textSub font-light border-t border-white/5 leading-relaxed">
+                    Yes! You can complete your purchase as a guest, though an account helps track orders and saves
+                    details for later.</div>
+                </div>
+              </div>
+              <div
+                class="faq-item bg-cardBg/70 backdrop-blur-md rounded-2xl border border-white/10 shadow-sm overflow-hidden transition-all duration-300 hover:shadow-precious">
+                <button
+                  class="faq-toggle w-full px-5 py-4 md:px-6 md:py-5 flex justify-between items-center text-left focus:outline-none group">
+                  <span
+                    class="text-[14px] md:text-[15px] font-medium text-textMain pr-4 group-hover:text-gold transition-colors">Do
+                    you offer gift wrapping or personalized notes?</span>
+                  <i class="faq-icon fa-solid fa-chevron-down text-gold transition-transform duration-500"></i>
+                </button>
+                <div class="faq-content overflow-hidden transition-all duration-500 opacity-0 max-h-0">
+                  <div
+                    class="px-5 md:px-6 pb-5 pt-3 text-sm text-textSub font-light border-t border-white/5 leading-relaxed">
+                    Every order includes a free premium gift card. You can add your personalized message at checkout.
+                  </div>
+                </div>
+              </div>
+              <div
+                class="faq-item bg-cardBg/70 backdrop-blur-md rounded-2xl border border-white/10 shadow-sm overflow-hidden transition-all duration-300 hover:shadow-precious">
+                <button
+                  class="faq-toggle w-full px-5 py-4 md:px-6 md:py-5 flex justify-between items-center text-left focus:outline-none group">
+                  <span
+                    class="text-[14px] md:text-[15px] font-medium text-textMain pr-4 group-hover:text-gold transition-colors">Can
+                    I schedule a delivery for a future date?</span>
+                  <i class="faq-icon fa-solid fa-chevron-down text-gold transition-transform duration-500"></i>
+                </button>
+                <div class="faq-content overflow-hidden transition-all duration-500 opacity-0 max-h-0">
+                  <div
+                    class="px-5 md:px-6 pb-5 pt-3 text-sm text-textSub font-light border-t border-white/5 leading-relaxed">
+                    Absolutely! You can choose your preferred delivery date and time slot during the checkout process.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- CATEGORY: SHIPPING & DELIVERY -->
+            <div id="shipping" class="faq-section hidden space-y-4">
+              <div
+                class="faq-item bg-cardBg/70 backdrop-blur-md rounded-2xl border border-white/10 shadow-sm overflow-hidden transition-all duration-300 hover:shadow-precious">
+                <button
+                  class="faq-toggle w-full px-5 py-4 md:px-6 md:py-5 flex justify-between items-center text-left focus:outline-none group">
+                  <span
+                    class="text-[14px] md:text-[15px] font-medium text-textMain pr-4 group-hover:text-gold transition-colors">What
+                    are your shipping rates and delivery times?</span>
+                  <i class="faq-icon fa-solid fa-chevron-down text-gold transition-transform duration-500"></i>
+                </button>
+                <div class="faq-content overflow-hidden transition-all duration-500 opacity-0 max-h-0">
+                  <div
+                    class="px-5 md:px-6 pb-5 pt-3 text-sm text-textSub font-light border-t border-white/5 leading-relaxed">
+                    Standard delivery is ₹49. Local orders usually arrive within 24 hours. Free shipping applies to
+                    orders over ₹999.</div>
+                </div>
+              </div>
+              <div
+                class="faq-item bg-cardBg/70 backdrop-blur-md rounded-2xl border border-white/10 shadow-sm overflow-hidden transition-all duration-300 hover:shadow-precious">
+                <button
+                  class="faq-toggle w-full px-5 py-4 md:px-6 md:py-5 flex justify-between items-center text-left focus:outline-none group">
+                  <span
+                    class="text-[14px] md:text-[15px] font-medium text-textMain pr-4 group-hover:text-gold transition-colors">Can
+                    I track my flower delivery in real-time?</span>
+                  <i class="faq-icon fa-solid fa-chevron-down text-gold transition-transform duration-500"></i>
+                </button>
+                <div class="faq-content overflow-hidden transition-all duration-500 opacity-0 max-h-0">
+                  <div
+                    class="px-5 md:px-6 pb-5 pt-3 text-sm text-textSub font-light border-t border-white/5 leading-relaxed">
+                    Yes! You will receive a tracking link via SMS once your flowers are dispatched.</div>
+                </div>
+              </div>
+              <div
+                class="faq-item bg-cardBg/70 backdrop-blur-md rounded-2xl border border-white/10 shadow-sm overflow-hidden transition-all duration-300 hover:shadow-precious">
+                <button
+                  class="faq-toggle w-full px-5 py-4 md:px-6 md:py-5 flex justify-between items-center text-left focus:outline-none group">
+                  <span
+                    class="text-[14px] md:text-[15px] font-medium text-textMain pr-4 group-hover:text-gold transition-colors">Do
+                    you offer same-day delivery?</span>
+                  <i class="faq-icon fa-solid fa-chevron-down text-gold transition-transform duration-500"></i>
+                </button>
+                <div class="faq-content overflow-hidden transition-all duration-500 opacity-0 max-h-0">
+                  <div
+                    class="px-5 md:px-6 pb-5 pt-3 text-sm text-textSub font-light border-t border-white/5 leading-relaxed">
+                    Yes, for orders placed before 2:00 PM in supported areas like Bhiwadi.</div>
+                </div>
+              </div>
+              <div
+                class="faq-item bg-cardBg/70 backdrop-blur-md rounded-2xl border border-white/10 shadow-sm overflow-hidden transition-all duration-300 hover:shadow-precious">
+                <button
+                  class="faq-toggle w-full px-5 py-4 md:px-6 md:py-5 flex justify-between items-center text-left focus:outline-none group">
+                  <span
+                    class="text-[14px] md:text-[15px] font-medium text-textMain pr-4 group-hover:text-gold transition-colors">What
+                    if the recipient is not at home?</span>
+                  <i class="faq-icon fa-solid fa-chevron-down text-gold transition-transform duration-500"></i>
+                </button>
+                <div class="faq-content overflow-hidden transition-all duration-500 opacity-0 max-h-0">
+                  <div
+                    class="px-5 md:px-6 pb-5 pt-3 text-sm text-textSub font-light border-t border-white/5 leading-relaxed">
+                    We will try calling the recipient. If safe, we can leave the flowers with a neighbor or at the door.
+                  </div>
+                </div>
+              </div>
+              <div
+                class="faq-item bg-cardBg/70 backdrop-blur-md rounded-2xl border border-white/10 shadow-sm overflow-hidden transition-all duration-300 hover:shadow-precious">
+                <button
+                  class="faq-toggle w-full px-5 py-4 md:px-6 md:py-5 flex justify-between items-center text-left focus:outline-none group">
+                  <span
+                    class="text-[14px] md:text-[15px] font-medium text-textMain pr-4 group-hover:text-gold transition-colors">Do
+                    you deliver to hospitals or offices?</span>
+                  <i class="faq-icon fa-solid fa-chevron-down text-gold transition-transform duration-500"></i>
+                </button>
+                <div class="faq-content overflow-hidden transition-all duration-500 opacity-0 max-h-0">
+                  <div
+                    class="px-5 md:px-6 pb-5 pt-3 text-sm text-textSub font-light border-t border-white/5 leading-relaxed">
+                    Yes, we deliver to all major hospitals, hotels, and office complexes in our service area.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- CATEGORY: PRODUCT INFORMATION -->
+            <div id="products" class="faq-section hidden space-y-4">
+              <div
+                class="faq-item bg-cardBg/70 backdrop-blur-md rounded-2xl border border-white/10 shadow-sm overflow-hidden transition-all duration-300 hover:shadow-precious">
+                <button
+                  class="faq-toggle w-full px-5 py-4 md:px-6 md:py-5 flex justify-between items-center text-left focus:outline-none group">
+                  <span
+                    class="text-[14px] md:text-[15px] font-medium text-textMain pr-4 group-hover:text-gold transition-colors">How
+                    fresh are the flowers?</span>
+                  <i class="faq-icon fa-solid fa-chevron-down text-gold transition-transform duration-500"></i>
+                </button>
+                <div class="faq-content overflow-hidden transition-all duration-500 opacity-0 max-h-0">
+                  <div
+                    class="px-5 md:px-6 pb-5 pt-3 text-sm text-textSub font-light border-t border-white/5 leading-relaxed">
+                    Our flowers are sourced daily to ensure they stay fresh for 5-10 days with proper care.</div>
+                </div>
+              </div>
+              <div
+                class="faq-item bg-cardBg/70 backdrop-blur-md rounded-2xl border border-white/10 shadow-sm overflow-hidden transition-all duration-300 hover:shadow-precious">
+                <button
+                  class="faq-toggle w-full px-5 py-4 md:px-6 md:py-5 flex justify-between items-center text-left focus:outline-none group">
+                  <span
+                    class="text-[14px] md:text-[15px] font-medium text-textMain pr-4 group-hover:text-gold transition-colors">How
+                    should I care for my flowers?</span>
+                  <i class="faq-icon fa-solid fa-chevron-down text-gold transition-transform duration-500"></i>
+                </button>
+                <div class="faq-content overflow-hidden transition-all duration-500 opacity-0 max-h-0">
+                  <div
+                    class="px-5 md:px-6 pb-5 pt-3 text-sm text-textSub font-light border-t border-white/5 leading-relaxed">
+                    Keep them in a cool spot, change water daily, and trim stems at 45° every 2 days.</div>
+                </div>
+              </div>
+              <div
+                class="faq-item bg-cardBg/70 backdrop-blur-md rounded-2xl border border-white/10 shadow-sm overflow-hidden transition-all duration-300 hover:shadow-precious">
+                <button
+                  class="faq-toggle w-full px-5 py-4 md:px-6 md:py-5 flex justify-between items-center text-left focus:outline-none group">
+                  <span
+                    class="text-[14px] md:text-[15px] font-medium text-textMain pr-4 group-hover:text-gold transition-colors">Can
+                    I customize an arrangement?</span>
+                  <i class="faq-icon fa-solid fa-chevron-down text-gold transition-transform duration-500"></i>
+                </button>
+                <div class="faq-content overflow-hidden transition-all duration-500 opacity-0 max-h-0">
+                  <div
+                    class="px-5 md:px-6 pb-5 pt-3 text-sm text-textSub font-light border-t border-white/5 leading-relaxed">
+                    Yes! Contact us via WhatsApp for custom designs or specific flower requests.</div>
+                </div>
+              </div>
+              <div
+                class="faq-item bg-cardBg/70 backdrop-blur-md rounded-2xl border border-white/10 shadow-sm overflow-hidden transition-all duration-300 hover:shadow-precious">
+                <button
+                  class="faq-toggle w-full px-5 py-4 md:px-6 md:py-5 flex justify-between items-center text-left focus:outline-none group">
+                  <span
+                    class="text-[14px] md:text-[15px] font-medium text-textMain pr-4 group-hover:text-gold transition-colors">Are
+                    the vases included?</span>
+                  <i class="faq-icon fa-solid fa-chevron-down text-gold transition-transform duration-500"></i>
+                </button>
+                <div class="faq-content overflow-hidden transition-all duration-500 opacity-0 max-h-0">
+                  <div
+                    class="px-5 md:px-6 pb-5 pt-3 text-sm text-textSub font-light border-t border-white/5 leading-relaxed">
+                    Unless stated, bouquets are delivered in premium wrapping. Vases can be added at checkout.</div>
+                </div>
+              </div>
+              <div
+                class="faq-item bg-cardBg/70 backdrop-blur-md rounded-2xl border border-white/10 shadow-sm overflow-hidden transition-all duration-300 hover:shadow-precious">
+                <button
+                  class="faq-toggle w-full px-5 py-4 md:px-6 md:py-5 flex justify-between items-center text-left focus:outline-none group">
+                  <span
+                    class="text-[14px] md:text-[15px] font-medium text-textMain pr-4 group-hover:text-gold transition-colors">Are
+                    these real or artificial flowers?</span>
+                  <i class="faq-icon fa-solid fa-chevron-down text-gold transition-transform duration-500"></i>
+                </button>
+                <div class="faq-content overflow-hidden transition-all duration-500 opacity-0 max-h-0">
+                  <div
+                    class="px-5 md:px-6 pb-5 pt-3 text-sm text-textSub font-light border-t border-white/5 leading-relaxed">
+                    We deal exclusively in 100% natural, fresh-cut flowers sourced from premium growers.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- CATEGORY: RETURNS & EXCHANGES -->
+            <div id="returns" class="faq-section hidden space-y-4">
+              <div
+                class="faq-item bg-cardBg/70 backdrop-blur-md rounded-2xl border border-white/10 shadow-sm overflow-hidden transition-all duration-300 hover:shadow-precious">
+                <button
+                  class="faq-toggle w-full px-5 py-4 md:px-6 md:py-5 flex justify-between items-center text-left focus:outline-none group">
+                  <span
+                    class="text-[14px] md:text-[15px] font-medium text-textMain pr-4 group-hover:text-gold transition-colors">What
+                    is your refund policy?</span>
+                  <i class="faq-icon fa-solid fa-chevron-down text-gold transition-transform duration-500"></i>
+                </button>
+                <div class="faq-content overflow-hidden transition-all duration-500 opacity-0 max-h-0">
+                  <div
+                    class="px-5 md:px-6 pb-5 pt-3 text-sm text-textSub font-light border-t border-white/5 leading-relaxed">
+                    If flowers are damaged, notify us within 12h for a full refund or replacement.</div>
+                </div>
+              </div>
+              <div
+                class="faq-item bg-cardBg/70 backdrop-blur-md rounded-2xl border border-white/10 shadow-sm overflow-hidden transition-all duration-300 hover:shadow-precious">
+                <button
+                  class="faq-toggle w-full px-5 py-4 md:px-6 md:py-5 flex justify-between items-center text-left focus:outline-none group">
+                  <span
+                    class="text-[14px] md:text-[15px] font-medium text-textMain pr-4 group-hover:text-gold transition-colors">Can
+                    I cancel my order?</span>
+                  <i class="faq-icon fa-solid fa-chevron-down text-gold transition-transform duration-500"></i>
+                </button>
+                <div class="faq-content overflow-hidden transition-all duration-500 opacity-0 max-h-0">
+                  <div
+                    class="px-5 md:px-6 pb-5 pt-3 text-sm text-textSub font-light border-t border-white/5 leading-relaxed">
+                    Cancellations are accepted up to 24 hours before the scheduled delivery time.</div>
+                </div>
+              </div>
+              <div
+                class="faq-item bg-cardBg/70 backdrop-blur-md rounded-2xl border border-white/10 shadow-sm overflow-hidden transition-all duration-300 hover:shadow-precious">
+                <button
+                  class="faq-toggle w-full px-5 py-4 md:px-6 md:py-5 flex justify-between items-center text-left focus:outline-none group">
+                  <span
+                    class="text-[14px] md:text-[15px] font-medium text-textMain pr-4 group-hover:text-gold transition-colors">How
+                    do I initiate a return?</span>
+                  <i class="faq-icon fa-solid fa-chevron-down text-gold transition-transform duration-500"></i>
+                </button>
+                <div class="faq-content overflow-hidden transition-all duration-500 opacity-0 max-h-0">
+                  <div
+                    class="px-5 md:px-6 pb-5 pt-3 text-sm text-textSub font-light border-t border-white/5 leading-relaxed">
+                    WhatsApp us your order ID and a photo of the flowers. Our team will assist you within 30 mins.</div>
+                </div>
+              </div>
+              <div
+                class="faq-item bg-cardBg/70 backdrop-blur-md rounded-2xl border border-white/10 shadow-sm overflow-hidden transition-all duration-300 hover:shadow-precious">
+                <button
+                  class="faq-toggle w-full px-5 py-4 md:px-6 md:py-5 flex justify-between items-center text-left focus:outline-none group">
+                  <span
+                    class="text-[14px] md:text-[15px] font-medium text-textMain pr-4 group-hover:text-gold transition-colors">Is
+                    there a time limit for reporting issues?</span>
+                  <i class="faq-icon fa-solid fa-chevron-down text-gold transition-transform duration-500"></i>
+                </button>
+                <div class="faq-content overflow-hidden transition-all duration-500 opacity-0 max-h-0">
+                  <div
+                    class="px-5 md:px-6 pb-5 pt-3 text-sm text-textSub font-light border-t border-white/5 leading-relaxed">
+                    Perishable items must be reported within 24 hours of delivery for a valid claim.</div>
+                </div>
+              </div>
+              <div
+                class="faq-item bg-cardBg/70 backdrop-blur-md rounded-2xl border border-white/10 shadow-sm overflow-hidden transition-all duration-300 hover:shadow-precious">
+                <button
+                  class="faq-toggle w-full px-5 py-4 md:px-6 md:py-5 flex justify-between items-center text-left focus:outline-none group">
+                  <span
+                    class="text-[14px] md:text-[15px] font-medium text-textMain pr-4 group-hover:text-gold transition-colors">What
+                    if I provided a wrong address?</span>
+                  <i class="faq-icon fa-solid fa-chevron-down text-gold transition-transform duration-500"></i>
+                </button>
+                <div class="faq-content overflow-hidden transition-all duration-500 opacity-0 max-h-0">
+                  <div
+                    class="px-5 md:px-6 pb-5 pt-3 text-sm text-textSub font-light border-t border-white/5 leading-relaxed">
+                    Contact us ASAP. If delivery hasn't started, we'll update it. Re-delivery may incur fees.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- CATEGORY: CUSTOMER SUPPORT -->
+            <div id="support" class="faq-section hidden space-y-4">
+              <div
+                class="faq-item bg-cardBg/70 backdrop-blur-md rounded-2xl border border-white/10 shadow-sm overflow-hidden transition-all duration-300 hover:shadow-precious">
+                <button
+                  class="faq-toggle w-full px-5 py-4 md:px-6 md:py-5 flex justify-between items-center text-left focus:outline-none group">
+                  <span
+                    class="text-[14px] md:text-[15px] font-medium text-textMain pr-4 group-hover:text-gold transition-colors">How
+                    do I contact support?</span>
+                  <i class="faq-icon fa-solid fa-chevron-down text-gold transition-transform duration-500"></i>
+                </button>
+                <div class="faq-content overflow-hidden transition-all duration-500 opacity-0 max-h-0">
+                  <div
+                    class="px-5 md:px-6 pb-5 pt-3 text-sm text-textSub font-light border-t border-white/5 leading-relaxed">
+                    Reach us via WhatsApp or email (support@maadurga.com) from 8AM to 10PM daily.</div>
+                </div>
+              </div>
+              <div
+                class="faq-item bg-cardBg/70 backdrop-blur-md rounded-2xl border border-white/10 shadow-sm overflow-hidden transition-all duration-300 hover:shadow-precious">
+                <button
+                  class="faq-toggle w-full px-5 py-4 md:px-6 md:py-5 flex justify-between items-center text-left focus:outline-none group">
+                  <span
+                    class="text-[14px] md:text-[15px] font-medium text-textMain pr-4 group-hover:text-gold transition-colors">Do
+                    you have a physical store?</span>
+                  <i class="faq-icon fa-solid fa-chevron-down text-gold transition-transform duration-500"></i>
+                </button>
+                <div class="faq-content overflow-hidden transition-all duration-500 opacity-0 max-h-0">
+                  <div
+                    class="px-5 md:px-6 pb-5 pt-3 text-sm text-textSub font-light border-t border-white/5 leading-relaxed">
+                    Yes, located in Bhiwadi, Rajasthan. See our map above for exact directions.</div>
+                </div>
+              </div>
+              <div
+                class="faq-item bg-cardBg/70 backdrop-blur-md rounded-2xl border border-white/10 shadow-sm overflow-hidden transition-all duration-300 hover:shadow-precious">
+                <button
+                  class="faq-toggle w-full px-5 py-4 md:px-6 md:py-5 flex justify-between items-center text-left focus:outline-none group">
+                  <span
+                    class="text-[14px] md:text-[15px] font-medium text-textMain pr-4 group-hover:text-gold transition-colors">How
+                    do I provide feedback?</span>
+                  <i class="faq-icon fa-solid fa-chevron-down text-gold transition-transform duration-500"></i>
+                </button>
+                <div class="faq-content overflow-hidden transition-all duration-500 opacity-0 max-h-0">
+                  <div
+                    class="px-5 md:px-6 pb-5 pt-3 text-sm text-textSub font-light border-t border-white/5 leading-relaxed">
+                    We value your reviews! Leave them on Google or via our website contact form.</div>
+                </div>
+              </div>
+              <div
+                class="faq-item bg-cardBg/70 backdrop-blur-md rounded-2xl border border-white/10 shadow-sm overflow-hidden transition-all duration-300 hover:shadow-precious">
+                <button
+                  class="faq-toggle w-full px-5 py-4 md:px-6 md:py-5 flex justify-between items-center text-left focus:outline-none group">
+                  <span
+                    class="text-[14px] md:text-[15px] font-medium text-textMain pr-4 group-hover:text-gold transition-colors">Bulk
+                    or Corporate discounts?</span>
+                  <i class="faq-icon fa-solid fa-chevron-down text-gold transition-transform duration-500"></i>
+                </button>
+                <div class="faq-content overflow-hidden transition-all duration-500 opacity-0 max-h-0">
+                  <div
+                    class="px-5 md:px-6 pb-5 pt-3 text-sm text-textSub font-light border-t border-white/5 leading-relaxed">
+                    Yes, for orders over 10 arrangements or corporate events, we offer custom pricing.</div>
+                </div>
+              </div>
+              <div
+                class="faq-item bg-cardBg/70 backdrop-blur-md rounded-2xl border border-white/10 shadow-sm overflow-hidden transition-all duration-300 hover:shadow-precious">
+                <button
+                  class="faq-toggle w-full px-5 py-4 md:px-6 md:py-5 flex justify-between items-center text-left focus:outline-none group">
+                  <span
+                    class="text-[14px] md:text-[15px] font-medium text-textMain pr-4 group-hover:text-gold transition-colors">Is
+                    there a mobile app?</span>
+                  <i class="faq-icon fa-solid fa-chevron-down text-gold transition-transform duration-500"></i>
+                </button>
+                <div class="faq-content overflow-hidden transition-all duration-500 opacity-0 max-h-0">
+                  <div
+                    class="px-5 md:px-6 pb-5 pt-3 text-sm text-textSub font-light border-t border-white/5 leading-relaxed">
+                    Our site is fully mobile-optimized, so you can order directly through any browser.</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. Back Button -->
+    <div class="w-full flex justify-center lg:justify-start pt-6 pb-14 opacity-0" data-animate="animate__animated animate__fadeInUp">
+      <button
+        class="bg-cardBg text-textMain border border-white/10 text-sm lg:text-[15px] font-medium px-8 lg:px-10 py-3 lg:py-3.5 rounded-full flex items-center justify-center gap-2.5 hover:bg-gold hover:text-white active:scale-95 transition-all shadow-md">
+        <i class="fa-solid fa-arrow-left opacity-70"></i> Back to Homepage
+      </button>
+    </div>
+  </main>
+  <a href="https://wa.me/919124058142" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp"
+    class="fixed bottom-6 right-6 md:bottom-8 md:right-8 lg:bottom-12 lg:right-12 w-[60px] h-[60px] md:w-[70px] md:h-[70px] lg:w-[75px] lg:h-[75px] bg-[#25D366] text-white rounded-full flex items-center justify-center text-3xl md:text-4xl lg:text-[42px] shadow-[0_8px_25px_rgba(37,211,102,0.4)] hover:scale-110 active:scale-95 hover:shadow-[0_12px_30px_rgba(37,211,102,0.6)] transition-all duration-300 z-50">
+    <i class="fa-brands fa-whatsapp drop-shadow-md"></i>
+  </a>
+      <div id="footer"></div>
+  <!-- GSAP and Flip Plugin -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Flip.min.js"></script>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <script src="../src/js/contact.js"></script>
+</body>
+
+</html>

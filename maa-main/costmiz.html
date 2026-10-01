@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Design Studio</title>
+    
+    <!-- Tailwind & Fonts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sage: { DEFAULT: '#708238', dark: '#5A692D' },
+                        cream: '#F9F9F8',
+                        gold: '#C5A059'
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body {
+            background-color: theme('colors.cream');
+            overflow: hidden;
+            overscroll-behavior-y: none;
+        }
+        
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Textures */
+        .heritage-texture {
+            background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+            background-size: 200px;
+        }
+        
+        .global-bg {
+            background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+            background-size: 400px;
+        }
+
+        .drop-animation {
+            animation: dropBounce 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        @keyframes dropBounce {
+            0% { transform: translate(-50%, -50%) scale(0.3) rotate(-10deg); opacity: 0; }
+            100% { transform: translate(-50%, -50%) scale(var(--scale, 1)) rotate(var(--rot, 0deg)); opacity: 1; }
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Canvas Elements */
+        #drop-zone {
+            touch-action: none; /* Prevent scrolling while dragging on mobile */
+        }
+
+        .placed-flower {
+            position: absolute;
+            cursor: grab;
+            user-select: none;
+            touch-action: none;
+            transition: filter 0.2s ease;
+        }
+        .placed-flower:active { cursor: grabbing; }
+
+        .real-asset {
+            mix-blend-mode: multiply;
+            pointer-events: none;
+            -webkit-user-drag: none;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.15));
+        }
+
+        .selection-ring {
+            outline: 2px dashed theme('colors.sage.DEFAULT');
+            outline-offset: 4px;
+            border-radius: 12px;
+            z-index: 1000 !important; /* Bring to front when selected */
+        }
+
+        .control-handle {
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            background: white;
+            border: 2px solid theme('colors.sage.DEFAULT');
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            cursor: nwse-resize;
+            color: theme('colors.sage.DEFAULT');
+            transition: transform 0.2s;
+            bottom: -16px;
+            right: -16px;
+        }
+        @media (max-width: 768px) {
+            .control-handle { width: 36px; height: 36px; bottom: -18px; right: -18px; }
+        }
+        .control-handle:active { transform: scale(1.1); }
+
+        .control-menu {
+            position: absolute;
+            top: -65px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 4px;
+            padding: 6px;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-radius: 99px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            border: 1px solid rgba(0,0,0,0.05);
+            pointer-events: auto;
+        }
+
+        .paper-swatch {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .paper-swatch.active {
+            border-color: theme('colors.sage.DEFAULT');
+            transform: scale(1.15);
+            box-shadow: 0 0 0 3px white, 0 0 0 5px theme('colors.sage.DEFAULT');
+        }
+
+        .item-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .item-card:hover, .item-card:active {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px -8px rgba(0,0,0,0.1);
+            border-color: rgba(112, 130, 56, 0.3);
+        }
+
+        /* Mobile Sheet Animation */
+        #mobile-cart-sheet {
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .sheet-open { transform: translateY(0%); }
+        .sheet-closed { transform: translateY(110%); } /* 110% ensures it drops fully out of view to hide shadows */
+    </style>
+</head>
+<body class="text-stone-900 h-[100dvh] w-full font-sans antialiased">
+
+    <!-- Background Layers -->
+    <div class="fixed inset-0 pointer-events-none opacity-[0.3] z-0 global-bg"></div>
+    <div class="fixed inset-0 bg-gradient-to-br from-white/60 to-stone-100/40 backdrop-blur-[2px] pointer-events-none z-[1]"></div>
+
+    <div class="relative z-10 flex flex-col h-full w-full overflow-hidden">
+        
+        <!-- HEADER -->
+        <header class="absolute top-0 left-0 right-0 z-[100] px-4 md:px-8 py-4 flex justify-between items-center pointer-events-none">
+            <div class="flex items-center gap-4 pointer-events-auto">
+                <button class="w-10 h-10 bg-white/90 backdrop-blur rounded-full shadow-sm flex items-center justify-center text-stone-700 hover:text-sage transition-all border border-stone-200">
+                    <i data-lucide="menu" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <div class="flex items-center gap-3 pointer-events-auto">
+                <div class="hidden md:flex items-center gap-2 bg-white/80 backdrop-blur px-4 py-2 rounded-full border border-white shadow-sm">
+                    <i data-lucide="sparkles" class="w-4 h-4 text-sage"></i>
+                    <p class="text-[10px] font-bold text-stone-600 uppercase tracking-wider">Pro Studio</p>
+                </div>
+                <button class="px-5 py-2.5 bg-sage hover:bg-sage-dark text-white rounded-full font-bold text-[10px] md:text-xs uppercase tracking-widest shadow-lg shadow-sage/20 transition-all flex items-center gap-2">
+                    <span class="hidden sm:inline">Save Design</span>
+                    <span class="sm:hidden">Save</span>
+                    <i data-lucide="download" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- MAIN WORKSPACE -->
+        <div class="flex-1 flex flex-col lg:flex-row w-full px-3 md:px-6 pt-20 pb-[230px] lg:pb-6 gap-4 md:gap-6 overflow-hidden relative">
+            
+            <!-- LEFT: Desktop Library Sidebar -->
+            <aside class="hidden lg:flex w-[320px] flex-col overflow-hidden relative rounded-[32px] glass-panel z-20">
+                <div class="flex flex-col h-full">
+                    <div class="px-6 pt-6 pb-4 border-b border-stone-200/60 bg-white/40">
+                        <h2 class="font-serif text-xl font-medium text-stone-800 mb-4">Floral Library</h2>
+                        <div class="flex gap-1 bg-stone-100/80 p-1 rounded-xl">
+                            <button onclick="switchInventoryTab('flowers')" id="inv-tab-flowers" class="flex-1 py-2 text-[10px] font-bold uppercase tracking-wider rounded-lg transition-all bg-white text-sage shadow-sm">Blooms</button>
+                            <button onclick="switchInventoryTab('greenery')" id="inv-tab-greenery" class="flex-1 py-2 text-[10px] font-bold uppercase tracking-wider rounded-lg transition-all text-stone-500 hover:text-stone-800">Greens</button>
+                            <button onclick="switchInventoryTab('bases')" id="inv-tab-bases" class="flex-1 py-2 text-[10px] font-bold uppercase tracking-wider rounded-lg transition-all text-stone-500 hover:text-stone-800">Vessels</button>
+                        </div>
+                    </div>
+                    
+                    <div class="p-5 flex-1 overflow-y-auto no-scrollbar">
+                        <div id="inventory-container-desktop" class="grid grid-cols-2 gap-3 pb-8">
+                            <!-- Injected by JS -->
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- CENTER: Interactive Canvas -->
+            <main class="flex-1 flex flex-col relative h-full w-full">
+                <div id="drop-zone" class="w-full h-full relative rounded-[28px] lg:rounded-[40px] overflow-hidden shadow-2xl border-4 border-white group transition-colors duration-700 bg-cream" onclick="deselectAll(event)">
+                    
+                    <!-- Canvas Textures -->
+                    <div class="absolute inset-0 opacity-[0.15] pointer-events-none heritage-texture mix-blend-multiply"></div>
+                    <div class="absolute inset-0 opacity-[0.04] pointer-events-none" style="background-image: radial-gradient(circle, #000 1px, transparent 1px); background-size: 32px 32px;"></div>
+
+                    <!-- Floating Canvas Tools -->
+                    <div class="absolute top-4 left-1/2 -translate-x-1/2 z-50 flex justify-center pointer-events-none">
+                        <div class="bg-white/90 backdrop-blur-xl text-stone-700 shadow-sm px-4 py-2 rounded-full flex items-center gap-4 border border-stone-200/60 pointer-events-auto">
+                            <button onclick="clearCanvas()" class="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider hover:text-rose-500 transition-colors tooltip" title="Clear Canvas">
+                                <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i> <span class="hidden sm:inline">Reset</span>
+                            </button>
+                            <div class="h-4 w-px bg-stone-300"></div>
+                            <div class="flex items-center gap-2">
+                                <button onclick="adjustSelectedZ('back')" class="p-1.5 rounded-full hover:bg-stone-100 hover:text-sage transition-colors" title="Send Backward">
+                                    <i data-lucide="arrow-down-to-line" class="w-4 h-4"></i>
+                                </button>
+                                <span class="text-[9px] font-bold uppercase tracking-[0.1em] text-stone-400 hidden sm:inline">Layers</span>
+                                <button onclick="adjustSelectedZ('front')" class="p-1.5 rounded-full hover:bg-stone-100 hover:text-sage transition-colors" title="Bring Forward">
+                                    <i data-lucide="arrow-up-to-line" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Empty State Guide -->
+                    <div id="empty-state" class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none transition-opacity duration-500 z-0">
+                        <div class="w-16 h-16 mb-4 rounded-full bg-white/50 border border-stone-200 shadow-sm flex items-center justify-center">
+                            <i data-lucide="mouse-pointer-click" class="w-6 h-6 text-stone-400"></i>
+                        </div>
+                        <p class="text-stone-500 font-serif italic text-lg md:text-2xl text-center px-4">Craft your perfect arrangement</p>
+                        <p class="text-stone-400/80 text-[10px] md:text-xs mt-2 uppercase tracking-widest font-bold">Tap or drag items to begin</p>
+                    </div>
+
+                    <!-- Flower Render Layer -->
+                    <div id="flower-container" class="absolute inset-0 z-10"></div>
+
+                    <!-- Trash Zone -->
+                    <div id="trash-zone" class="absolute bottom-8 right-8 w-14 h-14 md:w-16 md:h-16 bg-rose-500/90 text-white backdrop-blur-xl rounded-full flex items-center justify-center shadow-2xl opacity-0 scale-90 transition-all z-50 pointer-events-none">
+                        <i data-lucide="trash-2" class="w-6 h-6"></i>
+                    </div>
+                </div>
+            </main>
+
+            <!-- RIGHT: Desktop Composition/Checkout Sidebar -->
+            <aside class="hidden lg:flex w-[300px] flex-col relative rounded-[32px] glass-panel z-20">
+                <div class="p-6 flex flex-col h-full">
+                    <!-- Paper Swatches -->
+                    <div class="mb-6">
+                        <h3 class="text-[10px] font-bold uppercase tracking-widest text-stone-500 mb-4 flex items-center gap-2">
+                            <i data-lucide="swatch-book" class="w-3.5 h-3.5 text-sage"></i> Foundation Wrap
+                        </h3>
+                        <div class="flex gap-3 justify-between" id="paper-swatches-desktop"></div>
+                    </div>
+
+                    <div class="h-px w-full bg-gradient-to-r from-transparent via-stone-200 to-transparent my-2"></div>
+
+                    <!-- Selected Items List -->
+                    <div class="flex-1 flex flex-col min-h-0 mt-4">
+                        <h3 class="text-[10px] font-bold uppercase tracking-widest text-stone-500 mb-3 flex items-center gap-2">
+                            <i data-lucide="list-checks" class="w-3.5 h-3.5 text-sage"></i> Composition
+                        </h3>
+                        <div class="flex-1 overflow-y-auto no-scrollbar pr-1 space-y-2.5 pb-4" id="composition-list-desktop"></div>
+                    </div>
+
+                    <!-- Total & Checkout -->
+                    <div class="mt-4 pt-5 border-t border-stone-200/60 bg-white/20 rounded-b-2xl">
+                        <div class="flex justify-between items-end mb-4 px-1">
+                            <div>
+                                <p class="text-[9px] font-bold text-stone-400 uppercase tracking-widest mb-1">Estimated Total</p>
+                                <p id="total-price-desktop" class="text-3xl font-serif text-stone-900 leading-none">₹0</p>
+                            </div>
+                        </div>
+                        <button class="w-full bg-stone-900 text-white py-4 rounded-2xl font-bold text-[11px] uppercase tracking-wider shadow-lg hover:bg-sage hover:shadow-xl hover:-translate-y-0.5 active:scale-95 transition-all flex justify-center items-center gap-2">
+                            Review & Checkout <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <!-- MOBILE INVENTORY DOCK (Tabs + Items) -->
+        <div class="lg:hidden fixed bottom-[80px] left-0 right-0 z-[150] bg-white/95 backdrop-blur-xl border-t border-stone-200 shadow-[0_-10px_40px_rgba(0,0,0,0.08)] rounded-t-[24px] flex flex-col" id="mobile-dock">
+            <!-- Category Tabs -->
+            <div class="px-4 pt-3 pb-1 flex justify-between gap-1 overflow-x-auto no-scrollbar border-b border-stone-100">
+                <button onclick="switchInventoryTab('flowers')" id="mob-tab-flowers" class="px-3 py-2 text-[10px] font-bold uppercase tracking-wider text-sage border-b-2 border-sage whitespace-nowrap">Blooms</button>
+                <button onclick="switchInventoryTab('greenery')" id="mob-tab-greenery" class="px-3 py-2 text-[10px] font-bold uppercase tracking-wider text-stone-400 border-b-2 border-transparent whitespace-nowrap">Greens</button>
+                <button onclick="switchInventoryTab('bases')" id="mob-tab-bases" class="px-3 py-2 text-[10px] font-bold uppercase tracking-wider text-stone-400 border-b-2 border-transparent whitespace-nowrap">Vessels</button>
+            </div>
+
+            <!-- Horizontal Scroll Items -->
+            <div class="p-3">
+                <div class="flex gap-3 overflow-x-auto no-scrollbar snap-x pb-2" id="mobile-elements-container">
+                    <!-- Injected by JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Cart Overlay Background -->
+        <div id="mobile-cart-overlay" class="lg:hidden fixed inset-0 bg-stone-900/20 backdrop-blur-sm z-[190] opacity-0 pointer-events-none transition-opacity duration-300" onclick="toggleMobileCart()"></div>
+
+        <!-- MOBILE CART / RECEIPT SHEET -->
+        <div id="mobile-cart-sheet" class="lg:hidden fixed inset-x-0 bottom-[80px] top-24 z-[200] bg-white rounded-t-[32px] shadow-[0_-20px_50px_rgba(0,0,0,0.15)] sheet-closed flex flex-col">
+            <!-- Handle -->
+            <div class="w-full flex justify-center pt-4 pb-2" onclick="toggleMobileCart()">
+                <div class="w-12 h-1.5 bg-stone-200 rounded-full"></div>
+            </div>
+            
+            <div class="px-6 pb-4 border-b border-stone-100 flex justify-between items-center">
+                <h2 class="font-serif text-xl font-medium text-stone-800">Your Composition</h2>
+                <button onclick="toggleMobileCart()" class="w-8 h-8 flex items-center justify-center bg-stone-100 rounded-full text-stone-500"><i data-lucide="x" class="w-4 h-4"></i></button>
+            </div>
+
+            <div class="flex-1 overflow-y-auto px-6 py-4 space-y-6 pb-8">
+                <!-- Mobile Wrap Selection -->
+                <div>
+                    <p class="text-[10px] font-bold uppercase tracking-widest text-stone-500 mb-3">Foundation Wrap</p>
+                    <div class="flex gap-4 overflow-x-auto no-scrollbar pb-2" id="paper-swatches-mobile"></div>
+                </div>
+
+                <!-- Mobile Receipt List -->
+                <div>
+                    <p class="text-[10px] font-bold uppercase tracking-widest text-stone-500 mb-3">Selected Items</p>
+                    <div id="composition-list-mobile" class="space-y-3"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MOBILE CHECKOUT BAR (Always on bottom) -->
+        <div class="lg:hidden fixed bottom-0 left-0 right-0 h-[80px] z-[250] px-5 bg-white border-t border-stone-100 flex items-center justify-between cursor-pointer active:bg-stone-50 transition-colors shadow-[0_-10px_30px_rgba(0,0,0,0.08)]" onclick="toggleMobileCart()">
+            <div class="flex flex-col justify-center h-full">
+                <div class="flex items-center gap-2">
+                    <p class="text-[9px] uppercase tracking-widest text-stone-500 font-bold">Total</p>
+                    <i data-lucide="chevron-up" class="w-3.5 h-3.5 text-stone-400 transition-transform duration-300" id="cart-chevron"></i>
+                </div>
+                <p id="mobile-price-badge" class="font-serif font-semibold text-xl text-stone-900 leading-none mt-0.5">₹0</p>
+            </div>
+            <button class="bg-sage hover:bg-sage-dark text-white px-8 py-3 rounded-full font-bold text-[11px] uppercase tracking-wider shadow-lg active:scale-95 transition-transform" onclick="event.stopPropagation(); alert('Checkout clicked')">
+                Checkout
+            </button>
+        </div>
+
+    </div>
+
+    <script>
+        // STUDIO STATE
+        let selectedFlowers = [];
+        let activePaperId = 'linen-cream';
+        let activeElement = null;
+        let selectedId = null;
+        let isResizing = false;
+        let isRotating = false;
+        let offset = { x: 0, y: 0 };
+        let zIndexCounter = 100;
+        let currentTab = 'flowers';
+        let isMobileCartOpen = false;
+
+        // REAL-TIME ASSETS
+        const flowers = {
+            flowers: [
+                { id: 1, name: 'Velvet Rose', price: 499, image: 'https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?q=80&w=300&auto=format&fit=crop' },
+                { id: 2, name: 'White Lily', price: 350, image: 'https://images.unsplash.com/photo-1519163219899-21d2bb723b3e?q=80&w=300&auto=format&fit=crop' },
+                { id: 3, name: 'Spring Tulip', price: 420, image: 'https://images.unsplash.com/photo-1520302523454-82a2ed96dec9?q=80&w=300&auto=format&fit=crop' },
+                { id: 4, name: 'Imperial Orchid', price: 650, image: 'https://images.unsplash.com/photo-1513677785800-9df79ae4b10b?q=80&w=300&auto=format&fit=crop' },
+                { id: 5, name: 'Blush Peony', price: 600, image: 'https://images.unsplash.com/photo-1526047932273-341f2a7631f9?q=80&w=300&auto=format&fit=crop' },
+                { id: 6, name: 'Blue Hydrangea', price: 550, image: 'https://images.unsplash.com/photo-1508610048659-a06b669e3321?q=80&w=300&auto=format&fit=crop' }
+            ],
+            greenery: [
+                { id: 10, name: 'Silver Dollar', price: 180, image: 'https://images.unsplash.com/photo-1583008917894-39906d21f855?q=80&w=300&auto=format&fit=crop' },
+                { id: 11, name: 'Forest Fern', price: 220, image: 'https://images.unsplash.com/photo-1618214532292-69019f390069?q=80&w=300&auto=format&fit=crop' },
+                { id: 12, name: 'Wild Ivy', price: 250, image: 'https://images.unsplash.com/photo-1596708051752-95990264003d?q=80&w=300&auto=format&fit=crop' },
+            ],
+            bases: [
+                { id: 20, name: 'Zinc Bucket', price: 850, image: 'https://images.unsplash.com/photo-1591123109647-dd9f97ef17a7?q=80&w=300&auto=format&fit=crop' },
+                { id: 21, name: 'Glass Cylinder', price: 1200, image: 'https://images.unsplash.com/photo-1581783898377-1c85bf937427?q=80&w=300&auto=format&fit=crop' },
+                { id: 22, name: 'Matte Ceramic', price: 950, image: 'https://images.unsplash.com/photo-1627803450974-954f9a0c283d?q=80&w=300&auto=format&fit=crop' },
+            ]
+        };
+
+        const papers = [
+            { id: 'linen-cream', name: 'Cream', price: 120, color: '#F9F9F8' },
+            { id: 'silk-blush', name: 'Blush', price: 250, color: '#fce7f3' },
+            { id: 'suede-midnight', name: 'Noir', price: 300, color: '#2C2C2C' },
+            { id: 'velvet-emerald', name: 'Emerald', price: 350, color: '#1B3B36' },
+            { id: 'paper-sage', name: 'Sage', price: 200, color: '#D4DAC3' },
+        ];
+
+        // UI INITIALIZATION
+        function initInventory() {
+            const deskContainer = document.getElementById('inventory-container-desktop');
+            const mobContainer = document.getElementById('mobile-elements-container');
+            const items = flowers[currentTab];
+            
+            // Desktop Render
+            deskContainer.innerHTML = items.map(f => `
+                <div class="item-card bg-white rounded-2xl p-2.5 border border-stone-100 shadow-sm cursor-grab active:cursor-grabbing flex flex-col" 
+                     draggable="true" ondragstart="handleDragStart(event, ${f.id}, '${currentTab}')" onclick="addFlowerByTap(${f.id}, '${currentTab}')">
+                    <div class="aspect-square bg-stone-50 rounded-xl mb-3 flex items-center justify-center overflow-hidden">
+                        <img src="${f.image}" alt="${f.name}" class="w-full h-full object-cover" draggable="false"/>
+                    </div>
+                    <div class="px-1 mt-auto">
+                        <h4 class="font-semibold text-[11px] text-stone-800 truncate">${f.name}</h4>
+                        <p class="font-serif text-[11px] text-stone-500 mt-0.5">₹${f.price}</p>
+                    </div>
+                </div>
+            `).join('');
+
+            // Mobile Render
+            mobContainer.innerHTML = items.map(f => `
+                <div class="item-card bg-white rounded-xl p-2 border border-stone-100 shadow-sm min-w-[90px] w-[90px] snap-center flex flex-col cursor-pointer" 
+                     onclick="addFlowerByTap(${f.id}, '${currentTab}')">
+                    <div class="w-full aspect-square bg-stone-50 rounded-lg mb-2 flex items-center justify-center overflow-hidden">
+                        <img src="${f.image}" alt="${f.name}" class="w-full h-full object-cover" draggable="false"/>
+                    </div>
+                    <div class="px-1 mt-auto pb-1 text-center">
+                        <h4 class="font-semibold text-[9px] text-stone-800 truncate">${f.name}</h4>
+                        <p class="font-serif text-[9px] text-stone-500">₹${f.price}</p>
+                    </div>
+                </div>
+            `).join('');
+
+            lucide.createIcons();
+        }
+
+        function initPapers() {
+            const renderSwatches = (containerId) => {
+                const container = document.getElementById(containerId);
+                if(!container) return;
+                container.innerHTML = papers.map(p => `
+                    <div class="flex flex-col items-center gap-1.5 shrink-0">
+                        <button onclick="setPaper('${p.id}')" 
+                                class="paper-swatch w-10 h-10 border border-stone-200 shadow-inner ${p.id === activePaperId ? 'active z-10' : ''}" 
+                                style="background-color: ${p.color}"
+                                title="${p.name} Wrap">
+                        </button>
+                        <span class="text-[9px] font-medium text-stone-500">${p.name}</span>
+                    </div>
+                `).join('');
+            };
+            
+            renderSwatches('paper-swatches-desktop');
+            renderSwatches('paper-swatches-mobile');
+        }
+
+        function switchInventoryTab(tab) {
+            currentTab = tab;
+            const tabs = ['flowers', 'greenery', 'bases'];
+            
+            // Update Desktop Tabs
+            tabs.forEach(t => {
+                const btn = document.getElementById(`inv-tab-${t}`);
+                if (btn) btn.className = t === tab ? 
+                    "flex-1 py-2 text-[10px] font-bold uppercase tracking-wider rounded-lg transition-all bg-white text-sage shadow-sm" : 
+                    "flex-1 py-2 text-[10px] font-bold uppercase tracking-wider rounded-lg transition-all text-stone-500 hover:text-stone-800";
+            });
+
+            // Update Mobile Tabs
+            tabs.forEach(t => {
+                const btn = document.getElementById(`mob-tab-${t}`);
+                if (btn) btn.className = t === tab ? 
+                    "px-3 py-2 text-[10px] font-bold uppercase tracking-wider text-sage border-b-2 border-sage whitespace-nowrap" : 
+                    "px-3 py-2 text-[10px] font-bold uppercase tracking-wider text-stone-400 border-b-2 border-transparent whitespace-nowrap";
+            });
+
+            initInventory();
+        }
+
+        function toggleMobileCart() {
+            isMobileCartOpen = !isMobileCartOpen;
+            const sheet = document.getElementById('mobile-cart-sheet');
+            const overlay = document.getElementById('mobile-cart-overlay');
+            const chevron = document.getElementById('cart-chevron');
+            
+            if (isMobileCartOpen) {
+                sheet.classList.remove('sheet-closed');
+                sheet.classList.add('sheet-open');
+                overlay.classList.remove('opacity-0', 'pointer-events-none');
+                overlay.classList.add('opacity-100', 'pointer-events-auto');
+                chevron.style.transform = 'rotate(180deg)';
+                updateCompositionList();
+            } else {
+                sheet.classList.remove('sheet-open');
+                sheet.classList.add('sheet-closed');
+                overlay.classList.remove('opacity-100', 'pointer-events-auto');
+                overlay.classList.add('opacity-0', 'pointer-events-none');
+                chevron.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // CANVAS LOGIC
+        let draggedData = null;
+
+        function handleDragStart(e, id, tab) {
+            draggedData = { id, tab };
+            e.dataTransfer.effectAllowed = "move";
+        }
+
+        const dropZone = document.getElementById('drop-zone');
+        dropZone.addEventListener('dragover', (e) => e.preventDefault());
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            const rect = dropZone.getBoundingClientRect();
+            let x = ((e.clientX - rect.left) / rect.width) * 100;
+            let y = ((e.clientY - rect.top) / rect.height) * 100;
+            
+            // Constrain
+            x = Math.max(5, Math.min(95, x));
+            y = Math.max(5, Math.min(95, y));
+
+            if (draggedData) addFlowerToCanvas(draggedData.id, draggedData.tab, x, y);
+        });
+
+        function addFlowerByTap(id, tab) {
+            // Drop in center with slight randomness
+            const x = 50 + (Math.random() - 0.5) * 15;
+            const y = 45 + (Math.random() - 0.5) * 15;
+            addFlowerToCanvas(id, tab, x, y);
+        }
+
+        function addFlowerToCanvas(id, tab, x, y) {
+            const data = flowers[tab].find(f => f.id === id);
+            const instanceId = 'flower-' + Date.now();
+            const rotation = (Math.random() - 0.5) * 30; // Random initial rotation
+            
+            const baseScale = tab === 'bases' ? 1.5 : 1.0;
+            const flower = { ...data, instanceId, x, y, rotation, scale: baseScale };
+            
+            selectedFlowers.push(flower);
+            renderFlower(flower);
+            
+            updateState();
+            selectFlower(instanceId);
+        }
+
+        function renderFlower(f) {
+            const container = document.getElementById('flower-container');
+            const flowerEl = document.createElement('div');
+            flowerEl.id = f.instanceId;
+            flowerEl.className = 'placed-flower w-32 h-32 md:w-48 md:h-48 drop-animation';
+            flowerEl.style.left = `${f.x}%`;
+            flowerEl.style.top = `${f.y}%`;
+            flowerEl.style.zIndex = zIndexCounter++;
+            flowerEl.style.setProperty('--rot', `${f.rotation}deg`);
+            flowerEl.style.setProperty('--scale', `${f.scale}`);
+            flowerEl.style.transform = `translate(-50%, -50%) rotate(${f.rotation}deg) scale(${f.scale})`;
+            
+            flowerEl.innerHTML = `
+                <div class="w-full h-full relative group">
+                    <img src="${f.image}" class="w-full h-full object-contain real-asset" draggable="false" />
+                </div>
+            `;
+
+            // Touch & Mouse Events
+            const startDrag = (e) => {
+                e.preventDefault(); // Prevent default mobile scrolling
+                e.stopPropagation();
+                selectFlower(f.instanceId);
+                startMoving(e);
+            };
+
+            flowerEl.addEventListener('mousedown', startDrag);
+            flowerEl.addEventListener('touchstart', startDrag, { passive: false });
+
+            container.appendChild(flowerEl);
+        }
+
+        // SELECTION & MANIPULATION
+        function selectFlower(id) {
+            deselectAll();
+            selectedId = id;
+            const el = document.getElementById(id);
+            if (!el) return;
+
+            el.classList.add('selection-ring');
+
+            // Render Control Menu (Top)
+            const menu = document.createElement('div');
+            menu.className = 'control-menu';
+            menu.innerHTML = `
+                <button onclick="removeFlower('${id}')" class="p-2 text-rose-500 hover:bg-rose-50 rounded-full transition-colors"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                <div class="w-px h-4 bg-stone-200 self-center"></div>
+                <button onclick="duplicateFlower('${id}')" class="p-2 text-stone-500 hover:bg-stone-50 rounded-full transition-colors"><i data-lucide="copy" class="w-4 h-4"></i></button>
+                <div class="w-px h-4 bg-stone-200 self-center"></div>
+                <button onmousedown="startRotate(event)" ontouchstart="startRotate(event)" class="p-2 text-sage hover:bg-stone-50 rounded-full cursor-alias transition-colors"><i data-lucide="rotate-cw" class="w-4 h-4"></i></button>
+            `;
+            el.appendChild(menu);
+            
+            // Render Resize Handle (Bottom Right)
+            const handle = document.createElement('div');
+            handle.className = 'control-handle';
+            handle.innerHTML = `<i data-lucide="maximize-2" class="w-3.5 h-3.5 md:w-4 md:h-4"></i>`;
+            handle.onmousedown = startResize;
+            handle.ontouchstart = startResize;
+            el.appendChild(handle);
+
+            lucide.createIcons();
+            updateCompositionList();
+        }
+
+        function deselectAll(e) {
+            // Allow deselect only if clicking on background, not UI elements
+            if (e && e.target.closest('.control-menu') || e && e.target.closest('.control-handle')) return;
+            
+            if (selectedId) {
+                const el = document.getElementById(selectedId);
+                if (el) {
+                    el.classList.remove('selection-ring');
+                    const menu = el.querySelector('.control-menu');
+                    const handle = el.querySelector('.control-handle');
+                    if (menu) menu.remove();
+                    if (handle) handle.remove();
+                }
+            }
+            selectedId = null;
+            updateCompositionList();
+        }
+
+        // TRANSFORMS (Drag, Resize, Rotate)
+        function getClientPos(e) {
+            return {
+                x: e.type.includes('touch') ? e.touches[0].clientX : e.clientX,
+                y: e.type.includes('touch') ? e.touches[0].clientY : e.clientY
+            };
+        }
+
+        function startMoving(e) {
+            if (isResizing || isRotating) return;
+            activeElement = e.currentTarget;
+            const pos = getClientPos(e);
+            const rect = activeElement.getBoundingClientRect();
+            offset.x = pos.x - (rect.left + rect.width / 2);
+            offset.y = pos.y - (rect.top + rect.height / 2);
+
+            const trash = document.getElementById('trash-zone');
+            trash.style.opacity = '1';
+            trash.style.transform = 'scale(1)';
+
+            window.addEventListener('mousemove', moveElement);
+            window.addEventListener('touchmove', moveElement, { passive: false });
+            window.addEventListener('mouseup', stopMoving);
+            window.addEventListener('touchend', stopMoving);
+        }
+
+        function moveElement(e) {
+            if (!activeElement) return;
+            e.preventDefault(); // Prevent scrolling
+            const pos = getClientPos(e);
+            const canvasRect = dropZone.getBoundingClientRect();
+            
+            let x = ((pos.x - canvasRect.left - offset.x) / canvasRect.width) * 100;
+            let y = ((pos.y - canvasRect.top - offset.y) / canvasRect.height) * 100;
+
+            // Keep within bounds
+            x = Math.max(0, Math.min(100, x));
+            y = Math.max(0, Math.min(100, y));
+
+            activeElement.style.left = `${x}%`;
+            activeElement.style.top = `${y}%`;
+
+            const flower = selectedFlowers.find(f => f.instanceId === activeElement.id);
+            if (flower) { flower.x = x; flower.y = y; }
+        }
+
+        function stopMoving(e) {
+            if(!activeElement) return;
+
+            // Check if dropped near trash
+            const trash = document.getElementById('trash-zone');
+            if (e) {
+                const pos = e.type.includes('touch') ? (e.changedTouches ? e.changedTouches[0] : null) : e;
+                if (pos) {
+                    const trashRect = trash.getBoundingClientRect();
+                    if (pos.clientX > trashRect.left && pos.clientX < trashRect.right && 
+                        pos.clientY > trashRect.top && pos.clientY < trashRect.bottom) {
+                        removeFlower(activeElement.id);
+                    }
+                }
+            }
+
+            activeElement = null;
+            trash.style.opacity = '0';
+            trash.style.transform = 'scale(0.9)';
+            
+            window.removeEventListener('mousemove', moveElement);
+            window.removeEventListener('touchmove', moveElement);
+            window.removeEventListener('mouseup', stopMoving);
+            window.removeEventListener('touchend', stopMoving);
+        }
+
+        function startResize(e) {
+            e.stopPropagation(); e.preventDefault();
+            isResizing = true;
+            window.addEventListener('mousemove', resizeElement);
+            window.addEventListener('touchmove', resizeElement, {passive: false});
+            window.addEventListener('mouseup', stopResize);
+            window.addEventListener('touchend', stopResize);
+        }
+
+        function resizeElement(e) {
+            if (!selectedId || !isResizing) return;
+            e.preventDefault();
+            const pos = getClientPos(e);
+            const el = document.getElementById(selectedId);
+            const flower = selectedFlowers.find(f => f.instanceId === selectedId);
+            const rect = el.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            
+            const dist = Math.sqrt(Math.pow(pos.x - centerX, 2) + Math.pow(pos.y - centerY, 2));
+            // Base size depends on screen for responsiveness, so scaling needs an anchor.
+            const newScale = Math.max(0.4, Math.min(3.5, dist / (window.innerWidth < 768 ? 50 : 80)));
+            
+            flower.scale = newScale;
+            el.style.transform = `translate(-50%, -50%) rotate(${flower.rotation}deg) scale(${newScale})`;
+        }
+        
+        function stopResize() {
+            isResizing = false;
+            window.removeEventListener('mousemove', resizeElement);
+            window.removeEventListener('touchmove', resizeElement);
+            window.removeEventListener('mouseup', stopResize);
+            window.removeEventListener('touchend', stopResize);
+        }
+
+        function startRotate(e) {
+            e.stopPropagation(); e.preventDefault();
+            isRotating = true;
+            window.addEventListener('mousemove', rotateElement);
+            window.addEventListener('touchmove', rotateElement, {passive: false});
+            window.addEventListener('mouseup', stopRotate);
+            window.addEventListener('touchend', stopRotate);
+        }
+
+        function rotateElement(e) {
+            if (!selectedId || !isRotating) return;
+            e.preventDefault();
+            const pos = getClientPos(e);
+            const el = document.getElementById(selectedId);
+            const flower = selectedFlowers.find(f => f.instanceId === selectedId);
+            const rect = el.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            
+            // Calculate angle and apply offset to make dragging feel natural
+            const angle = Math.atan2(pos.y - centerY, pos.x - centerX) * (180 / Math.PI);
+            flower.rotation = angle + 90; // +90 to align with top handle
+            el.style.transform = `translate(-50%, -50%) rotate(${flower.rotation}deg) scale(${flower.scale})`;
+        }
+
+        function stopRotate() {
+            isRotating = false;
+            window.removeEventListener('mousemove', rotateElement);
+            window.removeEventListener('touchmove', rotateElement);
+            window.removeEventListener('mouseup', stopRotate);
+            window.removeEventListener('touchmove', stopRotate);
+        }
+
+        // DATA HELPER FUNCTIONS
+        function removeFlower(id) {
+            selectedFlowers = selectedFlowers.filter(f => f.instanceId !== id);
+            const el = document.getElementById(id);
+            if(el) el.remove();
+            selectedId = null;
+            updateState();
+        }
+
+        function duplicateFlower(id) {
+            const original = selectedFlowers.find(f => f.instanceId === id);
+            if (original) {
+                let tab = 'flowers';
+                if (original.id >= 20) tab = 'bases';
+                else if (original.id >= 10) tab = 'greenery';
+                addFlowerToCanvas(original.id, tab, original.x + 5, original.y + 5);
+            }
+        }
+
+        function adjustSelectedZ(dir) {
+            if (!selectedId) return;
+            const el = document.getElementById(selectedId);
+            if(dir === 'front') {
+                el.style.zIndex = zIndexCounter++;
+            } else {
+                let currentZ = parseInt(el.style.zIndex) || 100;
+                el.style.zIndex = Math.max(10, currentZ - 1);
+            }
+        }
+
+        function setPaper(id) {
+            activePaperId = id;
+            const paper = papers.find(p => p.id === id);
+            
+            // Update Canvas Background
+            const dropZone = document.getElementById('drop-zone');
+            dropZone.style.backgroundColor = paper.color;
+            
+            initPapers();
+            updateState();
+        }
+
+        function clearCanvas() {
+            selectedFlowers = [];
+            document.getElementById('flower-container').innerHTML = '';
+            selectedId = null;
+            updateState();
+        }
+
+        function updateState() {
+            // Empty State Visibility
+            const emptyState = document.getElementById('empty-state');
+            emptyState.style.opacity = selectedFlowers.length === 0 ? '1' : '0';
+
+            // Prices
+            const paper = papers.find(p => p.id === activePaperId);
+            const total = selectedFlowers.reduce((sum, f) => sum + f.price, 0) + paper.price;
+            document.getElementById('total-price-desktop').innerText = `₹${total}`;
+            document.getElementById('mobile-price-badge').innerText = `₹${total}`;
+
+            updateCompositionList();
+        }
+
+        function updateCompositionList() {
+            const paper = papers.find(p => p.id === activePaperId);
+            
+            let html = `
+                <div class="flex items-center justify-between bg-white p-3 rounded-xl border border-stone-100 shadow-sm">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full border border-stone-200 shadow-inner" style="background-color: ${paper.color}"></div>
+                        <div>
+                            <p class="text-[11px] md:text-xs font-semibold text-stone-800">${paper.name} Wrap</p>
+                            <p class="text-[9px] text-stone-400 uppercase tracking-widest mt-0.5">Base</p>
+                        </div>
+                    </div>
+                    <span class="text-[11px] md:text-xs font-serif text-stone-600">₹${paper.price}</span>
+                </div>
+            `;
+
+            if(selectedFlowers.length === 0) {
+                html += `<p class="text-center text-[10px] md:text-xs text-stone-400 mt-6 italic font-serif">Your receipt is empty</p>`;
+            }
+
+            html += selectedFlowers.map(f => `
+                <div class="group flex items-center justify-between bg-white p-2.5 rounded-xl border ${selectedId === f.instanceId ? 'border-sage shadow-md' : 'border-stone-100 shadow-sm'} transition-all cursor-pointer" onclick="selectFlower('${f.instanceId}')">
+                    <div class="flex items-center gap-3 overflow-hidden">
+                        <img src="${f.image}" class="w-10 h-10 rounded-lg object-cover bg-stone-50 border border-stone-100"/>
+                        <div class="truncate">
+                            <p class="text-[11px] md:text-xs font-semibold text-stone-800 truncate">${f.name}</p>
+                            <span class="text-[11px] md:text-xs font-serif text-stone-500 block mt-0.5">₹${f.price}</span>
+                        </div>
+                    </div>
+                    <button onclick="event.stopPropagation(); removeFlower('${f.instanceId}')" class="p-2 text-stone-300 hover:text-rose-500 lg:opacity-0 group-hover:opacity-100 transition-opacity" title="Remove">
+                        <i data-lucide="x" class="w-3.5 h-3.5 md:w-4 md:h-4"></i>
+                    </button>
+                </div>
+            `).join('');
+
+            // Render to both desktop sidebar and mobile sheet
+            const desktopList = document.getElementById('composition-list-desktop');
+            const mobileList = document.getElementById('composition-list-mobile');
+            if (desktopList) desktopList.innerHTML = html;
+            if (mobileList) mobileList.innerHTML = html;
+            
+            lucide.createIcons();
+        }
+
+        // INIT
+        window.onload = () => {
+            initInventory();
+            initPapers();
+            setPaper('linen-cream');
+            updateState();
+            lucide.createIcons();
+        };
+    </script>
+</body>
+</html>

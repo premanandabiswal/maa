@@ -1,0 +1,708 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maa Durga Florals | Fresh Flowers & Delivery</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- Custom Styles -->
+    <style>
+      /* Hide scrollbar for Chrome, Safari */
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* Hide scrollbar for IE, Edge, Firefox */
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      /* Text Slider Animations */
+      @keyframes slideOutUp {
+        0% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-20px);
+          opacity: 0;
+        }
+      }
+      @keyframes slideInDown {
+        0% {
+          transform: translateY(20px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+      .slide-out-up {
+        animation: slideOutUp 0.5s ease-in forwards;
+      }
+      .slide-in-down {
+        animation: slideInDown 0.5s ease-out forwards;
+      }
+
+      /* Scroll Animation Classes */
+      .scroll-animate {
+        opacity: 0;
+        transition: all 0.7s ease-out;
+      }
+      .slide-right {
+        transform: translateX(3rem);
+      }
+      .slide-left {
+        transform: translateX(-3rem);
+      }
+      .scroll-animate.is-visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      /* Typewriter Animation */
+      .typewriter {
+        display: inline-block;
+        overflow: hidden;
+        white-space: nowrap;
+        border-right: 2px solid #000;
+        animation: typing 4s steps(15, end) infinite alternate, blink-caret 0.75s step-end infinite;
+      }
+      @keyframes typing {
+        0%, 20% { max-width: 0; }
+        80%, 100% { max-width: 12ch; }
+      }
+      @keyframes blink-caret {
+        from, to { border-color: transparent; }
+        50% { border-color: #000; }
+      }
+    </style>
+  </head>
+  
+  <body>
+    <!-- Merged Upgraded Header from Code 2 -->
+    <header class="sticky top-0 z-50 w-full drop-shadow-md">
+      <!-- Desktop Navbar -->
+      <div class="hidden md:flex items-center justify-between bg-[#90A285] px-6 lg:px-12 py-3">
+        <!-- Left : Logo + Title -->
+        <div class="flex items-center gap-4 group cursor-pointer">
+          <img src="./assets/drg.png" class="h-12 lg:h-14 transition-all duration-500 group-hover:scale-110 group-hover:rotate-6" alt="Logo" onerror="this.src='https://placehold.co/100x100?text=Logo'"/>
+          <h1 class="font-bold text-amber-50 font-serif text-[22px] lg:text-[30px] tracking-wide transition-all duration-500 group-hover:tracking-widest">
+            MAA DURGA FLORALS
+          </h1>
+        </div>
+
+        <!-- Right : Menu -->
+        <nav class="flex items-center gap-5 lg:gap-8 font-semibold text-white text-sm lg:text-base">
+          <a href="index.html" class="relative group">
+            Home
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="./html/services.html" class="relative group">
+            Services
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="./html/collection.html" class="relative group">
+            Collection
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="./html/occasion.html" class="relative group">
+            Occasion
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="./html/contact.html" class="relative group">
+            Contact
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="./html/cart.html" class="bg-white text-[#90A285] px-4 py-2 rounded-full shadow-md hover:scale-105 hover:bg-[#D9D9D9] transition-all duration-300 relative">
+            Cart  <i class="fa-solid fa-cart-shopping text-[#444642] text-xl"></i>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Mobile Navbar Top -->
+      <div class="relative md:hidden bg-[#90A285] w-full flex items-center justify-center px-4 py-3 overflow-hidden">
+        <div class="relative z-10 flex items-center gap-2">
+          <img src="assets/drg.png" class="h-10" alt="Logo" onerror="this.src='https://placehold.co/100x100?text=Logo'"/>
+          <h1 class="font-bold text-amber-50 font-serif text-[18px]">
+            MAA DURGA FLORALS
+          </h1>
+        </div>
+      </div>
+
+      <!-- Mobile Bottom Menu Strip -->
+      <div class="flex md:hidden bg-[#D9D9D9] w-full py-1.5">
+        <div class="flex items-center justify-between w-full px-2">
+          <a href="index.html" class="flex flex-col items-center group">
+            <div class="h-12 w-12 rounded-full bg-[#818D7F] flex items-center justify-center transition-all duration-300 group-hover:scale-110">
+              <i class="fa-solid fa-home text-white text-xl"></i>
+            </div>
+            <span class="text-xs mt-1">Home</span>
+          </a>
+          <a href="./html/collection.html" class="flex flex-col items-center group">
+            <div class="h-12 w-12 rounded-full bg-[#818D7F] flex justify-center items-center transition-all duration-300 group-hover:scale-110">
+              <i class="fa-solid fa-list text-white text-xl"></i>
+            </div>
+            <span class="text-xs mt-1">Collection</span>
+          </a>
+          <a href="./html/services.html" class="flex flex-col items-center group">
+            <div class="h-12 w-12 rounded-full bg-[#818D7F] flex justify-center items-center transition-all duration-300 group-hover:scale-110">
+              <i class="fa-solid fa-handshake text-white text-xl"></i>
+            </div>
+            <span class="text-xs mt-1">Services</span>
+          </a>
+          <a href="./html/occasion.html" class="flex flex-col items-center group">
+            <div class="h-12 w-12 rounded-full bg-[#818D7F] flex justify-center items-center transition-all duration-300 group-hover:scale-110">
+              <i class="fa-solid fa-spa text-white text-xl"></i>
+            </div>
+            <span class="text-xs mt-1">Occasion</span>
+          </a>
+          <a href="./html/contact.html" class="flex flex-col items-center group">
+            <div class="h-12 w-12 rounded-full bg-[#818D7F] flex justify-center items-center transition-all duration-300 group-hover:scale-110">
+              <i class="fa-solid fa-phone text-white text-xl"></i>
+            </div>
+            <span class="text-xs mt-1">Contact</span>
+          </a>
+          <a href="./html/cart.html" class="flex flex-col items-center group relative">
+            <div class="h-12 w-12 rounded-full bg-[#818D7F] flex justify-center items-center transition-all duration-300 group-hover:scale-110 relative">
+              <i class="fa-solid fa-cart-shopping text-white text-xl"></i>
+            </div>
+            <span class="text-xs mt-1">Cart</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="relative w-full flex flex-col md:flex-row items-center justify-center px-4 md:px-6 py-6 md:py-10 gap-6 md:gap-20 overflow-hidden">
+      <!-- Background -->
+      <div class="absolute inset-0 bg-[url('assets/bg.png')] bg-center bg-contain md:bg-cover"></div>
+      <div class="absolute inset-0 bg-black/40"></div>
+
+      <!-- Content -->
+      <div class="relative z-10 flex flex-row items-center justify-center gap-6 md:gap-20 w-full">
+        <!-- Images -->
+        <div class="relative flex justify-center items-center mx-2.5">
+          <!-- Main Image Wrapper -->
+          <div class="relative w-[140px] h-[170px] md:w-[320px] md:h-[420px] rounded-t-full border-4 border-yellow-200 overflow-hidden pointer-events-none">
+            <div id="main-track" class="flex w-full h-full transition-transform duration-700 ease-in-out" style="transform: translateX(0%)">
+              <img src="assets/Frame 4.png" class="min-w-full h-full object-cover pointer-events-auto" onerror="this.src='https://placehold.co/320x420?text=Slide+1'" />
+              <img src="assets/fest.jpeg" class="min-w-full h-full object-cover pointer-events-auto" onerror="this.src='https://placehold.co/320x420?text=Slide+2'" />
+              <img src="assets/bday1.jpeg" class="min-w-full h-full object-cover pointer-events-auto" onerror="this.src='https://placehold.co/320x420?text=Slide+3'" />
+              <img src="https://as1.ftcdn.net/v2/jpg/04/18/51/36/1000_F_418513636_E4x4kgDkdFX6quABAi5nbwzVpOwOwgx1.jpg" class="min-w-full h-full object-cover pointer-events-auto" />
+            </div>
+          </div>
+
+          <!-- Sub Image Wrapper -->
+          <div class="absolute bottom-5 md:bottom-9 right-[-20px] md:right-[-37px] translate-y-[30%] w-[60px] h-[85px] md:w-[150px] md:h-[180px] rounded-t-full border-4 border-yellow-200 overflow-hidden pointer-events-none z-10">
+            <!-- Revealing solid cover -->
+            <div id="sub-reveal-cover" class="absolute inset-0 bg-yellow-200 z-20 transition-transform duration-500 ease-in-out origin-left pointer-events-none" style="transform: scaleX(0)"></div>
+            <div id="sub-track" class="flex w-full h-full" style="transform: translateX(0%)">
+              <img src="assets/Frame 5.png" class="min-w-full h-full object-cover pointer-events-auto" onerror="this.src='https://placehold.co/150x180?text=Thumb+1'" />
+              <img src="assets/festt.jpeg" class="min-w-full h-full object-cover pointer-events-auto" onerror="this.src='https://placehold.co/150x180?text=Thumb+2'" />
+              <img src="assets/bday2.jpeg" class="min-w-full h-full object-cover pointer-events-auto" onerror="this.src='https://placehold.co/150x180?text=Thumb+3'" />
+              <img src="assets/Rectangle 20 (2).png" class="min-w-full h-full object-cover pointer-events-auto" onerror="this.src='https://placehold.co/150x180?text=Thumb+4'" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Image Slider Text -->
+        <div class="flex flex-col items-center md:items-start text-white text-center md:text-left gap-1 md:gap-2 w-[200px] md:w-[400px]">
+          <div class="flex items-start gap-3 h-[50px] md:h-[80px]">
+            <i class="fa-solid fa-quote-left text-white text-sm md:text-xl -mt-2 md:-mt-4"></i>
+            <h4 id="quote-text" class="text-[12px] sm:text-[14px] overflow-hidden mt-1 md:mt-2 flex md:text-2xl font-semibold">
+              Two souls, one heart, blooming together forever.
+            </h4>
+          </div>
+
+          <div class="flex items-center -mt-2 md:-mt-4 gap-0.5 md:gap-3">
+            <div class="h-[1px] w-6 md:w-10 bg-white"></div>
+            <p class="text-[9px] md:text-sm whitespace-nowrap">
+              With Maa Durga Florals
+            </p>
+            <div class="h-[1px] w-6 md:w-10 bg-white"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Welcome To Bhiwadi -->
+    <div class="flex flex-col justify-center items-center font-semibold text-xl md:text-[30px] mt-3 text-center">
+      <h1>Welcome to Bhiwadi</h1>
+      <img src="assets/hortizont-arrow.png" alt="" class="w-[85%] md:w-auto h-auto mt-1 md:mt-2" onerror="this.style.display='none'" />
+    </div>
+
+    <div class="max-w-5xl mx-auto px-4 py-10 flex flex-col gap-8 md:gap-16 overflow-x-hidden">
+      <!-- First Block -->
+      <div class="flex flex-row items-center text-left gap-4 md:gap-8">
+        <div class="shrink-0 flex flex-col items-center">
+          <img src="assets/Rectangle 36.png" class="w-28 h-28 sm:w-40 sm:h-40 md:w-60 h-auto md:h-60 rounded-md hover:scale-105 hover:-translate-y-2 transition-all duration-300 cursor-pointer" onerror="this.src='https://placehold.co/240x240?text=Shop'" />
+          <div class="w-[70%] h-2 sm:h-3 md:h-4 bg-black/40 rounded-[50%] blur-[4px] md:blur-md mt-2"></div>
+        </div>
+        <div class="scroll-animate slide-right">
+          <h2 class="text-lg sm:text-xl md:text-2xl font-semibold border-b-2 border-gray-300 inline-block mb-1 sm:mb-2 pb-1">
+            Flower Shop
+          </h2>
+          <p class="text-gray-600 text-xs sm:text-sm md:text-base leading-relaxed line-clamp-3 md:line-clamp-none">
+            Flower shops in Bhiwadi provide fresh bouquets, floral decorations,
+            and quick delivery services for occasions like birthdays, weddings,
+            and anniversaries. Popular options such as Phoolwala and Ferns N
+            Petals offer customizable arrangements, cakes, and same-day
+            delivery, making gifting easy and convenient.
+          </p>
+        </div>
+      </div>
+
+      <!-- Second Block -->
+      <div class="flex flex-row-reverse justify-between items-center text-left gap-4 md:gap-8">
+        <div class="shrink-0 flex flex-col items-center">
+          <img src="assets/Rectangle 77.png" class="w-28 h-28 sm:w-40 sm:h-40 md:w-60 h-auto md:h-60 px-1.5 rounded-md hover:scale-105 hover:-translate-y-2 transition-all duration-300 cursor-pointer" onerror="this.src='https://placehold.co/240x240?text=Temple'" />
+          <div class="w-[70%] h-2 sm:h-3 md:h-4 bg-black/40 rounded-[50%] blur-[4px] md:blur-md mt-2"></div>
+        </div>
+        <div class="w-full scroll-animate slide-left">
+          <h2 class="text-lg sm:text-xl md:text-2xl font-semibold border-b-2 border-gray-300 inline-block mb-1 sm:mb-2 pb-1">
+            Tijara Jain Temple
+          </h2>
+          <p class="text-gray-600 text-xs sm:text-sm md:text-base leading-relaxed line-clamp-3 md:line-clamp-none">
+            Tijara Jain Temple is a famous Digambara Jain temple dedicated to
+            Lord Chandraprabhu, the 8th Tirthankara. It was established after a
+            sacred idol was discovered in 1956. Known for its beautiful marble
+            architecture and peaceful atmosphere, it is considered a holy
+            pilgrage site and attracts devotees from across India.
+          </p>
+        </div>
+      </div>
+
+      <!-- Third Block -->
+      <div class="flex flex-row items-center text-left gap-4 md:gap-8">
+        <div class="shrink-0 flex flex-col items-center">
+          <img src="assets/Rectangle 39.png" class="w-28 h-28 sm:w-40 sm:h-40 md:w-60 h-auto md:h-60 rounded-md hover:scale-105 hover:-translate-y-2 transition-all duration-300 cursor-pointer" onerror="this.src='https://placehold.co/240x240?text=Fort'" />
+          <div class="w-[70%] h-2 sm:h-3 md:h-4 bg-black/40 rounded-[50%] blur-[4px] md:blur-md mt-2"></div>
+        </div>
+        <div class="scroll-animate slide-right">
+          <h2 class="text-lg sm:text-xl md:text-2xl font-semibold border-b-2 border-gray-300 inline-block mb-1 sm:mb-2 pb-1">
+            Neemrana Fort Palace
+          </h2>
+          <p class="text-gray-600 text-xs sm:text-sm md:text-base leading-relaxed line-clamp-3 md:line-clamp-none">
+            Neemrana Fort Palace is a stunning 15th-century heritage fort
+            located in Rajasthan, built in 1464 and later transformed into a
+            luxury hotel. Nestled in the Aravalli hills, it offers breathtaking
+            views, royal architecture, and modern amenities like pools and spa.
+            It’s a popular weekend getaway near Delhi, blending history with
+            comfort.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Founder -->
+    <div class="flex flex-col justify-center items-center font-semibold text-xl md:text-[30px] mt-3 text-center">
+      <h1>The Founder</h1>
+      <img src="assets/hortizont-arrow.png" alt="" class="w-[85%] md:w-auto h-auto mt-1 md:mt-2" onerror="this.style.display='none'" />
+    </div>
+
+    <div class="max-w-5xl mx-auto px-4 py-10">
+      <div class="flex items-center gap-4 md:gap-6">
+        <!-- Left: Image + Name -->
+        <div class="flex flex-col items-center w-24 sm:w-32 md:w-52 shrink-0">
+          <img src="./images/IMG_20260929_185542.png" class="w-20 h-20 sm:w-28 sm:h-28 md:w-52 md:h-52 rounded-full object-cover ring-4 ring-[#818D7F] ring-offset-4" onerror="this.src='https://placehold.co/200x200?text=Founder'"/>
+          <p class="mt-2 text-xs sm:text-sm md:text-lg font-semibold text-center">
+            Rajkumar Sahoo
+          </p>
+        </div>
+
+        <!-- Right: Quote + Text -->
+        <div class="flex-1">
+          <div class="flex items-start gap-2">
+            <span class="text-xl sm:text-2xl md:text-4xl font-bold leading-none -mt-2 md:-mt-4">
+              <i class="fa-solid fa-quote-left text-black text-sm md:text-xl"></i>
+            </span>
+            <p class="text-gray-700 text-xs sm:text-sm md:text-lg leading-relaxed">
+              I am Raj Kishore Sahoo, a florist based in Bhiwadi near Alwar
+              Bypass. I started my flower business in 2017 to make fresh flowers
+              and home delivery easily available. I am passionate about creating
+              beautiful arrangements and ensuring timely delivery, helping
+              people express emotions and celebrate special moments with
+              happiness.
+            </p>
+          </div>
+          <div class="flex justify-end mt-2">
+            <div class="inline-block text-left">
+              <p class="text-xs sm:text-sm md:text-base italic font-semibold typewriter pr-1">
+                by Founder
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NEW Flowers Collection (From Code 2) -->
+    <div class="flex flex-col justify-center items-center font-semibold text-xl md:text-[30px] mt-3 text-center">
+      <h1>Flowers Collection</h1>
+      <img src="assets/hortizont-arrow.png" alt="" class="w-[85%] md:w-auto h-auto mt-1 md:mt-2" onerror="this.style.display='none'" />
+    </div>
+
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 md:px-16 py-8">
+      <div class="grid grid-cols-3 gap-3 sm:gap-6 md:gap-10">
+        <!-- Card 1 -->
+        <div class="text-center">
+          <img src="assets/marigold.webp" class="w-full aspect-square object-cover rounded-xl hover:scale-105 hover:-translate-y-2 transition-all duration-300 shadow-md hover:shadow-2xl cursor-pointer" onerror="this.src='https://placehold.co/200x200?text=Marigold'" />
+          <button onclick="addToCart('Marigold', 20, 'assets/marigold.webp')" class="mt-2 w-full h-7 sm:h-8 flex items-center justify-between bg-[#8aa17f] text-[9px] sm:text-xs font-bold px-1.5 sm:px-3 rounded-full text-black no-underline shadow-[4px_4px_8px_rgba(0,0,0,0.2),-4px_-4px_8px_rgba(255,255,255,0.4)] transition-all duration-300 hover:scale-105 cursor-pointer">
+            <span>Marigold</span>
+            <span class="text-white bg-black/20 px-1.5 py-0.5 rounded-full text-[8px] sm:text-[10px] flex items-center gap-1">₹20 <i class="fa-solid fa-plus"></i></span>
+          </button>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="text-center">
+          <img src="assets/Rose.png" class="w-full aspect-square object-cover rounded-xl hover:scale-105 hover:-translate-y-2 transition-all duration-300 shadow-md hover:shadow-2xl cursor-pointer" onerror="this.src='https://placehold.co/200x200?text=Rose'" />
+          <button onclick="addToCart('Rose', 20, 'assets/Rose.png')" class="mt-2 w-full h-7 sm:h-8 flex items-center justify-between bg-[#8aa17f] text-[9px] sm:text-xs font-bold px-1.5 sm:px-3 rounded-full text-black no-underline shadow-[4px_4px_8px_rgba(0,0,0,0.2),-4px_-4px_8px_rgba(255,255,255,0.4)] transition-all duration-300 hover:scale-105 cursor-pointer">
+            <span>Rose</span>
+            <span class="text-white bg-black/20 px-1.5 py-0.5 rounded-full text-[8px] sm:text-[10px] flex items-center gap-1">₹20 <i class="fa-solid fa-plus"></i></span>
+          </button>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="text-center">
+          <img src="assets/jasmin.jpg" class="w-full aspect-square object-cover rounded-xl hover:scale-105 hover:-translate-y-2 transition-all duration-300 shadow-md hover:shadow-2xl cursor-pointer" onerror="this.src='https://placehold.co/200x200?text=Jasmin'" />
+          <button onclick="addToCart('Jasmin', 20, 'assets/jasmin.jpg')" class="mt-2 w-full h-7 sm:h-8 flex items-center justify-between bg-[#8aa17f] text-[9px] sm:text-xs font-bold px-1.5 sm:px-3 rounded-full text-black no-underline shadow-[4px_4px_8px_rgba(0,0,0,0.2),-4px_-4px_8px_rgba(255,255,255,0.4)] transition-all duration-300 hover:scale-105 cursor-pointer">
+            <span>Jasmin</span>
+            <span class="text-white bg-black/20 px-1.5 py-0.5 rounded-full text-[8px] sm:text-[10px] flex items-center gap-1">₹20 <i class="fa-solid fa-plus"></i></span>
+          </button>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="text-center">
+          <img src="assets/Champak.webp" class="w-full aspect-square object-cover rounded-xl hover:scale-105 hover:-translate-y-2 transition-all duration-300 shadow-md hover:shadow-2xl cursor-pointer" onerror="this.src='https://placehold.co/200x200?text=Champak'" />
+          <button onclick="addToCart('Champak', 20, 'assets/Champak.webp')" class="mt-2 w-full h-7 sm:h-8 flex items-center justify-between bg-[#8aa17f] text-[9px] sm:text-xs font-bold px-1.5 sm:px-3 rounded-full text-black no-underline shadow-[4px_4px_8px_rgba(0,0,0,0.2),-4px_-4px_8px_rgba(255,255,255,0.4)] transition-all duration-300 hover:scale-105 cursor-pointer">
+            <span>Champak</span>
+            <span class="text-white bg-black/20 px-1.5 py-0.5 rounded-full text-[8px] sm:text-[10px] flex items-center gap-1">₹20 <i class="fa-solid fa-plus"></i></span>
+          </button>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="text-center">
+          <img src="assets/hibiscus.webp" class="w-full aspect-square object-cover rounded-xl hover:scale-105 hover:-translate-y-2 transition-all duration-300 shadow-md hover:shadow-2xl cursor-pointer" onerror="this.src='https://placehold.co/200x200?text=Hibiscus'" />
+          <button onclick="addToCart('Hibiscus', 20, 'assets/hibiscus.webp')" class="mt-2 w-full h-7 sm:h-8 flex items-center justify-between bg-[#8aa17f] text-[9px] sm:text-xs font-bold px-1.5 sm:px-3 rounded-full text-black no-underline shadow-[4px_4px_8px_rgba(0,0,0,0.2),-4px_-4px_8px_rgba(255,255,255,0.4)] transition-all duration-300 hover:scale-105 cursor-pointer">
+            <span>Hibiscus</span>
+            <span class="text-white bg-black/20 px-1.5 py-0.5 rounded-full text-[8px] sm:text-[10px] flex items-center gap-1">₹20 <i class="fa-solid fa-plus"></i></span>
+          </button>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="text-center">
+          <img src="assets/lily.webp" class="w-full aspect-square object-cover rounded-xl hover:scale-105 hover:-translate-y-2 transition-all duration-300 shadow-md hover:shadow-2xl cursor-pointer" onerror="this.src='https://placehold.co/200x200?text=Lily'" />
+          <button onclick="addToCart('Lily', 20, 'assets/lily.webp')" class="mt-2 w-full h-7 sm:h-8 flex items-center justify-between bg-[#8aa17f] text-[9px] sm:text-xs font-bold px-1.5 sm:px-3 rounded-full text-black no-underline shadow-[4px_4px_8px_rgba(0,0,0,0.2),-4px_-4px_8px_rgba(255,255,255,0.4)] transition-all duration-300 hover:scale-105 cursor-pointer">
+            <span>Lily</span>
+            <span class="text-white bg-black/20 px-1.5 py-0.5 rounded-full text-[8px] sm:text-[10px] flex items-center gap-1">₹20 <i class="fa-solid fa-plus"></i></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Categories -->
+    <div class="flex flex-col justify-center items-center font-semibold text-xl md:text-[30px] mt-3 text-center">
+      <h1>Categories</h1>
+      <img src="assets/hortizont-arrow.png" alt="" class="w-[85%] md:w-auto h-auto mt-1 md:mt-2" onerror="this.style.display='none'" />
+    </div>
+
+    <div class="max-w-4xl mx-auto px-6 md:px-16 py-8">
+      <div class="grid grid-cols-3 gap-6 md:gap-10">
+        <div class="text-center">
+          <img src="https://media.craiyon.com/2025-04-15/LIELtR5xRV6NqBn7wtmtSw.webp" class="w-full h-28 sm:h-32 md:h-auto md:aspect-square object-cover rounded-xl hover:scale-105 hover:-translate-y-2 transition-all duration-300 shadow-md hover:shadow-2xl cursor-pointer" />
+          <a href="./html/wedding-collection.html" class="mt-4 inline-block bg-[#8aa17f] text-xs font-bold sm:text-sm px-5 py-2 rounded-full text-black no-underline shadow-[4px_4px_8px_rgba(0,0,0,0.2),-4px_-4px_8px_rgba(255,255,255,0.4)] hover:shadow-[inset_4px_4px_8px_rgba(0,0,0,0.2),inset_-4px_-4px_8px_rgba(255,255,255,0.4)] transition-all duration-300" >
+            Wedding
+          </a>
+        </div>
+
+        <div class="text-center">
+          <img src="https://i.pinimg.com/originals/c1/36/1b/c1361b8d4de1fcf8fa19730ddcd443b3.jpg" class="w-full h-28 sm:h-32 md:h-auto md:aspect-square object-cover rounded-xl hover:scale-105 hover:-translate-y-2 transition-all duration-300 shadow-md hover:shadow-2xl cursor-pointer" />
+          <a href="./html/occasion.html" class="mt-4 inline-block bg-[#8aa17f] text-xs font-bold sm:text-sm px-5 py-2 rounded-full text-black no-underline shadow-[4px_4px_8px_rgba(0,0,0,0.2),-4px_-4px_8px_rgba(255,255,255,0.4)] hover:shadow-[inset_4px_4px_8px_rgba(0,0,0,0.2),inset_-4px_-4px_8px_rgba(255,255,255,0.4)] transition-all duration-300">
+            Baby Shower
+          </a>
+        </div>
+
+        <div class="text-center">
+          <img src="https://tse3.mm.bing.net/th/id/OIP.vSB7V4KwX3yIyW4Xr-6OhgHaGN?w=720&h=604&rs=1&pid=ImgDetMain&o=7&rm=3" class="w-full h-28 sm:h-32 md:h-auto md:aspect-square object-cover rounded-xl hover:scale-105 hover:-translate-y-2 transition-all duration-300 shadow-md hover:shadow-2xl cursor-pointer" />
+          <a href="./html/occasion.html" class="mt-4 inline-block bg-[#8aa17f] text-xs font-bold sm:text-sm px-5 py-2 rounded-full text-black no-underline shadow-[4px_4px_8px_rgba(0,0,0,0.2),-4px_-4px_8px_rgba(255,255,255,0.4)] hover:shadow-[inset_4px_4px_8px_rgba(0,0,0,0.2),inset_-4px_-4px_8px_rgba(255,255,255,0.4)] transition-all duration-300">
+            Birthday
+          </a>
+        </div>
+
+        <div class="text-center">
+          <img src="https://th.bing.com/th/id/OIP.bnW6XKIY5kkGaoT4uNp1twHaFU?w=261&h=187&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3" class="w-full h-28 sm:h-32 md:h-auto md:aspect-square object-cover rounded-xl hover:scale-105 hover:-translate-y-2 transition-all duration-300 shadow-md hover:shadow-2xl cursor-pointer" />
+          <a href="./html/occasion.html" class="mt-4 inline-block bg-[#8aa17f] text-xs font-bold sm:text-sm px-5 py-2 rounded-full text-black no-underline shadow-[4px_4px_8px_rgba(0,0,0,0.2),-4px_-4px_8px_rgba(255,255,255,0.4)] hover:shadow-[inset_4px_4px_8px_rgba(0,0,0,0.2),inset_-4px_-4px_8px_rgba(255,255,255,0.4)] transition-all duration-300">
+            Festival
+          </a>
+        </div>
+
+        <div class="text-center">
+          <img src="https://th.bing.com/th/id/OIP.WYf8Rah7rJLiFIDGy3mGxwHaE7?w=227&h=180&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3" class="w-full h-28 sm:h-32 md:h-auto md:aspect-square object-cover rounded-xl hover:scale-105 hover:-translate-y-2 transition-all duration-300 shadow-md hover:shadow-2xl cursor-pointer" />
+          <a href="./html/occasion.html" class="mt-4 inline-block bg-[#8aa17f] text-xs font-bold sm:text-sm px-5 py-2 rounded-full text-black no-underline shadow-[4px_4px_8px_rgba(0,0,0,0.2),-4px_-4px_8px_rgba(255,255,255,0.4)] hover:shadow-[inset_4px_4px_8px_rgba(0,0,0,0.2),inset_-4px_-4px_8px_rgba(255,255,255,0.4)] transition-all duration-300">
+            Surprise's
+          </a>
+        </div>
+
+        <div class="text-center">
+          <img src="https://tse2.mm.bing.net/th/id/OIP.bqtWtIBD3tI76ZjngDlwFAHaE8?pid=ImgDet&w=181&h=120&c=7&dpr=1.5&o=7&rm=3" class="w-full h-28 sm:h-32 md:h-auto md:aspect-square object-cover rounded-xl hover:scale-105 hover:-translate-y-2 transition-all duration-300 shadow-md hover:shadow-2xl cursor-pointer" />
+          <a href="./html/occasion.html" class="mt-4 inline-block bg-[#8aa17f] text-xs font-bold sm:text-sm px-5 py-2 rounded-full text-black no-underline shadow-[4px_4px_8px_rgba(0,0,0,0.2),-4px_-4px_8px_rgba(255,255,255,0.4)] hover:shadow-[inset_4px_4px_8px_rgba(0,0,0,0.2),inset_-4px_-4px_8px_rgba(255,255,255,0.4)] transition-all duration-300">
+            Anniversary
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div id="footer"></div>
+
+    <!-- Combined Scripts -->
+    <script>
+      // ---- DYNAMIC FOOTER LOAD (MOCK FETCH FOR SANDBOX) ----
+      // Bypassing network fetch due to sandbox restrictions
+      const footerHTML = `
+      <footer class="relative bg-[#818D7F] text-white mt-24 pt-24 pb-8 overflow-visible">
+        <div class="absolute -top-14 left-6 md:left-20">
+          <img src="assets/Group 63.png" alt="Logo" class="h-20 md:h-28 w-auto drop-shadow-lg" onerror="this.style.display='none'" />
+        </div>
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+          <div>
+            <h2 class="text-xl md:text-2xl font-bold mb-5 underline decoration-yellow-200 underline-offset-8">Quick Links</h2>
+            <ul class="grid grid-cols-2 gap-y-3 text-sm md:text-base">
+              <li><a href="index.html" class="hover:text-yellow-200 transition">Home</a></li>
+              <li><a href="collection.html" class="hover:text-yellow-200 transition">Collection</a></li>
+              <li><a href="services.html" class="hover:text-yellow-200 transition">Services</a></li>
+              <li><a href="occasion.html" class="hover:text-yellow-200 transition">Occasion</a></li>
+              <li><a href="contact.html" class="hover:text-yellow-200 transition">Contact</a></li>
+              <li><a href="cart.html" class="hover:text-yellow-200 transition">Cart 🛒</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2 class="text-xl md:text-2xl font-bold mb-5 underline decoration-yellow-200 underline-offset-8">Contact Us</h2>
+            <ul class="space-y-4 text-sm md:text-base">
+              <li class="flex gap-3"><span>📍</span><span>Main Market, Bhiwadi<br />Rajasthan, 301019</span></li>
+              <li class="flex gap-3"><span>📞</span><span>+91 98765 43210</span></li>
+              <li class="flex gap-3"><span>✉️</span><span>info@maadurgaflorals.com</span></li>
+            </ul>
+          </div>
+          <div class="flex flex-col">
+            <h2 class="text-xl md:text-2xl font-bold mb-5 underline decoration-yellow-200 underline-offset-8">Our Location</h2>
+            <div class="w-full h-[200px] rounded-xl overflow-hidden shadow-lg border-2 border-white/20 relative group">
+              <div class="absolute inset-0 bg-transparent z-10 hidden md:block group-hover:hidden"></div>
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d112349.56637373357!2d76.76211110461877!3d28.204561845110998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d47b01b636035%3A0x6e902b48d88eab94!2sBhiwadi%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1707000000000!5m2!1sen!2sin" 
+                width="100%" 
+                height="100%" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"
+                class="grayscale-[30%] hover:grayscale-0 transition-all duration-500">
+              </iframe>
+            </div>
+          </div>
+        </div>
+        <div class="mt-12 pt-4 border-t border-white/20 text-center text-sm text-white/80">
+          © 2026 Maa Durga Florals. All rights reserved. | <span class="text-black font-semibold cursor-pointer hover:text-yellow-200 transition-colors duration-300">Nityasundaram Production</span>
+        </div>
+      </footer>
+      `;
+      
+      const footerContainer = document.getElementById("footer");
+      if (footerContainer) footerContainer.innerHTML = footerHTML;
+
+      // ---- SLIDER AND SCROLL ANIMATIONS ----
+      const totalSlides = 4;
+      let currentSlide = 0;
+
+      const mainTrack = document.getElementById("main-track");
+      const subTrack = document.getElementById("sub-track");
+      const subCover = document.getElementById("sub-reveal-cover");
+
+      setInterval(() => {
+        // 1. Cover the second frame with a yellow block (Swipe in from left)
+        subCover.classList.remove("origin-right");
+        subCover.classList.add("origin-left");
+        subCover.style.transform = "scaleX(1)";
+
+        setTimeout(() => {
+          // Increment slide index, loop back to 0 at the end
+          currentSlide = (currentSlide + 1) % totalSlides;
+          const offset = -(currentSlide * 100);
+
+          // Main track slides normally from right to left
+          mainTrack.style.transform = `translateX(${offset}%)`;
+          subTrack.style.transform = `translateX(${offset}%)`;
+
+          setTimeout(() => {
+            subCover.classList.remove("origin-left");
+            subCover.classList.add("origin-right");
+            subCover.style.transform = "scaleX(0)";
+          }, 50);
+        }, 500);
+      }, 3500);
+
+      const quotes = [
+        "Two souls, one heart, blooming together forever.",
+        "Every petal tells a story of love.",
+        "Celebrate moments with flowers and fragrance.",
+        "Where emotions bloom beautifully.",
+      ];
+
+      let i = 0;
+      const quote = document.getElementById("quote-text");
+
+      setInterval(() => {
+        // Slide out to top
+        quote.classList.remove("slide-in-down");
+        quote.classList.add("slide-out-up");
+
+        setTimeout(() => {
+          // Change text and slide in from bottom
+          i = (i + 1) % quotes.length;
+          quote.textContent = quotes[i];
+
+          quote.classList.remove("slide-out-up");
+          quote.classList.add("slide-in-down");
+        }, 500);
+      }, 3500);
+
+      // Intersection Observer for scroll animations
+      document.addEventListener("DOMContentLoaded", () => {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+            } else {
+              entry.target.classList.remove("is-visible");
+            }
+          });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll(".scroll-animate").forEach((el) => {
+          observer.observe(el);
+        });
+      });
+
+      // ---- CART COUNT SCRIPT (From Code 2) ----
+      document.addEventListener('DOMContentLoaded', () => {
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+
+            // Find mobile cart icons
+            const cartIcons = document.querySelectorAll('.fa-cart-shopping');
+            cartIcons.forEach(icon => {
+                const container = icon.parentElement;
+                
+                // Only target the specific container that is a button or link wrapper
+                if (container.tagName === 'DIV' || container.tagName === 'BUTTON' || container.tagName === 'A') {
+                    if (!container.classList.contains('relative')) {
+                        container.classList.add('relative');
+                    }
+                    
+                    // Remove existing badge if any
+                    const existingBadge = container.querySelector('.cart-badge');
+                    if (existingBadge) {
+                        existingBadge.remove();
+                    }
+
+                    if (totalItems > 0) {
+                        const badge = document.createElement('div');
+                        badge.className = 'cart-badge absolute -top-1 -right-2 bg-red-500 text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full shadow-md z-10';
+                        badge.textContent = totalItems > 99 ? '99+' : totalItems;
+                        container.appendChild(badge);
+                    }
+                }
+            });
+
+            // Find desktop text links
+            const links = document.querySelectorAll('a[href="cart.html"]');
+            links.forEach(link => {
+                // Only update if it contains "Cart" text and isn't the mobile icon link wrapper
+                if (link.textContent.includes('Cart') && !link.querySelector('.fa-cart-shopping')) {
+                    // Store original text if not already stored
+                    if (!link.dataset.originalText) {
+                        link.dataset.originalText = link.textContent.trim();
+                    }
+                    
+                    if (totalItems > 0) {
+                        link.textContent = `${link.dataset.originalText} (${totalItems})`;
+                    } else {
+                        link.textContent = link.dataset.originalText;
+                    }
+                }
+            });
+        }
+
+        // Run initially
+        updateCartCount();
+
+        // Listen for cross-tab updates
+        window.addEventListener('storage', (e) => {
+            if (e.key === 'cart') {
+                updateCartCount();
+            }
+        });
+
+        // Make it globally available for Add to Cart buttons
+        window.updateGlobalCartCount = updateCartCount;
+
+        // Patch existing Add to Cart buttons to update the count immediately
+        const originalSetItem = localStorage.setItem;
+        localStorage.setItem = function(key, value) {
+            originalSetItem.apply(this, arguments);
+            if (key === 'cart') {
+                updateCartCount();
+            }
+        };
+      });
+
+      // ---- ADD TO CART LOGIC & TOAST NOTIFICATION ----
+      function addToCart(name, price, image) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let existingItem = cart.find(item => item.name === name);
+        
+        if (existingItem) {
+            existingItem.qty += 1;
+        } else {
+            cart.push({ name, price, image, qty: 1 });
+        }
+        
+        // Updating localStorage automatically triggers your cart count script
+        localStorage.setItem('cart', JSON.stringify(cart));
+        
+        showToast(`${name} added to your cart! 🛒`);
+      }
+
+      function showToast(message) {
+        let toast = document.createElement('div');
+        toast.className = "fixed bottom-5 right-5 bg-[#818D7F] text-white px-6 py-3 rounded-lg shadow-xl z-50 transform transition-all duration-300 translate-y-10 opacity-0 font-medium flex items-center gap-2";
+        toast.innerHTML = `<span>${message}</span>`;
+        
+        document.body.appendChild(toast);
+        
+        // Animate in
+        setTimeout(() => {
+            toast.classList.remove('translate-y-10', 'opacity-0');
+        }, 10);
+        
+        // Animate out and remove
+        setTimeout(() => {
+            toast.classList.add('translate-y-10', 'opacity-0');
+            setTimeout(() => toast.remove(), 300);
+        }, 2500);
+      }
+    </script>
+  </body>
+</html>

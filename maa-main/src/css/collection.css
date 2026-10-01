@@ -1,0 +1,79 @@
+.scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      /* Base Reveal Animation Style */
+      .reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.7s cubic-bezier(0.2, 1, 0.3, 1);
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Parallax Floating Emojis */
+      @keyframes float {
+        0%, 100% { transform: translateY(0) rotate(12deg); }
+        50% { transform: translateY(-15px) rotate(18deg); }
+      }
+      @keyframes float-reverse {
+        0%, 100% { transform: translateY(0) rotate(-12deg); }
+        50% { transform: translateY(15px) rotate(-5deg); -webkit-transform: translateY(15px) rotate(-5deg); -moz-transform: translateY(15px) rotate(-5deg); -ms-transform: translateY(15px) rotate(-5deg); -o-transform: translateY(15px) rotate(-5deg); }
+      }
+      .animate-float { animation: float 6s ease-in-out infinite; }
+      .animate-float-reverse { animation: float-reverse 8s ease-in-out infinite; }
+
+      /* Interaction States */
+      .product-card {
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+        border: 0.8px solid rgba(0,0,0,0.06);
+      }
+      @media (min-width: 768px) {
+        .product-card:hover {
+          transform: translateY(-10px);
+          box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08);
+        }
+        .product-card:hover img {
+          transform: scale(1.08);
+        }
+      }
+      .product-card img {
+        transition: transform 0.6s ease;
+      }
+
+      /* Shine Effect on Buttons */
+      .btn-shine {
+        position: relative;
+        overflow: hidden;
+      }
+      .btn-shine::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -60%;
+        width: 20%;
+        height: 200%;
+        background: rgba(255, 255, 255, 0.2);
+        transform: rotate(30deg);
+        transition: all 0.6s ease;
+      }
+      .btn-shine:hover::after {
+        left: 130%;
+      }
+
+      @keyframes fade-in-down {
+        from { opacity: 0; transform: translateY(-15px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .hero-entrance {
+        animation: fade-in-down 0.9s forwards ease-out;
+      }
+      /* Home link helper */
+      .home-link { color: #818D7F; font-weight:600; text-decoration:none; }
+      .home-link .icon { margin-right:6px; }

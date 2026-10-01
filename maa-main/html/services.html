@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services - Maa Durga Florals</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Font Awesome fallback -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../src/css/services.css5">
+</head>
+<body class="bg-[#fcfdfc] text-gray-900 overflow-x-hidden">
+
+  <!-- Desktop Header (Hidden on Mobile) -->
+  <header class="sticky top-0 z-50 w-full drop-shadow-md">
+      <!-- Desktop Navbar -->
+      <div class="hidden md:flex items-center justify-between bg-[#90A285] px-6 lg:px-12 py-3">
+        <!-- Left : Logo + Title -->
+        <div class="flex items-center gap-4 group cursor-pointer">
+          <img src="../assets/drg.png" class="h-12 lg:h-14 transition-all duration-500 group-hover:scale-110 group-hover:rotate-6" alt="Logo" onerror="this.src='https://placehold.co/100x100?text=Logo'"/>
+          <h1 class="font-bold text-amber-50 font-serif text-[22px] lg:text-[30px] tracking-wide transition-all duration-500 group-hover:tracking-widest">
+            MAA DURGA FLORALS
+          </h1>
+        </div>
+
+        <!-- Right : Menu -->
+        <nav class="flex items-center gap-5 lg:gap-8 font-semibold text-white text-sm lg:text-base">
+          <a href="../index.html" class="relative group">
+            Home
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="./services.html" class="relative group">
+            Services
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="./collection.html" class="relative group">
+            Collection
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="./occasion.html" class="relative group">
+            Occasion
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="./contact.html" class="relative group">
+            Contact
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="./cart.html" class="bg-white text-[#90A285] px-4 py-2 rounded-full shadow-md hover:scale-105 hover:bg-[#D9D9D9] transition-all duration-300 relative">
+            Cart  <i class="fa-solid fa-cart-shopping text-[#444642] text-xl"></i>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Mobile Navbar Top -->
+      <div class="relative md:hidden bg-[#90A285] w-full flex items-center justify-center px-4 py-3 overflow-hidden">
+        <div class="relative z-10 flex items-center gap-2">
+          <img src="../assets/drg.png" class="h-10" alt="Logo" onerror="this.src='https://placehold.co/100x100?text=Logo'"/>
+          <h1 class="font-bold text-amber-50 font-serif text-[18px]">
+            MAA DURGA FLORALS
+          </h1>
+        </div>
+      </div>
+
+      <!-- Mobile Bottom Menu Strip -->
+      <div class="flex md:hidden bg-[#D9D9D9] w-full py-1.5">
+        <div class="flex items-center justify-between w-full px-2">
+          <a href="../index.html" class="flex flex-col items-center group">
+            <div class="h-12 w-12 rounded-full bg-[#818D7F] flex items-center justify-center transition-all duration-300 group-hover:scale-110">
+              <i class="fa-solid fa-home text-white text-xl"></i>
+            </div>
+            <span class="text-xs mt-1">Home</span>
+          </a>
+          <a href="./collection.html" class="flex flex-col items-center group">
+            <div class="h-12 w-12 rounded-full bg-[#818D7F] flex justify-center items-center transition-all duration-300 group-hover:scale-110">
+              <i class="fa-solid fa-list text-white text-xl"></i>
+            </div>
+            <span class="text-xs mt-1">Collection</span>
+          </a>
+          <a href="./services.html" class="flex flex-col items-center group">
+            <div class="h-12 w-12 rounded-full bg-[#818D7F] flex justify-center items-center transition-all duration-300 group-hover:scale-110">
+              <i class="fa-solid fa-handshake text-white text-xl"></i>
+            </div>
+            <span class="text-xs mt-1">Services</span>
+          </a>
+          <a href="./occasion.html" class="flex flex-col items-center group">
+            <div class="h-12 w-12 rounded-full bg-[#818D7F] flex justify-center items-center transition-all duration-300 group-hover:scale-110">
+              <i class="fa-solid fa-spa text-white text-xl"></i>
+            </div>
+            <span class="text-xs mt-1">Occasion</span>
+          </a>
+          <a href="./contact.html" class="flex flex-col items-center group">
+            <div class="h-12 w-12 rounded-full bg-[#818D7F] flex justify-center items-center transition-all duration-300 group-hover:scale-110">
+              <i class="fa-solid fa-phone text-white text-xl"></i>
+            </div>
+            <span class="text-xs mt-1">Contact</span>
+          </a>
+          <a href="./cart.html" class="flex flex-col items-center group relative">
+            <div class="h-12 w-12 rounded-full bg-[#818D7F] flex justify-center items-center transition-all duration-300 group-hover:scale-110 relative">
+              <i class="fa-solid fa-cart-shopping text-white text-xl"></i>
+            </div>
+            <span class="text-xs mt-1">Cart</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 md:pt-24 lg:pt-12 pb-20 relative">
+    
+    <!-- Decorative Floating Elements -->
+    <div class="absolute top-10 right-10 opacity-20 pointer-events-none animate-float hidden lg:block" style="animation-delay: 1s;">
+        <i data-lucide="flower-2" class="w-24 h-24 text-[#818d7f]"></i>
+    </div>
+    <div class="absolute top-40 left-0 opacity-10 pointer-events-none animate-float hidden lg:block">
+        <i data-lucide="leaf" class="w-20 h-20 text-[#818d7f]"></i>
+    </div>
+
+    <!-- Hero Header -->
+    <section class="pt-2 pb-0 text-center animate-fade-in-up relative z-10">
+      <div class="inline-flex items-center gap-2 bg-[#818d7f]/10 px-4 py-2 rounded-full mb-6">
+          <span class="text-[10px] md:text-xs font-bold tracking-[0.4em] text-[#818d7f] uppercase">Curated Floral Experiences</span>
+      </div>
+      
+      <h2 class="text-4xl md:text-7xl font-serif font-bold text-gray-900 leading-[1.1] mb-6">
+        Elevating Spaces<br> 
+        <span class="text-[#e870a3] text-glow italic">With Nature's Palette</span>
+      </h2>
+
+      <div class="flex items-center justify-center gap-6 mt-8">
+        <div class="h-[1px] w-12 md:w-24 bg-gradient-to-r from-transparent to-gray-300"></div>
+        <div class="text-[#e870a3] bg-white p-2 rounded-full shadow-sm border border-pink-50">
+            <i data-lucide="flower" class="w-6 h-6 animate-spin" style="animation-duration: 8s;"></i>
+        </div>
+        <div class="h-[1px] w-12 md:w-24 bg-gradient-to-l from-transparent to-gray-300"></div>
+      </div>
+    </section>
+
+    <!-- Services Grid -->
+    <div id="services-container" class="space-y-20 md:space-y-32 mt-8 md:mt-12">
+      <!-- Injected via JS -->
+    </div>
+
+    <!-- Subscriptions Section -->
+    <section class="mt-24 md:mt-44 scroll-anim opacity-0 translate-y-12 overflow-visible">
+      <div class="text-center mb-16 md:mb-24">
+        <div class="inline-flex items-center gap-2 bg-[#818d7f]/10 text-[#818d7f] px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest mb-6">
+          <i data-lucide="calendar-check" class="w-4 h-4"></i> Membership Plans
+        </div>
+        <h3 class="text-3xl md:text-5xl font-serif font-bold mb-6 text-gray-900">Floral Subscriptions</h3>
+        <p class="text-gray-500 max-w-2xl mx-auto text-base md:text-lg">Fresh, hand-picked blooms delivered to your sanctuary on a schedule that suits your life. Never be without nature's beauty again.</p>
+      </div>
+      
+      <!-- Subscriptions Grid -->
+      <div id="subscriptions-container" class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 lg:gap-10 px-2">
+        <!-- Injected via JS -->
+      </div>
+
+      <!-- Subscription FAQ / Trust Section -->
+      <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 text-center bg-gray-50 rounded-[3rem] p-10 md:p-16 border border-gray-100">
+        <div class="space-y-4">
+          <div class="bg-white w-14 h-14 rounded-2xl flex items-center justify-center mx-auto shadow-sm">
+            <i data-lucide="refresh-cw" class="w-7 h-7 text-[#818d7f]"></i>
+          </div>
+          <h4 class="font-bold text-lg">Easy Pause</h4>
+          <p class="text-sm text-gray-500">Going on vacation? Pause or skip a week with just one click in your profile.</p>
+        </div>
+        <div class="space-y-4">
+          <div class="bg-white w-14 h-14 rounded-2xl flex items-center justify-center mx-auto shadow-sm">
+            <i data-lucide="truck" class="w-7 h-7 text-[#818d7f]"></i>
+          </div>
+          <h4 class="font-bold text-lg">Morning Delivery</h4>
+          <p class="text-sm text-gray-500">Fresh flowers arrive by 9:00 AM, ensuring they stay fresh throughout the day.</p>
+        </div>
+        <div class="space-y-4">
+          <div class="bg-white w-14 h-14 rounded-2xl flex items-center justify-center mx-auto shadow-sm">
+            <i data-lucide="shield-check" class="w-7 h-7 text-[#818d7f]"></i>
+          </div>
+          <h4 class="font-bold text-lg">Quality Promise</h4>
+          <p class="text-sm text-gray-500">If your blooms don't last at least 5 days, we'll replace the arrangement for free.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Custom CTA -->
+    <section id="cta-container" class="scroll-anim opacity-0 translate-y-12 mt-24 md:mt-40">
+      <div class="relative rounded-[2rem] md:rounded-[4rem] overflow-hidden bg-[#818d7f] p-8 md:p-20 text-center text-white shadow-2xl">
+        <div class="relative z-10">
+          <div class="bg-white/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-8">
+            <i data-lucide="wand-2" class="w-8 h-8 text-white"></i>
+          </div>
+          <h4 class="text-3xl md:text-5xl font-serif font-bold mb-6">Want something unique?</h4>
+          <p class="text-base md:text-xl text-pink-50 mb-10 max-w-2xl mx-auto opacity-90">Tell us your vision, and our master florists will bring it to life with custom handpicked premium blooms.</p>
+          <button class="bg-white text-[#818d7f] px-8 md:px-12 py-4 md:py-5 rounded-full font-bold text-base md:text-lg shadow-xl active:scale-95 transition-all hover:bg-gray-50" onclick="window.location.href='../costmiz.html'">
+            Build Your Custom Bouquet
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+ <div id="footer"></div>
+
+
+  <script src="../src/js/services.js"></script>
+</body>
+</html>

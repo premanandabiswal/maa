@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/src/output.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <style>
+      /* Hide scrollbar for Chrome, Safari */
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* Hide scrollbar for IE, Edge, Firefox */
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+
+
+     <header class="sticky top-0 z-50 w-full drop-shadow-md">
+
+  <!-- Desktop Navbar -->
+  <div
+    class="hidden md:flex items-center justify-between bg-[#90A285] px-6 lg:px-12 py-3"
+  >
+
+    <!-- Left : Logo + Title -->
+    <div class="flex items-center gap-4 group cursor-pointer">
+
+      <img
+        src="asset/drg.png"
+        class="h-12 lg:h-14 transition-all duration-500 group-hover:scale-110 group-hover:rotate-6"
+      />
+
+      <h1
+        class="font-bold text-amber-50 font-serif text-[22px] lg:text-[30px] tracking-wide transition-all duration-500 group-hover:tracking-widest"
+      >
+        MAA DURGA FLORALS
+      </h1>
+    </div>
+
+    <!-- Right : Menu -->
+    <nav
+      class="flex items-center gap-5 lg:gap-8 font-semibold text-white text-sm lg:text-base"
+    >
+
+      <a href="index.html" class="relative group">
+        Home
+        <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+      </a>
+
+      <a href="service.html" class="relative group">
+        Services
+        <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+      </a>
+
+      <a href="collection.html" class="relative group">
+        Collection
+        <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+      </a>
+
+      <a href="occasion.html" class="relative group">
+        Occasion
+        <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+      </a>
+
+      <a href="contact.html" class="relative group">
+        Contact
+        <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+      </a>
+
+      <a
+        href="cart.html"
+        class="bg-white text-[#90A285] px-4 py-2 rounded-full shadow-md hover:scale-105 hover:bg-[#D9D9D9] transition-all duration-300"
+      >
+        Cart  <i class="fa-solid fa-cart-shopping text-[#444642] text-xl"></i>
+      </a>
+
+    </nav>
+  </div>
+
+
+  <!-- Mobile Navbar -->
+  <div
+    class="relative md:hidden bg-[#90A285] w-full flex items-center justify-center px-4 py-3 overflow-hidden"
+  >
+
+    <div class="relative z-10 flex items-center gap-2">
+      <img src="asset/drg.png" class="h-10" />
+
+      <h1
+        class="font-bold text-amber-50 font-serif text-[18px]"
+      >
+        MAA DURGA FLORALS
+      </h1>
+    </div>
+  </div>
+
+
+  <!-- Mobile Bottom Menu -->
+  <div class="flex md:hidden bg-[#D9D9D9] w-full py-1.5">
+
+    <div class="flex items-center justify-between w-full px-2">
+
+      <a href="index.html" class="flex flex-col items-center group">
+        <div class="h-12 w-12 rounded-full bg-[#818D7F] flex items-center justify-center transition-all duration-300 group-hover:scale-110">
+          <i class="fa-solid fa-home text-white text-xl"></i>
+        </div>
+        <span class="text-xs mt-1">Home</span>
+      </a>
+
+      <a href="collection.html" class="flex flex-col items-center group">
+        <div class="h-12 w-12 rounded-full bg-[#818D7F] flex justify-center items-center transition-all duration-300 group-hover:scale-110">
+          <i class="fa-solid fa-list text-white text-xl"></i>
+        </div>
+        <span class="text-xs mt-1">Collection</span>
+      </a>
+
+      <a href="service.html" class="flex flex-col items-center group">
+        <div class="h-12 w-12 rounded-full bg-[#818D7F] flex justify-center items-center transition-all duration-300 group-hover:scale-110">
+          <i class="fa-solid fa-handshake text-white text-xl"></i>
+        </div>
+        <span class="text-xs mt-1">Services</span>
+      </a>
+
+      <a href="occasion.html" class="flex flex-col items-center group">
+        <div class="h-12 w-12 rounded-full bg-[#818D7F] flex justify-center items-center transition-all duration-300 group-hover:scale-110">
+          <i class="fa-solid fa-spa text-white text-xl"></i>
+        </div>
+        <span class="text-xs mt-1">Occasion</span>
+      </a>
+
+      <a href="contact.html" class="flex flex-col items-center group">
+        <div class="h-12 w-12 rounded-full bg-[#818D7F] flex justify-center items-center transition-all duration-300 group-hover:scale-110">
+          <i class="fa-solid fa-phone text-white text-xl"></i>
+        </div>
+        <span class="text-xs mt-1">Contact</span>
+      </a>
+
+      <a href="cart.html" class="flex flex-col items-center group">
+        <div class="h-12 w-12 rounded-full bg-[#818D7F] flex justify-center items-center transition-all duration-300 group-hover:scale-110">
+          <i class="fa-solid fa-cart-shopping text-white text-xl"></i>
+        </div>
+        <span class="text-xs mt-1">Cart</span>
+      </a>
+
+    </div>
+  </div>
+
+</header>
+
+
+
+    <!-- Product Details Section -->
+    <div class="max-w-6xl mx-auto px-4 py-8">
+        <div class="mb-6 flex gap-4">
+            <a href="index.html" class="inline-flex items-center text-sm text-gray-500 hover:text-[#90A285] transition-colors">
+                <i class="fa-solid fa-house mr-2"></i> Back to Home
+            </a>
+            <span class="text-gray-300">|</span>
+            <a href="collection.html" class="inline-flex items-center text-sm text-gray-500 hover:text-[#90A285] transition-colors">
+                <i class="fa-solid fa-arrow-left mr-2"></i> Back to Collection
+            </a>
+        </div>
+        
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col md:flex-row border border-gray-100">
+            <!-- Product Image -->
+            <div class="w-full md:w-1/2 p-6 md:p-8 flex justify-center items-center bg-gray-50">
+                <img id="productImage" src="" alt="Product Image" class="max-w-full max-h-[400px] object-cover rounded-xl shadow-sm hover:scale-105 transition-transform duration-300">
+            </div>
+            
+            <!-- Product Info -->
+            <div class="w-full md:w-1/2 p-6 md:p-10 flex flex-col justify-center">
+                <div class="mb-2 text-sm text-[#90A285] font-semibold tracking-wider uppercase">Premium Floral</div>
+                <h1 id="productName" class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Loading...</h1>
+                
+                <div class="text-4xl font-bold text-gray-900 mb-6">
+                    ₹<span id="productPrice">0</span>
+                </div>
+                
+                <p class="text-gray-600 mb-8 leading-relaxed">
+                    Freshly picked and elegantly arranged, this stunning flower brings natural beauty and a delightful fragrance to any space. Perfect for gifting or brightening up your home decor. Sustainably sourced and delivered with care.
+                </p>
+                
+                <!-- Features -->
+                <div class="grid grid-cols-2 gap-4 mb-8">
+                    <div class="flex items-center text-sm text-gray-600">
+                        <i class="fa-solid fa-leaf text-[#90A285] mr-2"></i> 100% Fresh
+                    </div>
+                    <div class="flex items-center text-sm text-gray-600">
+                        <i class="fa-solid fa-truck-fast text-[#90A285] mr-2"></i> Fast Delivery
+                    </div>
+                    <div class="flex items-center text-sm text-gray-600">
+                        <i class="fa-solid fa-gift text-[#90A285] mr-2"></i> Premium Packaging
+                    </div>
+                    <div class="flex items-center text-sm text-gray-600">
+                        <i class="fa-solid fa-seedling text-[#90A285] mr-2"></i> Eco-Friendly
+                    </div>
+                </div>
+
+                <!-- Quantity -->
+                <div class="flex items-center mb-6">
+                    <span class="mr-4 text-gray-700 font-medium">Quantity:</span>
+                    <div class="flex items-center border border-gray-300 rounded-lg">
+                        <button class="px-3 py-1 text-gray-600 hover:bg-gray-100 rounded-l-lg transition" onclick="updateQty(-1)"><i class="fa-solid fa-minus text-xs"></i></button>
+                        <span id="qtyDisplay" class="px-4 py-1 font-semibold text-gray-800 border-x border-gray-300">1</span>
+                        <button class="px-3 py-1 text-gray-600 hover:bg-gray-100 rounded-r-lg transition" onclick="updateQty(1)"><i class="fa-solid fa-plus text-xs"></i></button>
+                    </div>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 mt-auto">
+                    <button onclick="addToCart()" class="flex-1 bg-[#90A285] hover:bg-[#7a8a71] text-white font-bold py-3 px-6 rounded-full shadow-md transition transform hover:-translate-y-0.5 flex justify-center items-center gap-2">
+                        <i class="fa-solid fa-cart-plus"></i> Add to Cart
+                    </button>
+                    <button onclick="buyNow()" class="flex-1 bg-white border-2 border-[#90A285] text-[#90A285] hover:bg-gray-50 font-bold py-3 px-6 rounded-full shadow-md transition transform hover:-translate-y-0.5 flex justify-center items-center gap-2">
+                        <i class="fa-solid fa-bolt"></i> Buy Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Suggestions Section -->
+    <div class="bg-gray-100 py-12">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 font-serif">You might also like</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6" id="suggestionsContainer">
+                <!-- Suggestions will be populated here -->
+            </div>
+        </div>
+    </div>
+   <div id="footer"></div>
+    <script>
+      fetch("footer.html")
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById("footer").innerHTML = data;
+    });
+        // Extract URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const productName = urlParams.get('name') || 'Beautiful Flower';
+        const productPrice = urlParams.get('price') || '20';
+        const productImage = urlParams.get('image') || 'asset/marigold.webp';
+
+        // Set product details
+        document.getElementById('productName').textContent = productName;
+        document.getElementById('productPrice').textContent = productPrice;
+        document.getElementById('productImage').src = productImage;
+        document.getElementById('productImage').alt = productName;
+
+        // Quantity logic
+        let qty = 1;
+        function updateQty(change) {
+            qty += change;
+            if (qty < 1) qty = 1;
+            if (qty > 20) qty = 20; // Example max limit
+            document.getElementById('qtyDisplay').textContent = qty;
+        }
+
+        // Add to Cart logic
+        function addToCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const existingItem = cart.find(item => item.name === productName);
+            
+            if (existingItem) {
+                existingItem.qty += qty;
+            } else {
+                // Add new item with a static subtext for design parity with the cart image
+                cart.push({
+                    name: productName,
+                    price: parseFloat(productPrice),
+                    image: productImage,
+                    qty: qty,
+                    subtext: "Premium quality selection"
+                });
+            }
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert("Added to cart successfully!");
+        }
+
+        // Buy Now logic
+        function buyNow() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const existingItem = cart.find(item => item.name === productName);
+            
+            if (existingItem) {
+                existingItem.qty += qty;
+            } else {
+                cart.push({
+                    name: productName,
+                    price: parseFloat(productPrice),
+                    image: productImage,
+                    qty: qty,
+                    subtext: "Premium quality selection"
+                });
+            }
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            window.location.href = 'afterCart.html';
+        }
+
+        // Suggestions logic
+        const allProducts = [
+            { name: "Marigold", price: 20, image: "asset/marigold.webp" },
+            { name: "Jasmin", price: 20, image: "asset/jasmin.jpg" },
+            { name: "Roses", price: 20, image: "asset/Rose.png" },
+            { name: "Blue Water Lily", price: 20, image: "asset/BlueWaterLily.webp" },
+            { name: "Butterfly Pea", price: 20, image: "asset/ButterflyPea.webp" },
+            { name: "Champak", price: 20, image: "asset/Champak.webp" },
+            { name: "Datura", price: 20, image: "asset/Datura.webp" },
+            { name: "Flame of Forest", price: 20, image: "asset/FlameofForest.webp" },
+            { name: "Hibiscus", price: 20, image: "asset/hibiscus.webp" },
+            { name: "Lavender", price: 20, image: "asset/lavender.webp" },
+            { name: "Lily", price: 20, image: "asset/lily.webp" },
+            { name: "Lotus", price: 20, image: "asset/lotus.webp" },
+            { name: "Sunflower", price: 20, image: "asset/sunflower.webp" },
+            { name: "Tulip", price: 20, image: "asset/tulip.webp" }
+        ];
+
+        // Filter out current product and get random suggestions
+        const filteredProducts = allProducts.filter(p => p.name !== productName);
+        const shuffled = filteredProducts.sort(() => 0.5 - Math.random());
+        const suggestions = shuffled.slice(0, 4);
+
+        const suggestionsContainer = document.getElementById('suggestionsContainer');
+        suggestions.forEach(item => {
+            const card = document.createElement("div");
+            card.innerHTML = `
+                <div class="bg-white rounded-xl shadow-md p-3 sm:p-4 hover:shadow-lg transition cursor-pointer" 
+                     onclick="window.location.href='product.html?name=' + encodeURIComponent('${item.name}') + '&price=${item.price}&image=' + encodeURIComponent('${item.image}')">
+                    <img src="${item.image}" alt="${item.name}" 
+                        class="rounded-lg w-full h-32 sm:h-40 object-cover mb-3">
+                    <h3 class="font-semibold text-gray-700 text-sm sm:text-base truncate">${item.name}</h3>
+                    <div class="flex justify-between items-center mt-1">
+                        <span class="font-bold text-sm sm:text-base">₹${item.price}</span>
+                    </div>
+                </div>
+            `;
+            suggestionsContainer.appendChild(card);
+        });
+    </script>
+  </body>
+</html>

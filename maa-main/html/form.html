@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout Form</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+      /* Subtle noise background */
+      body {
+        background-color: #f5f5f5;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+        font-family: 'Inter', sans-serif;
+      }
+
+      .font-serif {
+        font-family: 'Inter', sans-serif;
+      }
+
+      /* Custom Input Styling */
+      .custom-input {
+        background-color: rgba(234, 243, 213, 0.7);
+        backdrop-filter: blur(4px);
+        border: 1px solid rgba(84, 98, 79, 0.1);
+        border-radius: 6px;
+        outline: none;
+        width: 100%;
+        padding: 0.85rem 1.2rem;
+        color: #3b4d3f;
+        font-size: 1rem;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+      }
+
+      .custom-input:focus {
+        background-color: rgba(234, 243, 213, 0.95);
+        border-color: rgba(84, 98, 79, 0.4);
+        box-shadow: 0 0 0 3px rgba(84, 98, 79, 0.15), inset 0 1px 2px rgba(0,0,0,0.01);
+        transform: translateY(-1px);
+      }
+
+      .custom-input::placeholder {
+        color: #8c9e88;
+        opacity: 0.8;
+        transition: opacity 0.3s;
+      }
+
+      .custom-input:focus::placeholder {
+        opacity: 0.4;
+      }
+
+      .number-badge {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.2rem;
+        height: 2.2rem;
+        border: 1px solid #4a5c4e;
+        border-radius: 50%;
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        font-size: 1rem;
+        color: #4a5c4e;
+        margin-right: 1rem;
+        background: rgba(255,255,255,0.4);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      }
+      
+      .form-section-hover:hover .number-badge {
+        background: #4a5c4e;
+        color: #fff;
+        transition: all 0.4s ease;
+      }
+      .number-badge {
+        transition: all 0.4s ease;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen flex flex-col">
+      <header class="sticky top-0 z-50 w-full drop-shadow-md">
+
+  <!-- Desktop Navbar -->
+  <div
+    class="hidden md:flex items-center justify-between bg-[#90A285] px-6 lg:px-12 py-3"
+  >
+
+    <!-- Left : Logo + Title -->
+    <div class="flex items-center gap-4 group cursor-pointer">
+
+      <img
+        src="asset/drg.png"
+        class="h-12 lg:h-14 transition-all duration-500 group-hover:scale-110 group-hover:rotate-6"
+      />
+
+      <h1
+        class="font-bold text-amber-50 font-serif text-[22px] lg:text-[30px] tracking-wide transition-all duration-500 group-hover:tracking-widest"
+      >
+        MAA DURGA FLORALS
+      </h1>
+    </div>
+
+    <!-- Right : Menu -->
+    <nav
+      class="flex items-center gap-5 lg:gap-8 font-semibold text-white text-sm lg:text-base"
+    >
+
+      <a href="index.html" class="relative group">
+        Home
+        <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+      </a>
+
+      <a href="service.html" class="relative group">
+        Services
+        <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+      </a>
+
+      <a href="collection.html" class="relative group">
+        Collection
+        <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+      </a>
+
+      <a href="occasion.html" class="relative group">
+        Occasion
+        <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+      </a>
+
+      <a href="contact.html" class="relative group">
+        Contact
+        <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+      </a>
+
+      <a
+        href="cart.html"
+        class="bg-white text-[#90A285] px-4 py-2 rounded-full shadow-md hover:scale-105 hover:bg-[#D9D9D9] transition-all duration-300"
+      >
+        Cart  <i class="fa-solid fa-cart-shopping text-[#444642] text-xl"></i>
+      </a>
+
+    </nav>
+  </div>
+
+
+  <!-- Mobile Navbar -->
+  <div
+    class="relative md:hidden bg-[#90A285] w-full flex items-center justify-center px-4 py-3 overflow-hidden"
+  >
+
+    <div class="relative z-10 flex items-center gap-2">
+      <img src="asset/drg.png" class="h-10" />
+
+      <h1
+        class="font-bold text-amber-50 font-serif text-[18px]"
+      >
+        MAA DURGA FLORALS
+      </h1>
+    </div>
+  </div>
+
+
+  <!-- Mobile Bottom Menu -->
+  <div class="flex md:hidden bg-[#D9D9D9] w-full py-1.5">
+
+    <div class="flex items-center justify-between w-full px-2">
+
+      <a href="index.html" class="flex flex-col items-center group">
+        <div class="h-12 w-12 rounded-full bg-[#818D7F] flex items-center justify-center transition-all duration-300 group-hover:scale-110">
+          <i class="fa-solid fa-home text-white text-xl"></i>
+        </div>
+        <span class="text-xs mt-1">Home</span>
+      </a>
+
+      <a href="collection.html" class="flex flex-col items-center group">
+        <div class="h-12 w-12 rounded-full bg-[#818D7F] flex justify-center items-center transition-all duration-300 group-hover:scale-110">
+          <i class="fa-solid fa-list text-white text-xl"></i>
+        </div>
+        <span class="text-xs mt-1">Collection</span>
+      </a>
+
+      <a href="service.html" class="flex flex-col items-center group">
+        <div class="h-12 w-12 rounded-full bg-[#818D7F] flex justify-center items-center transition-all duration-300 group-hover:scale-110">
+          <i class="fa-solid fa-handshake text-white text-xl"></i>
+        </div>
+        <span class="text-xs mt-1">Services</span>
+      </a>
+
+      <a href="occasion.html" class="flex flex-col items-center group">
+        <div class="h-12 w-12 rounded-full bg-[#818D7F] flex justify-center items-center transition-all duration-300 group-hover:scale-110">
+          <i class="fa-solid fa-spa text-white text-xl"></i>
+        </div>
+        <span class="text-xs mt-1">Occasion</span>
+      </a>
+
+      <a href="contact.html" class="flex flex-col items-center group">
+        <div class="h-12 w-12 rounded-full bg-[#818D7F] flex justify-center items-center transition-all duration-300 group-hover:scale-110">
+          <i class="fa-solid fa-phone text-white text-xl"></i>
+        </div>
+        <span class="text-xs mt-1">Contact</span>
+      </a>
+
+      <a href="cart.html" class="flex flex-col items-center group">
+        <div class="h-12 w-12 rounded-full bg-[#818D7F] flex justify-center items-center transition-all duration-300 group-hover:scale-110">
+          <i class="fa-solid fa-cart-shopping text-white text-xl"></i>
+        </div>
+        <span class="text-xs mt-1">Cart</span>
+      </a>
+
+    </div>
+  </div>
+
+</header>
+
+    <main class="flex-1 w-full max-w-2xl mx-auto flex flex-col gap-10 my-12 py-12 px-8 sm:px-14 bg-white/40 backdrop-blur-md shadow-2xl border border-white/60 rounded-3xl relative overflow-hidden">
+      <!-- Decorative faint circle in background -->
+      <div class="absolute -top-20 -right-20 w-64 h-64 bg-[#eaf3d5] rounded-full mix-blend-multiply filter blur-3xl opacity-50 z-0"></div>
+      <div class="absolute -bottom-20 -left-20 w-64 h-64 bg-[#eaf3d5] rounded-full mix-blend-multiply filter blur-3xl opacity-50 z-0"></div>
+      
+      <!-- Section 01 -->
+      <div class="flex flex-col gap-4 relative z-10 form-section-hover group">
+        <div class="flex items-center">
+          <div class="number-badge group-hover:scale-110">01</div>
+          <h2 class="text-2xl text-[#1a2e1d] tracking-wide">Mobile Number</h2>
+        </div>
+        <div>
+          <label class="block text-[0.65rem] font-bold text-[#5c6d59] tracking-widest uppercase mb-1.5 ml-1">Mobile Number</label>
+          <input type="text" id="mobileInput" placeholder="+91 00000 00000" class="custom-input" />
+        </div>
+      </div>
+
+      <!-- Section 02 -->
+      <div class="flex flex-col gap-4 relative z-10 form-section-hover group">
+        <div class="flex items-center">
+          <div class="number-badge group-hover:scale-110">02</div>
+          <h2 class="text-2xl text-[#1a2e1d] tracking-wide">Profile Information</h2>
+        </div>
+        <div>
+          <label class="block text-[0.65rem] font-bold text-[#5c6d59] tracking-widest uppercase mb-1.5 ml-1">Full Name</label>
+          <input type="text" id="nameInput" placeholder="e.g. Aditi Sharma" class="custom-input" />
+        </div>
+      </div>
+
+      <!-- Section 03 -->
+      <div class="flex flex-col gap-4 relative z-10 form-section-hover group">
+        <div class="flex items-center">
+          <div class="number-badge group-hover:scale-110">03</div>
+          <h2 class="text-2xl text-[#1a2e1d] tracking-wide">Delivery Address</h2>
+        </div>
+        
+        <div class="flex flex-col gap-4">
+          <div>
+            <label class="block text-[0.65rem] font-bold text-[#5c6d59] tracking-widest uppercase mb-1.5 ml-1">Full Street Address</label>
+            <input type="text" id="addressInput" placeholder="Apartment, Street, Landmark" class="custom-input" />
+          </div>
+          
+          <div class="grid grid-cols-3 gap-4">
+            <div>
+              <label class="block text-[0.65rem] font-bold text-[#5c6d59] tracking-widest uppercase mb-1.5 ml-1">City</label>
+              <input type="text" id="cityInput" placeholder="New Delhi" class="custom-input" />
+            </div>
+            <div>
+              <label class="block text-[0.65rem] font-bold text-[#5c6d59] tracking-widest uppercase mb-1.5 ml-1">State</label>
+              <input type="text" id="stateInput" placeholder="Delhi" class="custom-input" />
+            </div>
+            <div>
+              <label class="block text-[0.65rem] font-bold text-[#5c6d59] tracking-widest uppercase mb-1.5 ml-1">Pin Code</label>
+              <input type="text" id="pinInput" placeholder="110001" class="custom-input" />
+            </div>
+          </div>
+          
+          <!-- Live GPS Location -->
+          <div class="flex items-center gap-4 mt-2 border-t border-white/30 pt-4">
+            <button type="button" onclick="getGPSLocation()" class="bg-[#8c9e88] hover:bg-[#7e9278] text-white text-[0.7rem] uppercase tracking-wider font-bold py-2.5 px-4 rounded-lg shadow-sm transition-all duration-300 flex items-center gap-2 transform hover:-translate-y-0.5 active:translate-y-0">
+              <i class="fa-solid fa-location-crosshairs"></i> Use Current Location
+            </button>
+            <span id="locationStatus" class="text-xs text-[#5c6d59] font-medium">Optional: Share GPS location for precise delivery.</span>
+            <input type="hidden" id="gpsLinkInput" value="" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Complete Shopping Button -->
+      <div class="mt-6 relative z-10">
+        <button onclick="submitOrder()" class="w-full bg-[#90A285] hover:bg-[#7a8a71] text-white font-medium tracking-[0.25em] text-sm py-5 px-6 rounded-xl shadow-lg hover:shadow-xl transform transition-all duration-300 hover:-translate-y-1 active:translate-y-0 flex items-center justify-center gap-4">
+          COMPLETE SHOPPING
+          <i class="fa-solid fa-arrow-right text-lg transition-transform duration-300 group-hover:translate-x-2"></i>
+        </button>
+      </div>
+
+      <!-- Back Button -->
+      <div class="mt-4 relative z-10 flex gap-4">
+        <button onclick="window.history.back()" class="bg-transparent hover:bg-white/40 border border-gray-400 text-gray-500 text-sm font-semibold py-2 px-6 rounded-full transition-all duration-300 flex items-center gap-2 w-max shadow-sm hover:shadow-md hover:-translate-x-1">
+          <i class="fa-solid fa-arrow-left"></i> Back to Cart
+        </button>
+        <a href="index.html" class="bg-transparent hover:bg-white/40 border border-[#90A285] text-[#90A285] text-sm font-semibold py-2 px-6 rounded-full transition-all duration-300 flex items-center gap-2 w-max shadow-sm hover:shadow-md hover:-translate-x-1">
+          <i class="fa-solid fa-house"></i> Home
+        </a>
+      </div>
+
+    </main>
+
+   <div id="footer"></div>
+    <script>
+      fetch("footer.html")
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById("footer").innerHTML = data;
+    });
+      function getGPSLocation() {
+        const statusText = document.getElementById('locationStatus');
+        const gpsLinkInput = document.getElementById('gpsLinkInput');
+        
+        if (!navigator.geolocation) {
+          statusText.textContent = "Geolocation is not supported by your browser.";
+          statusText.classList.add('text-red-500');
+          return;
+        }
+
+        statusText.textContent = "Locating... Please wait.";
+        statusText.classList.remove('text-green-600', 'text-red-500');
+
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+            const mapsLink = `https://maps.google.com/?q=${lat},${lon}`;
+            gpsLinkInput.value = mapsLink;
+            
+            statusText.textContent = "📍 Location acquired perfectly!";
+            statusText.classList.add('text-green-700');
+          },
+          (error) => {
+            console.error("Error getting location", error);
+            statusText.textContent = "❌ Please allow location access to use this feature.";
+            statusText.classList.add('text-red-500');
+          }
+        );
+      }
+
+      function submitOrder() {
+        // 1. Get values from inputs
+        const mobile = document.getElementById('mobileInput').value.trim();
+        const name = document.getElementById('nameInput').value.trim();
+        const address = document.getElementById('addressInput').value.trim();
+        const city = document.getElementById('cityInput').value.trim();
+        const state = document.getElementById('stateInput').value.trim();
+        const pin = document.getElementById('pinInput').value.trim();
+        const gpsLink = document.getElementById('gpsLinkInput').value;
+
+        // 2. Regex Validation
+        // Mobile regex: Optional +91 or 0, followed by 10 digits starting with 6-9
+        const mobileRegex = /^(?:\+91[-.\s]?|0)?[6-9]\d{9}$/; 
+        // Pin code regex: 6 digits, doesn't start with 0
+        const pinRegex = /^[1-9][0-9]{5}$/; 
+
+        if (!mobileRegex.test(mobile)) {
+          alert("Please enter a valid 10-digit mobile number.");
+          return;
+        }
+        if (name.length < 3) {
+          alert("Please enter your full name.");
+          return;
+        }
+        if (address.length < 5) {
+          alert("Please enter a complete street address.");
+          return;
+        }
+        if (city.length < 2 || state.length < 2) {
+          alert("Please enter valid city and state.");
+          return;
+        }
+        if (!pinRegex.test(pin)) {
+          alert("Please enter a valid 6-digit pin code.");
+          return;
+        }
+
+        // 3. Format WhatsApp Message
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let orderDetails = "🛍️ *NEW ORDER* 🛍️\n\n";
+        
+        let total = 0;
+        if (cart.length > 0) {
+          orderDetails += "*Items:*\n";
+          cart.forEach(item => {
+            orderDetails += `- ${item.name} (x${item.qty}) - ₹${item.price * item.qty}\n`;
+            total += item.price * item.qty;
+          });
+          // Applying the same mock discount as cart logic if total >= 50
+          const discount = total >= 50 ? 5 : 0;
+          if (discount > 0) {
+            orderDetails += `\nSubtotal: ₹${total}\nDiscount: -₹${discount}\n`;
+          }
+          orderDetails += `*Total to Pay:* ₹${total - discount}\n\n`;
+        } else {
+          orderDetails += "Order placed without cart items.\n\n";
+        }
+
+        orderDetails += "*Customer Details:*\n";
+        orderDetails += `Name: ${name}\n`;
+        orderDetails += `Mobile: ${mobile}\n`;
+        orderDetails += `Address: ${address}, ${city}, ${state} - Pin: ${pin}\n`;
+        
+        if (gpsLink) {
+          orderDetails += `Live GPS Location: ${gpsLink}\n`;
+        }
+
+        // 4. Encode and Redirect to WhatsApp
+        const encodedMessage = encodeURIComponent(orderDetails);
+        const shopWhatsAppNumber = "9124058142"; // The number from footer
+        const whatsappUrl = `https://wa.me/${shopWhatsAppNumber}?text=${encodedMessage}`;
+        
+        // Open WhatsApp in a new tab
+        window.open(whatsappUrl, '_blank');
+        
+        // Optional: clear cart and redirect user back home
+        localStorage.removeItem('cart');
+        window.location.href = 'index.html';
+      }
+    </script>
+  </body>
+</html>

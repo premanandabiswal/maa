@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Maa Durga Florals - Occasions</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Configuration -->
+    <link rel="stylesheet" href="../src/css/occasion.css">
+
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,900&family=Poppins:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+   <link rel="stylesheet" href="../src/css/occasion.css">
+</head>
+<body class="antialiased text-gray-800 min-h-screen relative font-sans pb-20 md:pb-0">
+   <header class="sticky top-0 z-50 w-full drop-shadow-md">
+      <!-- Desktop Navbar -->
+      <div class="hidden md:flex items-center justify-between bg-[#90A285] px-6 lg:px-12 py-3">
+        <!-- Left : Logo + Title -->
+        <div class="flex items-center gap-4 group cursor-pointer">
+          <img src="../assets/drg.png" class="h-12 lg:h-14 transition-all duration-500 group-hover:scale-110 group-hover:rotate-6" alt="Logo" onerror="this.src='https://placehold.co/100x100?text=Logo'"/>
+          <h1 class="font-bold text-amber-50 font-serif text-[22px] lg:text-[30px] tracking-wide transition-all duration-500 group-hover:tracking-widest">
+            MAA DURGA FLORALS
+          </h1>
+        </div>
+
+        <!-- Right : Menu -->
+        <nav class="flex items-center gap-5 lg:gap-8 font-semibold text-white text-sm lg:text-base">
+          <a href="../index.html" class="relative group">
+            Home
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="./services.html" class="relative group">
+            Services
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="./collection.html" class="relative group">
+            Collection
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="./occasion.html" class="relative group">
+            Occasion
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="./contact.html" class="relative group">
+            Contact
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="./cart.html" class="bg-white text-[#90A285] px-4 py-2 rounded-full shadow-md hover:scale-105 hover:bg-[#D9D9D9] transition-all duration-300 relative">
+            Cart  <i class="fa-solid fa-cart-shopping text-[#444642] text-xl"></i>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Mobile Navbar Top -->
+      <div class="relative md:hidden bg-[#90A285] w-full flex items-center justify-center px-4 py-3 overflow-hidden">
+        <div class="relative z-10 flex items-center gap-2">
+          <img src="../assets/drg.png" class="h-10" alt="Logo" onerror="this.src='https://placehold.co/100x100?text=Logo'"/>
+          <h1 class="font-bold text-amber-50 font-serif text-[18px]">
+            MAA DURGA FLORALS
+          </h1>
+        </div>
+      </div>
+
+      <!-- Mobile Bottom Menu Strip -->
+      <div class="flex md:hidden bg-[#D9D9D9] w-full py-1.5">
+        <div class="flex items-center justify-between w-full px-2">
+          <a href="../index.html" class="flex flex-col items-center group">
+            <div class="h-12 w-12 rounded-full bg-[#818D7F] flex items-center justify-center transition-all duration-300 group-hover:scale-110">
+              <i class="fa-solid fa-home text-white text-xl"></i>
+            </div>
+            <span class="text-xs mt-1">Home</span>
+          </a>
+          <a href="./collection.html" class="flex flex-col items-center group">
+            <div class="h-12 w-12 rounded-full bg-[#818D7F] flex justify-center items-center transition-all duration-300 group-hover:scale-110">
+              <i class="fa-solid fa-list text-white text-xl"></i>
+            </div>
+            <span class="text-xs mt-1">Collection</span>
+          </a>
+          <a href="./services.html" class="flex flex-col items-center group">
+            <div class="h-12 w-12 rounded-full bg-[#818D7F] flex justify-center items-center transition-all duration-300 group-hover:scale-110">
+              <i class="fa-solid fa-handshake text-white text-xl"></i>
+            </div>
+            <span class="text-xs mt-1">Services</span>
+          </a>
+          <a href="./occasion.html" class="flex flex-col items-center group">
+            <div class="h-12 w-12 rounded-full bg-[#818D7F] flex justify-center items-center transition-all duration-300 group-hover:scale-110">
+              <i class="fa-solid fa-spa text-white text-xl"></i>
+            </div>
+            <span class="text-xs mt-1">Occasion</span>
+          </a>
+          <a href="./contact.html" class="flex flex-col items-center group">
+            <div class="h-12 w-12 rounded-full bg-[#818D7F] flex justify-center items-center transition-all duration-300 group-hover:scale-110">
+              <i class="fa-solid fa-phone text-white text-xl"></i>
+            </div>
+            <span class="text-xs mt-1">Contact</span>
+          </a>
+          <a href="./cart.html" class="flex flex-col items-center group relative">
+            <div class="h-12 w-12 rounded-full bg-[#818D7F] flex justify-center items-center transition-all duration-300 group-hover:scale-110 relative">
+              <i class="fa-solid fa-cart-shopping text-white text-xl"></i>
+            </div>
+            <span class="text-xs mt-1">Cart</span>
+          </a>
+        </div>
+      </div>
+    <!-- Ticker -->
+    <div class="w-full bg-brand-primary theme-transition text-white py-2 md:py-2.5 shadow-xl backdrop-blur-md">
+        <div class="marquee-container">
+            <div class="marquee-inner">
+                <span class="px-6 md:px-10 text-[9px] md:text-xs font-black uppercase tracking-[0.3em]"><i class="fa-solid fa-crown mr-2 text-amber-300"></i> Maa Durga Florals Luxury Experience</span>
+                <span class="px-6 md:px-10 text-[9px] md:text-xs font-black uppercase tracking-[0.3em]"><i class="fa-solid fa-bolt mr-2"></i> 20% Off Your First Order • Code: BLOOM20</span>
+                <span class="px-6 md:px-10 text-[9px] md:text-xs font-black uppercase tracking-[0.3em]"><i class="fa-solid fa-truck-fast mr-2"></i> Free Premium Same-Day Delivery</span>
+                <!-- Loop -->
+                <span class="px-6 md:px-10 text-[9px] md:text-xs font-black uppercase tracking-[0.3em]"><i class="fa-solid fa-crown mr-2 text-amber-300"></i> Maa Durga Florals Luxury Experience</span>
+                <span class="px-6 md:px-10 text-[9px] md:text-xs font-black uppercase tracking-[0.3em]"><i class="fa-solid fa-bolt mr-2"></i> 20% Off Your First Order • Code: BLOOM20</span>
+                <span class="px-6 md:px-10 text-[9px] md:text-xs font-black uppercase tracking-[0.3em]"><i class="fa-solid fa-truck-fast mr-2"></i> Free Premium Same-Day Delivery</span>
+            </div>
+        </div>
+    </div>
+      </header>
+
+    <!-- Blobs -->
+    <div id="blob-1" class="mesh-blob" style="top: -10%; left: -5%; background-color: var(--accent-1);"></div>
+    <div id="blob-2" class="mesh-blob" style="bottom: -10%; right: -5%; background-color: var(--accent-2);"></div>
+
+    <div class="w-full relative z-10 mx-auto max-w-[1440px]">
+
+        <!-- Category Filters -->
+        <div class="pt-8 md:pt-12 px-4 md:px-8">
+            <div class="flex flex-col items-center mb-8 md:mb-16">
+                <div class="flex items-center gap-4 md:gap-6 w-full max-w-4xl">
+                    <div class="separator-line"></div>
+                    <i class="fa-solid fa-leaf text-brand-primary theme-transition text-lg md:text-2xl animate-bounce"></i>
+                    <div class="separator-line"></div>
+                </div>
+                <h3 id="category-title" class="font-serif text-3xl md:text-6xl text-gray-950 font-black italic mt-4 md:mt-6 animate-trackingExpand text-center leading-tight">Wedding Portfolio</h3>
+            </div>
+            <!-- Horizontal scroll on mobile, Grid on desktop -->
+            <div class="flex overflow-x-auto no-scrollbar gap-4 md:grid md:grid-cols-5 lg:grid-cols-7 md:gap-6 pb-6 justify-start md:justify-center px-2 md:px-0" id="category-grid"></div>
+        </div>
+
+        <!-- Products -->
+        <div class="mt-8 md:mt-16 px-4 md:px-8">
+            <div class="flex justify-between items-end mb-6 md:mb-8">
+                <h4 class="text-2xl md:text-5xl font-black text-gray-900">Premium Picks</h4>
+                <button onclick="showAllCategories()" class="text-[10px] md:text-sm font-black text-brand-primary border-b-2 border-brand-primary theme-transition uppercase mb-1 md:mb-2">See All</button>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-8" id="products-grid"></div>
+        </div>
+
+        <!-- Occasion Timeline / Calendar -->
+        <div id="calendar-container" class="mt-16 md:mt-24 mb-10 md:mb-20 glass-card rounded-2xl md:rounded-[48px] p-5 md:p-10 shadow-xl md:shadow-3xl max-w-5xl mx-4 md:mx-auto animate-popIn border border-white/50">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h3 class="text-xl md:text-3xl font-black">Occasion Calendar</h3>
+                    <p class="text-xs md:text-sm text-gray-500 mt-1">View monthly events and add your own.</p>
+                </div>
+                <div class="flex items-center gap-3 self-end md:self-auto">
+                    <button onclick="openAddEventModal()" class="bg-brand-primary text-white px-4 py-2 md:px-6 md:py-2.5 rounded-full text-xs md:text-sm font-bold transition hover:scale-105 shadow-md"><i class="fa-solid fa-plus mr-1 md:mr-2"></i> Add Event</button>
+                    <button onclick="toggleCalendar()" id="calendar-toggle" class="text-gray-600 hover:text-gray-900 flex items-center gap-2 p-2">
+                        <span class="hidden md:inline font-bold">Close</span>
+                        <i id="calendar-chevron" class="fa-solid fa-chevron-down transition-transform text-lg" style="transform: rotate(0deg);"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="calendar-root" class="mt-6 md:mt-8"></div>
+        </div>
+    </div>
+
+    <!-- Product Detail Modal -->
+    <div id="product-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[9999] hidden">
+        <div class="bg-white rounded-2xl md:rounded-3xl w-[95vw] max-w-5xl max-h-[90vh] overflow-y-auto shadow-2xl relative flex flex-col lg:flex-row">
+            
+            <button onclick="closeProductModal()" class="absolute top-4 right-4 z-10 w-8 h-8 md:w-10 md:h-10 bg-white/80 backdrop-blur rounded-full flex items-center justify-center text-gray-600 hover:text-red-500 hover:bg-gray-100 shadow-md transition-all">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <!-- Left: Image Gallery -->
+            <div class="w-full lg:w-[50%] p-4 md:p-6 flex flex-col-reverse md:flex-row gap-4">
+                <div class="flex md:flex-col gap-3 overflow-x-auto md:overflow-y-auto no-scrollbar w-full md:w-24 pb-2 md:pb-0" id="modal-thumbnails"></div>
+                <div class="flex-grow rounded-xl md:rounded-2xl overflow-hidden bg-gray-50 relative h-64 md:h-[450px]">
+                    <img id="modal-main-img" src="" class="w-full h-full object-cover transition-transform duration-700">
+                </div>
+            </div>
+
+            <!-- Right: Details -->
+            <div class="w-full lg:w-[50%] p-6 md:p-8 flex flex-col bg-gray-50/30">
+                <div class="mb-4">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="bg-brand-light text-brand-deepGreen px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider">Premium</span>
+                        <div class="flex items-center gap-1 text-brand-price bg-white px-2 py-0.5 rounded border border-gray-100 shadow-sm text-xs font-bold">
+                            <i class="fa-solid fa-star"></i> <span id="modal-rating"></span>
+                        </div>
+                    </div>
+                    <h2 id="modal-title" class="text-2xl md:text-3xl font-serif font-bold text-gray-900 leading-tight mb-2"></h2>
+                    <p id="modal-reviews" class="text-gray-500 text-xs font-medium"></p>
+                </div>
+
+                <div class="mb-6 bg-white p-4 rounded-xl border border-gray-100 shadow-sm">
+                    <div class="flex items-end gap-2 mb-1">
+                        <span id="modal-price" class="text-3xl font-sans font-bold text-gray-900"></span>
+                        <span id="modal-original-price" class="text-sm text-gray-400 line-through font-medium pb-1"></span>
+                        <span id="modal-discount" class="bg-red-50 text-red-600 px-2 py-0.5 rounded text-[10px] font-bold mb-1 border border-red-100"></span>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <h4 class="text-xs font-bold text-gray-900 uppercase tracking-widest mb-2">Description</h4>
+                    <p id="modal-desc" class="text-gray-600 text-sm leading-relaxed font-light"></p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+                    <div>
+                        <h4 class="text-xs font-bold text-gray-900 uppercase tracking-widest mb-3">Highlights</h4>
+                        <ul id="modal-highlights" class="space-y-2"></ul>
+                    </div>
+                    <div>
+                        <h4 class="text-xs font-bold text-gray-900 uppercase tracking-widest mb-3">Special Offer</h4>
+                        <div class="bg-brand-light/50 p-3 rounded-xl border border-brand-primary/20 flex items-start gap-2">
+                            <div class="text-brand-primary shrink-0 mt-0.5"><i class="fa-solid fa-gift text-sm"></i></div>
+                            <p id="modal-offer" class="text-xs text-gray-700 leading-snug"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-auto pt-4 border-t border-gray-100" id="modal-action-container">
+                    <!-- Button populated via JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Add Event Modal -->
+    <div id="add-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[9999] hidden">
+        <div class="bg-white rounded-2xl p-6 md:p-8 w-[92vw] max-w-md shadow-2xl">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-black text-gray-900">Add New Event</h3>
+                <button onclick="closeAddEventModal()" class="text-gray-400 hover:text-red-500 transition-colors"><i class="fa-solid fa-xmark text-xl"></i></button>
+            </div>
+            <form onsubmit="saveEvent(event)" class="space-y-4">
+                <label class="block">
+                    <span class="text-xs font-bold uppercase tracking-wider text-gray-500">Event name</span>
+                    <input id="ev-name" required class="w-full mt-1.5 p-3 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 outline-none transition-all" placeholder="e.g. Mother's Day" />
+                </label>
+                <label class="block">
+                    <span class="text-xs font-bold uppercase tracking-wider text-gray-500">Date</span>
+                    <input id="ev-date" type="date" required class="w-full mt-1.5 p-3 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 outline-none transition-all" />
+                </label>
+                <div class="grid grid-cols-2 gap-4">
+                    <label class="block">
+                        <span class="text-xs font-bold uppercase tracking-wider text-gray-500">Type</span>
+                        <select id="ev-status" class="w-full mt-1.5 p-3 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 outline-none transition-all">
+                            <option value="Occasion">Occasion</option>
+                            <option value="Festival">Festival</option>
+                            <option value="National">National</option>
+                            <option value="Global">Global</option>
+                        </select>
+                    </label>
+                    <label class="block">
+                        <span class="text-xs font-bold uppercase tracking-wider text-gray-500">Gift Idea</span>
+                        <select id="ev-gift" class="w-full mt-1.5 p-3 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 outline-none transition-all">
+                            <option value="none">None</option>
+                            <option value="bouquet">Bouquet</option>
+                            <option value="box">Gift Box</option>
+                            <option value="voucher">Voucher</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="flex justify-end gap-3 mt-8 pt-4 border-t border-gray-100">
+                    <button type="button" onclick="closeAddEventModal()" class="px-6 py-2.5 bg-gray-100 text-gray-600 font-bold rounded-xl hover:bg-gray-200 transition-colors">Cancel</button>
+                    <button type="submit" class="px-6 py-2.5 bg-brand-primary text-white font-bold rounded-xl hover:bg-brand-deep transition-colors shadow-lg shadow-brand-primary/30">Save Event</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+  <div id="footer"></div>
+
+    <!-- JavaScript Logic -->
+    <script src="../src/js/occasion.js"></script>
+</body>
+</html>

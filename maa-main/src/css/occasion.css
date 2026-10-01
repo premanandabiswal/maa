@@ -1,0 +1,100 @@
+:root {
+            --brand-deep: #1a4331;
+            --brand-primary: #788A75;
+            --brand-light: #eef3f0;
+            --bg-main: #f4f5f0;
+            --accent-1: #e2e8f0;
+            --accent-2: #cbd5e1;
+            --orbit-r1: 100px;
+            --orbit-r2: 130px;
+        }
+
+        @media (min-width: 1024px) {
+            :root {
+                --orbit-r1: 220px;
+                --orbit-r2: 280px;
+            }
+        }
+
+        body {
+            background-color: var(--bg-main);
+            transition: background-color 1.2s ease;
+            overflow-x: hidden;
+        }
+
+        .mesh-blob {
+            position: fixed;
+            width: 70vw;
+            height: 70vw;
+            filter: blur(120px);
+            z-index: -1;
+            opacity: 0.4;
+            border-radius: 50%;
+            transition: background-color 1.5s ease;
+            pointer-events: none;
+        }
+
+        .theme-transition { transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+
+        @keyframes orbit {
+            0% { transform: rotate(0deg) translateY(var(--orbit-r1)) rotate(0deg); }
+            100% { transform: rotate(360deg) translateY(var(--orbit-r1)) rotate(-360deg); }
+        }
+        @keyframes orbitReverse {
+            0% { transform: rotate(360deg) translateY(var(--orbit-r2)) rotate(-360deg); }
+            100% { transform: rotate(0deg) translateY(var(--orbit-r2)) rotate(0deg); }
+        }
+        .animate-orbit { animation: orbit 20s linear infinite; }
+        .animate-orbit-reverse { animation: orbitReverse 25s linear infinite; }
+        
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .separator-line {
+            height: 2px;
+            flex-grow: 1;
+            background: linear-gradient(to right, transparent, var(--brand-primary), transparent);
+            opacity: 0.3;
+        }
+
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .marquee-inner {
+            display: inline-block;
+            animation: marquee-scroll 40s linear infinite;
+        }
+        @keyframes marquee-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        #add-modal {
+            transition: opacity 0.4s ease, visibility 0.4s;
+        }
+
+        .product-item .glass-card {
+            border: 0.8px solid rgba(255,255,255,0.25);
+        }
+
+        .thumbnail-active {
+            border-color: var(--brand-deep) !important;
+            opacity: 1 !important;
+            transform: scale(0.95);
+        }
+
+        /* Safe area padding for mobile notches/home bars */
+        .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+
+        @media (min-width: 768px) {
+            nav a { transition: color 200ms ease, transform 180ms ease; }
+            nav a:hover { transform: translateY(-2px); }
+        }

@@ -1,0 +1,788 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wedding Floral Decoration - Maa Durga Florals</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/src/output.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <style>
+      /* Hide scrollbar for Chrome, Safari */
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      /* Hide scrollbar for IE, Edge, Firefox */
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      /* Thumbnail selected state */
+      .thumbnail.selected {
+        border-color: #90a285;
+        opacity: 1;
+      }
+      .thumbnail {
+        opacity: 0.6;
+        transition: all 0.3s ease;
+      }
+      .thumbnail:hover {
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <!-- Header  -->
+     <header class="sticky top-0 z-50 w-full drop-shadow-md">
+
+  <!-- Desktop Navbar -->
+  <div
+    class="hidden md:flex items-center justify-between bg-[#90A285] px-6 lg:px-12 py-3"
+  >
+
+    <!-- Left : Logo + Title -->
+    <div class="flex items-center gap-4 group cursor-pointer">
+
+      <img
+        src="../assets/drg.png"
+        class="h-12 lg:h-14 transition-all duration-500 group-hover:scale-110 group-hover:rotate-6"
+      />
+
+      <h1
+        class="font-bold text-amber-50 font-serif text-[22px] lg:text-[30px] tracking-wide transition-all duration-500 group-hover:tracking-widest"
+      >
+        MAA DURGA FLORALS
+      </h1>
+    </div>
+
+    <!-- Right : Menu -->
+    <nav
+      class="flex items-center gap-5 lg:gap-8 font-semibold text-white text-sm lg:text-base"
+    >
+
+      <a href="../index.html" class="relative group">
+        Home
+        <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+      </a>
+
+      <a href="./services.html" class="relative group">
+        Services
+        <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+      </a>
+
+      <a href="./collection.html" class="relative group">
+        Collection
+        <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+      </a>
+
+      <a href="./occasion.html" class="relative group">
+        Occasion
+        <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+      </a>
+
+      <a href="./contact.html" class="relative group">
+        Contact
+        <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+      </a>
+
+      <a
+        href="./cart.html"
+        class="bg-white text-[#90A285] px-4 py-2 rounded-full shadow-md hover:scale-105 hover:bg-[#D9D9D9] transition-all duration-300"
+      >
+        Cart  <i class="fa-solid fa-cart-shopping text-[#444642] text-xl"></i>
+      </a>
+
+    </nav>
+  </div>
+
+
+  <!-- Mobile Navbar -->
+  <div
+    class="relative md:hidden bg-[#90A285] w-full flex items-center justify-center px-4 py-3 overflow-hidden"
+  >
+
+    <div class="relative z-10 flex items-center gap-2">
+      <img src="../assets/drg.png" class="h-10" />
+
+      <h1
+        class="font-bold text-amber-50 font-serif text-[18px]"
+      >
+        MAA DURGA FLORALS
+      </h1>
+    </div>
+  </div>
+
+
+  <!-- Mobile Bottom Menu -->
+  <div class="flex md:hidden bg-[#D9D9D9] w-full py-1.5">
+
+    <div class="flex items-center justify-between w-full px-2">
+
+      <a href="../index.html" class="flex flex-col items-center group">
+        <div class="h-12 w-12 rounded-full bg-[#818D7F] flex items-center justify-center transition-all duration-300 group-hover:scale-110">
+          <i class="fa-solid fa-home text-white text-xl"></i>
+        </div>
+        <span class="text-xs mt-1">Home</span>
+      </a>
+
+      <a href="./collection.html" class="flex flex-col items-center group">
+        <div class="h-12 w-12 rounded-full bg-[#818D7F] flex justify-center items-center transition-all duration-300 group-hover:scale-110">
+          <i class="fa-solid fa-list text-white text-xl"></i>
+        </div>
+        <span class="text-xs mt-1">Collection</span>
+      </a>
+
+      <a href="./services.html" class="flex flex-col items-center group">
+        <div class="h-12 w-12 rounded-full bg-[#818D7F] flex justify-center items-center transition-all duration-300 group-hover:scale-110">
+          <i class="fa-solid fa-handshake text-white text-xl"></i>
+        </div>
+        <span class="text-xs mt-1">Services</span>
+      </a>
+
+      <a href="./occasion.html" class="flex flex-col items-center group">
+        <div class="h-12 w-12 rounded-full bg-[#818D7F] flex justify-center items-center transition-all duration-300 group-hover:scale-110">
+          <i class="fa-solid fa-spa text-white text-xl"></i>
+        </div>
+        <span class="text-xs mt-1">Occasion</span>
+      </a>
+
+      <a href="./contact.html" class="flex flex-col items-center group">
+        <div class="h-12 w-12 rounded-full bg-[#818D7F] flex justify-center items-center transition-all duration-300 group-hover:scale-110">
+          <i class="fa-solid fa-phone text-white text-xl"></i>
+        </div>
+        <span class="text-xs mt-1">Contact</span>
+      </a>
+
+      <a href="./cart.html" class="flex flex-col items-center group">
+        <div class="h-12 w-12 rounded-full bg-[#818D7F] flex justify-center items-center transition-all duration-300 group-hover:scale-110">
+          <i class="fa-solid fa-cart-shopping text-white text-xl"></i>
+        </div>
+        <span class="text-xs mt-1">Cart</span>
+      </a>
+
+    </div>
+  </div>
+
+</header>
+
+    <!-- Product Details Section -->
+    <div class="max-w-6xl mx-auto px-4 py-8">
+      
+      <!-- Back Button -->
+      <div class="mb-6 flex gap-4">
+        <a href="../index.html" class="inline-flex items-center text-sm text-gray-500 hover:text-[#90A285] transition-colors">
+          <i class="fa-solid fa-house mr-2"></i> Back to Home
+        </a>
+        <span class="text-gray-300">|</span>
+        <a href="./wedding-collection.html" class="inline-flex items-center text-sm text-gray-500 hover:text-[#90A285] transition-colors">
+          <i class="fa-solid fa-arrow-left mr-2"></i> Back to Collection
+        </a>
+      </div>
+
+      <div
+        class="bg-white rounded-2xl shadow-lg border border-gray-100 p-4 md:p-8"
+      >
+        <div class="flex flex-col lg:flex-row gap-8 lg:gap-12">
+          <!-- Left: Image Slider -->
+          <div class="w-full lg:w-5/12 flex flex-col md:flex-row-reverse gap-4">
+            <!-- Main Image -->
+            <div
+              class="w-full flex-1 border border-gray-200 rounded-xl overflow-hidden bg-gray-50 flex items-center justify-center relative group"
+            >
+              <img
+                id="mainImage"
+                src=""
+                alt="Wedding Stage Decoration"
+                class="w-full h-auto max-h-[500px] object-cover transition-transform duration-500 group-hover:scale-125 origin-center cursor-crosshair"
+              />
+            </div>
+
+            <!-- Thumbnails (Vertical on desktop, Horizontal on mobile)
+             product detail image -->
+            <div id="thumbnailsContainer"
+              class="flex flex-row md:flex-col gap-3 overflow-x-auto md:overflow-y-auto scrollbar-hide py-1 md:w-20 shrink-0"
+            >
+              <img
+                onclick="changeImage(this, 'asset/b7.jpeg')"
+                src="../assets/b7.jpeg"
+                class="thumbnail selected w-16 h-16 md:w-full md:h-20 object-cover rounded-lg border-2 border-transparent cursor-pointer shrink-0"
+              />
+              <img
+                onclick="changeImage(this, 'asset/Rose.png')"
+                src="../assets/Rose.png"
+                class="thumbnail w-16 h-16 md:w-full md:h-20 object-cover rounded-lg border-2 border-transparent cursor-pointer shrink-0"
+              />
+              <img
+                onclick="changeImage(this, 'asset/marigold.webp')"
+                src="../assets/marigold.webp"
+                class="thumbnail w-16 h-16 md:w-full md:h-20 object-cover rounded-lg border-2 border-transparent cursor-pointer shrink-0"
+              />
+              <img
+                onclick="changeImage(this, 'asset/jasmin.jpg')"
+                src="../assets/jasmin.jpg"
+                class="thumbnail w-16 h-16 md:w-full md:h-20 object-cover rounded-lg border-2 border-transparent cursor-pointer shrink-0"
+              />
+            </div>
+          </div>
+
+          <!-- Right: Product Details -->
+          <div class="w-full lg:w-7/12 flex flex-col">
+            <h1 id="wedTitle" class="text-2xl md:text-3xl font-bold text-gray-800 mb-2">
+              Premium Wedding Stage & Floral Decoration Setup
+            </h1>
+
+            <div id="variantDisplay" class="mb-4 bg-gray-100 px-3 py-2 rounded-lg inline-flex items-center gap-2 border border-gray-200">
+              <span class="text-xs font-bold text-gray-500 uppercase tracking-wider">Selected Variant:</span>
+              <span id="selectedVariantName" class="text-sm font-semibold text-[#90A285]">Classic Wedding Stage</span>
+            </div>
+
+            <div class="flex items-end gap-3 mb-2">
+              <span id="wedPrice" class="text-3xl font-bold text-gray-900">₹25,000</span>
+              <span id="wedOriginalPrice" class="text-lg text-gray-500 line-through mb-1"
+                >₹35,000</span
+              >
+              <span id="wedDiscount" class="text-green-600 font-semibold mb-1">28% off</span>
+            </div>
+
+            <p class="text-sm text-gray-600 font-medium mb-6">
+              Inclusive of all taxes & setup charges
+            </p>
+
+
+
+            <!-- Description -->
+            <div class="border-t border-gray-200 pt-6 mb-6">
+              <h3 class="font-semibold text-gray-800 text-lg mb-3">
+                Product Description
+              </h3>
+              <p id="wedDesc" class="text-gray-600 leading-relaxed text-sm">
+                Transform your special day into a magical experience with our
+                Premium Wedding Stage and Floral Decoration setup. Featuring a
+                stunning arrangement of imported orchids, fresh red roses, white
+                lilies, and elegant jasmine garlands. The package includes stage
+                backdrops, luxurious drapes, warm ambiance lighting, and front
+                stage floral borders. Perfect for grand weddings, receptions,
+                and engagements.
+              </p>
+            </div>
+
+            <!-- Highlights -->
+            <div class="mb-8">
+              <div class="flex items-center gap-10">
+                <span class="text-gray-500 text-sm font-medium w-20"
+                  >Highlights</span
+                >
+                <ul id="wedHighlights" class="list-disc text-sm text-gray-700 space-y-1 pl-4">
+                  <li>Fresh, premium quality flowers</li>
+                  <li>Customizable color themes (Red/White, Pastel, Gold)</li>
+                  <li>Includes stage backdrop & lighting</li>
+                  <li>Expert florists for on-time setup</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Customization Section -->
+            <div id="customizationSection" class="hidden border-t border-gray-200 pt-6 mb-8">
+                <h3 class="font-semibold text-gray-800 text-lg mb-2 flex items-center gap-2">
+                    <i class="fa-solid fa-wand-magic-sparkles text-[#90A285]"></i> Customize Your Design
+                </h3>
+                <p class="text-sm text-gray-500 mb-4 italic">Have a specific design or reference photo? Upload it here and share with us!</p>
+                
+                <div class="flex flex-col gap-4">
+                    <label class="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-gray-300 rounded-xl cursor-pointer bg-gray-50 hover:bg-gray-100 hover:border-[#90A285] transition-all group">
+                        <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                            <i class="fa-solid fa-cloud-arrow-up text-3xl text-gray-400 group-hover:text-[#90A285] mb-2 transition-colors"></i>
+                            <p class="text-sm text-gray-500 font-medium">Click to upload your reference photo</p>
+                            <p class="text-xs text-gray-400 mt-1">PNG, JPG or WEBP (MAX. 5MB)</p>
+                        </div>
+                        <input id="customUpload" type="file" class="hidden" accept="image/*" onchange="handleFileSelect(this)" />
+                    </label>
+                    
+                    <div id="filePreview" class="hidden flex items-center gap-3 bg-green-50 border border-green-100 p-3 rounded-lg">
+                         <i class="fa-solid fa-circle-check text-green-500 text-xl"></i>
+                         <div class="flex-1">
+                            <p class="text-sm font-bold text-green-800">Photo Ready!</p>
+                            <p id="fileNameDisplay" class="text-xs text-green-600">image_name.jpg</p>
+                         </div>
+                    </div>
+                    
+                    <button onclick="sendToWhatsApp()" class="w-full bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-3.5 px-4 rounded-lg shadow-md hover:shadow-lg transition-all flex justify-center items-center gap-3 text-sm md:text-base">
+                        <i class="fa-brands fa-whatsapp text-2xl"></i> SHARE CUSTOM DESIGN ON WHATSAPP
+                    </button>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex gap-4 mt-auto">
+              <!-- <button onclick="addWeddingToCart()" class="flex-1 bg-[#ff9f00] hover:bg-[#e68e00] text-white font-bold py-3 md:py-4 px-4 rounded shadow-md transition flex justify-center items-center gap-2 text-sm md:text-base">
+                <i class="fa-solid fa-cart-shopping"></i> ADD TO CART
+              </button> -->
+              <button
+                onclick="buyWeddingNow()"
+                class="flex-1 bg-[#1bfb579e] hover:bg-[#817b34] text-black font-bold py-3 md:py-4 px-4 rounded shadow-md transition flex justify-center items-center gap-2 text-sm md:text-base"
+              >
+                <i class="fa-solid fa-bolt"></i> BOOK NOW
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Suggested Products Section -->
+    <div class="bg-white border-t border-gray-200 py-10 mt-8">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-xl md:text-2xl font-bold text-gray-800">
+            See More Wedding Decorations & Flowers
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+          <!-- Suggestion 1 -->
+          <div
+            class="group border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition bg-white flex flex-col relative"
+          >
+            <div class="h-40 md:h-48 overflow-hidden bg-gray-50 p-4 cursor-pointer">
+              <img
+                src="asset/marigold.webp"
+                onclick="addToCartWithAnimation(event, 'Haldi/Mehendi Floral Decor Setup', 8500, 'asset/marigold.webp')"
+                class="w-full h-full object-contain group-hover:scale-105 transition duration-300"
+              />
+            </div>
+            <div class="p-4 flex flex-col flex-1">
+              <h3
+                class="text-sm font-semibold text-gray-800 line-clamp-2 hover:text-[#90A285] cursor-pointer"
+              >
+                Haldi/Mehendi Floral Decor Setup
+              </h3>
+              <div class="mt-2 flex items-end gap-2">
+                <span class="font-bold text-gray-900">₹8,500</span>
+                <span class="text-xs text-gray-500 line-through mb-0.5"
+                  >₹12,000</span
+                >
+                <span class="text-xs text-green-600 font-bold mb-0.5"
+                  >29% off</span
+                >
+              </div>
+              <button onclick="window.location.href='product.html?name=' + encodeURIComponent('Haldi/Mehendi Floral Decor Setup') + '&price=8500&image=' + encodeURIComponent('asset/marigold.webp')" class="mt-4 w-full bg-[#90A285] hover:bg-[#7a8a71] text-white py-2 rounded-full text-sm font-semibold transition shadow-md flex justify-center items-center gap-2">
+                <i class="fa-solid fa-bolt"></i> Buy Now
+              </button>
+            </div>
+          </div>
+
+          <!-- Suggestion 2 -->
+          <div
+            class="group border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition bg-white flex flex-col relative"
+          >
+            <div class="h-40 md:h-48 overflow-hidden bg-gray-50 p-4 cursor-pointer">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6oEr-_pRIGFMHZ1XB39vZKVWjjaxBzEZ8UA&s"
+                onclick="addToCartWithAnimation(event, 'Premium Varmala (Pair)', 1499, 'https://chaarmology.com/wp-content/uploads/2025/03/FVC001.jpg')"
+                class="w-full h-full object-contain group-hover:scale-105 transition duration-300"
+              />
+            </div>
+            <div class="p-4 flex flex-col flex-1">
+              <h3
+                class="text-sm font-semibold text-gray-800 line-clamp-2 hover:text-[#90A285] cursor-pointer"
+              >
+                Premium Varmala (Pair)
+              </h3>
+              <div class="mt-2 flex items-end gap-2">
+                <span class="font-bold text-gray-900">₹1,499</span>
+                <span class="text-xs text-gray-500 line-through mb-0.5"
+                  >₹3,500</span
+                >
+                <span class="text-xs text-green-600 font-bold mb-0.5"
+                  >42% off</span
+                >
+              </div>
+              <button onclick="window.location.href='product.html?name=' + encodeURIComponent('Premium Varmala (Pair)') + '&price=1499&image=' + encodeURIComponent('https://chaarmology.com/wp-content/uploads/2025/03/FVC001.jpg')" class="mt-4 w-full bg-[#90A285] hover:bg-[#7a8a71] text-white py-2 rounded-full text-sm font-semibold transition shadow-md flex justify-center items-center gap-2">
+                <i class="fa-solid fa-bolt"></i> Buy Now
+              </button>
+            </div>
+          </div>
+
+          <!-- Suggestion 3 -->
+          <div
+            class="group border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition bg-white flex flex-col relative"
+          >
+            <div class="h-40 md:h-48 overflow-hidden bg-gray-50 p-4 cursor-pointer">
+              <img
+                src="https://th.bing.com/th/id/OIP.ma4SE86LH295YNn8NOc85QHaHa?w=192&h=193&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3"
+                onclick="addToCartWithAnimation(event, 'Wedding Car Floral Decoration', 3500, 'https://th.bing.com/th/id/OIP.ma4SE86LH295YNn8NOc85QHaHa?w=192&h=193&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3')"
+                class="w-full h-full object-contain group-hover:scale-105 transition duration-300"
+              />
+            </div>
+            <div class="p-4 flex flex-col flex-1">
+              <h3
+                class="text-sm font-semibold text-gray-800 line-clamp-2 hover:text-[#90A285] cursor-pointer"
+              >
+                Wedding Car Floral Decoration
+              </h3>
+              <div class="mt-2 flex items-end gap-2">
+                <span class="font-bold text-gray-900">₹3,500</span>
+                <span class="text-xs text-gray-500 line-through mb-0.5"
+                  >₹5,000</span
+                >
+                <span class="text-xs text-green-600 font-bold mb-0.5"
+                  >30% off</span
+                >
+              </div>
+              <button onclick="window.location.href='product.html?name=' + encodeURIComponent('Wedding Car Floral Decoration') + '&price=3500&image=' + encodeURIComponent('https://th.bing.com/th/id/OIP.ma4SE86LH295YNn8NOc85QHaHa?w=192&h=193&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3')" class="mt-4 w-full bg-[#90A285] hover:bg-[#7a8a71] text-white py-2 rounded-full text-sm font-semibold transition shadow-md flex justify-center items-center gap-2">
+                <i class="fa-solid fa-bolt"></i> Buy Now
+              </button>
+            </div>
+          </div>
+
+          <!-- Suggestion 4 -->
+          <div
+            class="group border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition bg-white flex flex-col relative"
+          >
+            <div class="h-40 md:h-48 overflow-hidden bg-gray-50 p-4 cursor-pointer">
+              <img
+                src="asset/jasmin.jpg"
+                onclick="addToCartWithAnimation(event, 'Jasmine & Tube Rose Mandap Canopy', 15000, 'asset/jasmin.jpg')"
+                class="w-full h-full object-contain group-hover:scale-105 transition duration-300"
+              />
+            </div>
+            <div class="p-4 flex flex-col flex-1">
+              <h3
+                class="text-sm font-semibold text-gray-800 line-clamp-2 hover:text-[#90A285] cursor-pointer"
+              >
+                Jasmine & Tube Rose Mandap Canopy
+              </h3>
+              <div class="mt-2 flex items-end gap-2">
+                <span class="font-bold text-gray-900">₹15,000</span>
+                <span class="text-xs text-gray-500 line-through mb-0.5"
+                  >₹20,000</span
+                >
+                <span class="text-xs text-green-600 font-bold mb-0.5"
+                  >25% off</span
+                >
+              </div>
+              <button onclick="window.location.href='product.html?name=' + encodeURIComponent('Jasmine & Tube Rose Mandap Canopy') + '&price=15000&image=' + encodeURIComponent('asset/jasmin.jpg')" class="mt-4 w-full bg-[#90A285] hover:bg-[#7a8a71] text-white py-2 rounded-full text-sm font-semibold transition shadow-md flex justify-center items-center gap-2">
+                <i class="fa-solid fa-bolt"></i> Buy Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="footer"></div>
+
+    <script>
+      fetch("footer.html")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("footer").innerHTML = data;
+        });
+      // Image Slider Logic
+      // Change image functionality is handled by the dynamic changeImage function below.
+
+      // Main image zoom logic
+      const mainImage = document.getElementById("mainImage");
+      const imageContainer = mainImage.parentElement;
+
+      imageContainer.addEventListener("mousemove", function (e) {
+        const { left, top, width, height } =
+          imageContainer.getBoundingClientRect();
+
+        // Calculate mouse position relative to image container as a percentage
+        const x = ((e.clientX - left) / width) * 100;
+        const y = ((e.clientY - top) / height) * 100;
+
+        // Set transform origin so it zooms into where the mouse is
+        mainImage.style.transformOrigin = `${x}% ${y}%`;
+      });
+
+      // Dynamic Data Loading
+      const weddingData = {
+        "1": {
+          title: "Premium Wedding Stage & Floral Decoration Setup",
+          price: "25,000",
+          priceNum: 25000,
+          originalPrice: "₹35,000",
+          desc: "Transform your special day into a magical experience with our Premium Wedding Stage and Floral Decoration setup. Now featuring exquisite Mandap designs along with stunning arrangements of imported orchids, fresh red roses, white lilies, and elegant jasmine garlands. The package includes stage backdrops, luxurious mandap structures, warm ambiance lighting, and front stage floral borders.",
+          highlights: ["Includes both Stage & Mandap setups", "Fresh, premium quality flowers", "Customizable color themes (Red/White, Pastel, Gold)", "Expert florists for on-time setup"],
+          mainImage: "https://storage.googleapis.com/shy-pub/337348/SKU-1798_4-1738652739391.heic",
+          variants: [
+            { img: "https://storage.googleapis.com/shy-pub/337348/SKU-1798_4-1738652739391.heic", name: "Classic Wedding Stage", price: "25,000", priceNum: 25000, originalPrice: "₹35,000" },
+            { img: "https://storage.googleapis.com/shy-pub/337348/SKU-1802_2-1738653282210.jpg", name: "Royal Mandap Setup", price: "35,000", priceNum: 35000, originalPrice: "₹45,000" },
+            { img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1H6sigA1SK3KjbJG7e5HHKQVadQhfet63-g&s", name: "Jasmine Mandap Style", price: "22,000", priceNum: 22000, originalPrice: "₹30,000"},
+            { img: "https://housing.com/news/wp-content/uploads/2022/11/Designs-ideas-to-ease-your-mandap-decoration-at-home-compressed.jpg", name: "Red Rose Theme", price: "28,000", priceNum: 28000, originalPrice: "₹40,000" },
+            { img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXGbw0t1Z-cjl9fzggTs4-_UkFQsWtiij6xA&s", name: "Marigold Yellow Decor", price: "18,000", priceNum: 18000, originalPrice: "₹25,000" }
+          ]
+        },
+        "2": {
+          title: "Haldi/Mehendi Floral Decor Setup",
+          price: "8,500",
+          priceNum: 8500,
+          originalPrice: "₹12,000",
+          desc: "Brighten up your Haldi or Mehendi ceremony with our vibrant Floral Decor Setup. A beautiful blend of roses, lilies, hibiscus, and fresh marigolds, combined with traditional props and backdrops to create the perfect festive atmosphere for your pre-wedding celebrations.",
+          highlights: ["Vibrant mix of roses, lilies, and hibiscus", "Traditional background drops and props included", "Perfect for daytime pre-wedding events", "Setup and removal handled by our team"],
+          mainImage: "asset/marigold.webp",
+          variants: [
+            { img: "asset/marigold.webp", name: "Traditional Marigold", price: "8,500", priceNum: 8500, originalPrice: "₹12,000" },
+            { img: "asset/Rose.png", name: "Haldi Rose Theme", price: "9,500", priceNum: 9500, originalPrice: "₹14,000"},
+            { img: "asset/lily.webp", name: "Elegant Lily Style", price: "10,500", priceNum: 10500, originalPrice: "₹15,000" },
+            { img: "asset/hibiscus.webp", name: "Vibrant Hibiscus Decor", price: "9,000", priceNum: 9000, originalPrice: "₹13,000" }
+          ]
+        },
+        "3": {
+          title: "Premium Varmala (Pair)",
+          price: "1,499",
+          priceNum: 1499,
+          originalPrice: "₹3,500",
+          desc: "Make your Jaimala moment unforgettable with our Premium Varmala. Handcrafted using the freshest, deep red roses intertwined with delicate baby's breath or jasmine. These lightweight, elegant garlands are designed to stay fresh throughout your ceremony.",
+          highlights: ["Hand-picked, large premium red roses", "Lightweight and comfortable to wear", "Woven with durable thread to prevent breakage", "Includes a pair (2 Varmalas)"],
+          mainImage: "https://chaarmology.com/wp-content/uploads/2025/03/FVC001.jpg",
+          variants: [
+            { img: "https://chaarmology.com/wp-content/uploads/2025/03/FVC001.jpg", name: "Premium Red Roses", price: "1,499", priceNum: 1499, originalPrice: "₹3,500" },
+            { img: "https://arpanflowers.com/wp-content/uploads/2024/01/Pink-White-Rose-With-Babys-breath-Varmala1.png", name: "Pink & White Rose Varmala", price: "1,899", priceNum: 1899, originalPrice: "₹4,000" },
+            { img: "https://happygiftings.com/cdn/shop/files/WhatsApp-Image-2024-03-15-at-00.14.20.jpg?v=1741814921", name:"Pink And red rose varmala", price: "1,699", priceNum: 1699, originalPrice: "₹3,800" },
+            { img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuUvFgHx9thBbSaqYcWXHv2g1yYY3Q3Q4eog&s", name: "White Lily Special", price: "1,599", priceNum: 1599, originalPrice: "₹3,500" },
+            { img: "https://www.vrikshamindia.com/cdn/shop/files/IMG_5728_2d3db141-94eb-4f56-9fcb-50161860231f.jpg?v=1768560942", name: "Jasmine Garland", price: "1,299", priceNum: 1299, originalPrice: "₹3,000" }
+          ]
+        },
+        "4": {
+          title: "Wedding Car Floral Decoration",
+          price: "3,500",
+          priceNum: 3500,
+          originalPrice: "₹5,000",
+          desc: "Arrive in style with our elegant Wedding Car Floral Decoration. We use a mix of roses, lilies, and lush green foliage, styled gracefully over the hood, doors, and trunk of your vehicle without causing any scratches or damage to the paint.",
+          highlights: ["Scratch-free attachment materials", "Withstands driving speeds up to 60km/h", "Customizable to match wedding themes", "Premium ribbons and netting included"],
+          mainImage: "https://th.bing.com/th/id/OIP.ma4SE86LH295YNn8NOc85QHaHa?w=192&h=193&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3",
+          variants: [
+            { img: "https://th.bing.com/th/id/OIP.ma4SE86LH295YNn8NOc85QHaHa?w=192&h=193&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3", name: "Classic Car Decor", price: "3,500", priceNum: 3500, originalPrice: "₹5,000"},
+            { img: "https://th.bing.com/th/id/OIP.3Hs6-vsaU786hPT14t27AgHaE8?w=230&h=150&c=6&r=0&o=7&dpr=1.5&pid=1.7&rm=3", name: "Rose Accents", price: "4,500", priceNum: 4500, originalPrice: "₹6,000" },
+            { img: "https://th.bing.com/th/id/OIP.WuY20dDSjPka94WOte1ypwHaHa?w=202&h=202&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3", name: "Jasmine Garland", price: "4,000", priceNum: 4000, originalPrice: "₹5,500" },
+            { img: "https://th.bing.com/th/id/OIP.FPj0tplAs6g2mu7GWUvhawHaLH?w=130&h=195&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3", name: "Marigold Theme", price: "3,000", priceNum: 3000, originalPrice: "₹4,500" }
+          ]
+        },
+        "4": {
+          title: "Wedding Car Floral Decoration",
+          price: "3,500",
+          priceNum: 3500,
+          originalPrice: "₹5,000",
+          desc: "Arrive in style with our elegant Wedding Car Floral Decoration. We use a mix of roses, lilies, and lush green foliage, styled gracefully over the hood, doors, and trunk of your vehicle without causing any scratches or damage to the paint.",
+          highlights: ["Scratch-free attachment materials", "Withstands driving speeds up to 60km/h", "Customizable to match wedding themes", "Premium ribbons and netting included"],
+          mainImage: "https://th.bing.com/th/id/OIP.ma4SE86LH295YNn8NOc85QHaHa?w=192&h=193&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3",
+          variants: [
+            { img: "https://th.bing.com/th/id/OIP.ma4SE86LH295YNn8NOc85QHaHa?w=192&h=193&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3", name: "Classic Car Decor", price: "3,500", priceNum: 3500, originalPrice: "₹5,000"},
+            { img: "https://th.bing.com/th/id/OIP.3Hs6-vsaU786hPT14t27AgHaE8?w=230&h=150&c=6&r=0&o=7&dpr=1.5&pid=1.7&rm=3", name: "Rose Accents", price: "4,500", priceNum: 4500, originalPrice: "₹6,000" },
+            { img: "https://th.bing.com/th/id/OIP.WuY20dDSjPka94WOte1ypwHaHa?w=202&h=202&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3", name: "Jasmine Garland", price: "4,000", priceNum: 4000, originalPrice: "₹5,500" },
+            { img: "https://th.bing.com/th/id/OIP.FPj0tplAs6g2mu7GWUvhawHaLH?w=130&h=195&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3", name: "Marigold Theme", price: "3,000", priceNum: 3000, originalPrice: "₹4,500" }
+          ]
+        },
+        "5": {
+          title: "Jasmine & Tube Rose Mandap Canopy",
+          price: "15,000",
+          priceNum: 15000,
+          originalPrice: "₹20,000",
+          desc: "Take your vows under a heavenly canopy of fragrant Jasmine and Tube Rose (Rajnigandha). This traditional yet luxurious mandap setup provides a breathtaking visual and aromatic experience, complete with hanging floral strings and pillar decorations.",
+          highlights: ["Extremely fragrant fresh flowers", "Dense hanging floral strings (latkans)", "Full coverage for 4 mandap pillars", "Auspicious and traditional aesthetic"],
+          mainImage: "asset/jasmin.jpg",
+          variants: [
+            { img: "asset/jasmin.jpg", name: "Traditional Jasmine", price: "15,000", priceNum: 15000, originalPrice: "₹20,000" },
+            { img: "asset/tubeRose.webp", name: "Rajnigandha Special", price: "18,000", priceNum: 18000, originalPrice: "₹25,000"},
+            { img: "asset/b1.webp", name: "Marigold Mix", price: "12,000", priceNum: 12000, originalPrice: "₹18,000"},
+            { img: "asset/marigold.webp", name: "Yellow Theme", price: "13,000", priceNum: 13000, originalPrice: "₹19,000"}
+          ]
+        }
+      };
+
+      let currentProduct = weddingData["1"]; // Default
+      let currentVariant = { name: "Classic Wedding Stage", image: "https://storage.googleapis.com/shy-pub/337348/SKU-1798_4-1738652739391.heic" };
+
+      function changeImage(thumbnail, src, variantName, price, originalPrice, discount, priceNum) {
+        const mainImg = document.getElementById('mainImage');
+        mainImg.src = src;
+        
+        // Update selection state
+        currentVariant = { name: variantName, image: src, price: price, priceNum: priceNum };
+        document.getElementById('selectedVariantName').textContent = variantName;
+
+        // Update price displays if provided
+        if (price) document.getElementById('wedPrice').textContent = '₹' + price;
+        if (originalPrice) document.getElementById('wedOriginalPrice').textContent = originalPrice;
+        if (discount) document.getElementById('wedDiscount').textContent = discount;
+
+        // Update thumbnails UI
+        document.querySelectorAll('.thumbnail').forEach(thumb => {
+          thumb.classList.remove('selected');
+        });
+        thumbnail.classList.add('selected');
+      }
+
+      window.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get('id');
+
+        if (id && weddingData[id]) {
+          currentProduct = weddingData[id];
+          
+          // Update DOM Elements
+          document.getElementById('mainImage').src = currentProduct.mainImage;
+          document.getElementById('wedTitle').textContent = currentProduct.title;
+          document.getElementById('wedPrice').textContent = "₹" + currentProduct.price;
+          document.getElementById('wedOriginalPrice').textContent = currentProduct.originalPrice;
+          document.getElementById('wedDiscount').textContent = currentProduct.discount;
+          document.getElementById('wedDesc').textContent = currentProduct.desc;
+          
+          const highlightsHtml = currentProduct.highlights.map(h => `<li>${h}</li>`).join('');
+          document.getElementById('wedHighlights').innerHTML = highlightsHtml;
+
+          // Update variant display
+          currentVariant = { name: currentProduct.variants[0].name, image: currentProduct.variants[0].img, price: currentProduct.variants[0].price, priceNum: currentProduct.variants[0].priceNum };
+          document.getElementById('selectedVariantName').textContent = currentVariant.name;
+
+          // Update thumbnails
+          const thumbHtml = currentProduct.variants.map((variant, index) => {
+            return `<img onclick="changeImage(this, '${variant.img}', '${variant.name}', '${variant.price || ''}', '${variant.originalPrice || ''}', '${variant.discount || ''}', ${variant.priceNum || 0})" src="${variant.img}" class="thumbnail ${index === 0 ? 'selected' : ''} w-16 h-16 md:w-full md:h-20 object-cover rounded-lg border-2 border-transparent cursor-pointer shrink-0" />`;
+          }).join('');
+          document.getElementById('thumbnailsContainer').innerHTML = thumbHtml;
+          // Show customization section for Car (id=4) and Mandap (id=5)
+          if (id === '4' || id === '5') {
+            document.getElementById('customizationSection').classList.remove('hidden');
+          } else {
+            document.getElementById('customizationSection').classList.add('hidden');
+          }
+        }
+      });
+
+      // Customization Logic
+      function handleFileSelect(input) {
+        const preview = document.getElementById('filePreview');
+        const fileName = document.getElementById('fileNameDisplay');
+        if (input.files && input.files[0]) {
+          fileName.textContent = input.files[0].name;
+          preview.classList.remove('hidden');
+        }
+      }
+
+      function sendToWhatsApp() {
+        const phone = "919876543210"; // From footer
+        const productName = currentProduct.title;
+        const variantName = currentVariant.name;
+        const upload = document.getElementById('customUpload');
+        
+        let message = `Hi Maa Durga Florals, I am interested in customizing my ${productName}.`;
+        message += `\n\nSelected Variant: ${variantName}`;
+        
+        if (upload.files && upload.files[0]) {
+            message += `\n\nI have a reference photo ready (Name: ${upload.files[0].name}). Please guide me on how to share it for customization!`;
+        } else {
+            message += `\n\nPlease help me with some custom designs!`;
+        }
+
+        const encodedMessage = encodeURIComponent(message);
+        window.open(`https://wa.me/${phone}?text=${encodedMessage}`, '_blank');
+      }
+
+      // Cart Logic
+      function addWeddingToCart() {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        // Use variant-specific price if available
+        const finalPrice = currentVariant.priceNum || currentProduct.priceNum;
+        const finalPriceStr = currentVariant.price || currentProduct.price;
+
+        const cartItem = {
+          name: `${currentProduct.title} (${currentVariant.name})`,
+          price: finalPriceStr,
+          priceNum: finalPrice,
+          image: currentVariant.image,
+          qty: 1,
+          subtext: "Selected Theme: " + currentVariant.name,
+        };
+
+        const existingItem = cart.find((i) => i.name === cartItem.name);
+        if (existingItem) {
+          existingItem.qty += 1;
+        } else {
+          cart.push(cartItem);
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+      }
+
+      function buyWeddingNow() {
+        addWeddingToCart();
+        window.location.href = "./Cart.html";
+      }
+
+      function addToCartWithAnimation(event, name, price, image) {
+        event.preventDefault();
+        event.stopPropagation();
+        
+        // Add to localStorage cart
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const existingItem = cart.find(item => item.name === name);
+        if (existingItem) {
+            existingItem.qty += 1;
+        } else {
+            cart.push({
+                name: name,
+                price: parseFloat(price),
+                image: image,
+                qty: 1,
+                subtext: "Suggested product"
+            });
+        }
+        localStorage.setItem('cart', JSON.stringify(cart));
+        
+        // Animation
+        const imgElement = event.target;
+        const clonedImg = imgElement.cloneNode(true);
+        const rect = imgElement.getBoundingClientRect();
+        
+        // Find visible cart icon
+        const cartIcons = document.querySelectorAll('a[href="cart.html"]');
+        let targetCart = cartIcons[0]; // fallback
+        cartIcons.forEach(icon => {
+            if (icon.offsetParent !== null) { // is visible
+                targetCart = icon;
+            }
+        });
+        
+        const cartRect = targetCart.getBoundingClientRect();
+        
+        // Set initial styles for cloned image
+        clonedImg.style.position = 'fixed';
+        clonedImg.style.top = rect.top + 'px';
+        clonedImg.style.left = rect.left + 'px';
+        clonedImg.style.width = rect.width + 'px';
+        clonedImg.style.height = rect.height + 'px';
+        clonedImg.style.objectFit = 'cover';
+        clonedImg.style.borderRadius = '8px';
+        clonedImg.style.zIndex = '9999';
+        clonedImg.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+        
+        document.body.appendChild(clonedImg);
+        
+        // Trigger animation
+        setTimeout(() => {
+            clonedImg.style.top = cartRect.top + (cartRect.height / 2) - 15 + 'px';
+            clonedImg.style.left = cartRect.left + (cartRect.width / 2) - 15 + 'px';
+            clonedImg.style.width = '30px';
+            clonedImg.style.height = '30px';
+            clonedImg.style.opacity = '0';
+            clonedImg.style.transform = 'scale(0.1)';
+        }, 10);
+        
+        // Clean up
+        setTimeout(() => {
+            clonedImg.remove();
+            targetCart.style.transition = 'transform 0.2s';
+            targetCart.style.transform = 'scale(1.2)';
+            setTimeout(() => targetCart.style.transform = '', 200);
+        }, 800);
+      }
+    </script>
+  </body>
+</html>
